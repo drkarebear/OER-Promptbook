@@ -639,7 +639,7 @@
     <section class="prompt-section" id="week-by-week" aria-labelledby="week-heading">
       <span class="section-number">Plan 1</span>
       <h2 id="week-heading">Map OER Readings to Your Course Week by Week</h2>
-      <p class="section-intro">This is the simplest way to turn “I found some OER” into an actual teaching plan. Give AI your weeks or units plus the resources you are considering.</p>
+      <p class="section-intro">Start with the course you already have. If you already found possible OER, AI can match the strongest readings to each week. If you have not found readings yet, AI can turn your schedule into a focused reading-needs map for your next search.</p>
 
       <div class="prompt-grid">
         <article class="prompt-card simple">
@@ -654,22 +654,31 @@ I teach [COURSE NAME] at a community college.
 Here are my weekly topics or units:
 [PASTE YOUR WEEKLY SCHEDULE OR UNIT LIST]
 
-Here are the OER readings or resources I am considering:
-[PASTE TITLES, LINKS, TABLE OF CONTENTS, OR UPLOAD THE MATERIALS]
+If I already have OER readings or resources I am considering, they are here:
+[PASTE TITLES, LINKS, TABLE OF CONTENTS, OR UPLOAD MATERIALS — OR LEAVE BLANK]
 
-Help me match the best readings to each week.
+Help me make a week-by-week reading plan.
 
-Keep the total assigned reading to no more than about 1 hour per week unless I specify otherwise.
+If I provided possible readings, match the strongest reading or readings to each week.
 
-Create a brief table:
+If I did NOT provide readings, do not invent specific resources. Instead, tell me what kind of reading I should look for each week so I can use that as an OER search plan.
 
-Week | Topic | Suggested Reading | Why It Fits | Estimated Reading Time
+Keep required reading to a maximum of 60 minutes per week. This is a ceiling, not a target. If a week's goal can be met with less reading, recommend less.
+
+Create a brief table.
+
+If I provided readings:
+Week | Topic | Suggested Reading | Why It Fits | Approx. Reading-Time Range
+
+If I did not provide readings:
+Week | Topic | What Students Need | Ideal Reading Type | Target Reading-Time Range
 
 Important:
 - Do not force a reading into a week if it does not genuinely fit.
-- Do not invent chapters, page numbers, or reading lengths.
-- If a week has no strong match, write "Gap — needs another resource."
-- Avoid assigning the same content twice unless repetition serves a clear purpose.
+- Do not invent chapters, page numbers, links, or reading lengths.
+- If you cannot estimate reading time reliably, write “Cannot estimate reliably.”
+- Avoid assigning several readings that do essentially the same job.
+- If I provided resources and a week has no strong match, write “Gap — needs another resource.”
 - Keep the plan simple enough that I can review it quickly.
 
 At the end, tell me which 2–3 weeks need the most attention from me.</pre>
@@ -686,7 +695,7 @@ At the end, tell me which 2–3 weeks need the most attention from me.</pre>
           <p>Best when you want alignment, workload, and gaps considered together.</p>
 
           <div class="prompt-box">
-            <pre class="prompt-text" id="prompt-week-power">I'm a power user. Build a week-by-week OER reading map for my existing community college course.
+            <pre class="prompt-text" id="prompt-week-power">I'm a power user. Build a week-by-week OER reading plan for my existing community college course.
 
 COURSE STRUCTURE
 [PASTE WEEKLY TOPICS, UNITS, MODULES, OR SYLLABUS SCHEDULE]
@@ -695,32 +704,38 @@ COURSE OUTCOMES OR MAJOR GOALS
 [OPTIONAL BUT RECOMMENDED]
 
 OER MATERIALS AVAILABLE
-[UPLOAD OR PASTE TITLES, LINKS, TABLES OF CONTENTS, CHAPTER LISTS, OR OTHER RESOURCE INFORMATION]
+[UPLOAD OR PASTE TITLES, LINKS, TABLES OF CONTENTS, CHAPTER LISTS, OR OTHER RESOURCE INFORMATION — OR LEAVE BLANK IF I AM STILL LOOKING]
 
 WORKLOAD CONSTRAINT
-Keep required reading to a maximum of [60] minutes per week unless a week clearly needs a different load. Explain any exception.
+Keep required reading to a maximum of [60] minutes per week. Treat this as a ceiling, not a target. If the instructional goal can be met with less reading, recommend less.
 
 PROCESS
 1. Identify the main instructional purpose of each week.
-2. Match only readings that directly support that purpose.
-3. Estimate reading time conservatively when evidence allows; otherwise label the estimate as uncertain.
-4. Avoid unnecessary duplication.
-5. Flag weeks with no strong resource.
-6. Flag weeks where the available OER would require too much reading.
-7. Distinguish required from optional/enrichment material when that would improve workload.
+2. If I provided OER materials, match only readings that directly support that purpose.
+3. If I did not provide OER materials, do not invent titles or links. Instead, identify the specific kind of reading I should search for.
+4. Use a reasonable reading-time range only when the text, word count, length, and difficulty provide enough evidence. Otherwise write “Cannot estimate reliably.”
+5. Avoid unnecessary duplication.
+6. Flag weeks with no strong resource or an unclear reading need.
+7. Flag weeks where the available OER would create too much reading.
+8. Distinguish required from optional/enrichment material when that would improve workload.
 
-OUTPUT
+OUTPUT IF I PROVIDED OER
 Create a table:
-Week | Topic/Goal | Required OER | Optional OER | Est. Required Time | Why It Fits | Gap/Concern
+Week | Topic/Goal | Required OER | Optional OER | Approx. Required Time | Why It Fits | Gap/Concern
+
+OUTPUT IF I DID NOT PROVIDE OER
+Create a table:
+Week | Topic/Goal | What Students Need to Learn/Do | Ideal Reading Type | Target Time Range | Search Terms or Resource Need
 
 Then provide:
-- 3 weeks with the strongest fit
+- 3 weeks with the strongest alignment or clearest reading needs
 - 3 weeks needing the most faculty attention
+- places where less reading would be enough
 - content that appears repeatedly and could be trimmed
 - important course needs that remain uncovered
-- a short list of targeted searches I should run next
+- a short list of targeted OER searches I should run next
 
-Do not invent chapter contents, page numbers, links, or reading times. If evidence is insufficient, say so.</pre>
+Do not invent chapter contents, page numbers, links, titles, or reading times. If evidence is insufficient, say so.</pre>
           </div>
 
           <div class="copy-row">
@@ -732,7 +747,7 @@ Do not invent chapter contents, page numbers, links, or reading times. If eviden
 
       <div class="customize">
         <strong>Want a different workload limit?</strong>
-        <p>Replace “1 hour” with the reading target that fits your course, such as 30, 45, 75, or 90 minutes. You can also ask AI to separate <strong>required</strong> and <strong>optional</strong> reading.</p>
+        <p>Replace “60 minutes” with the maximum that fits your course, such as 30, 45, 75, or 90 minutes. Treat the number as a <strong>ceiling, not a quota</strong>. You can also ask AI to separate <strong>required</strong> and <strong>optional</strong> reading.</p>
       </div>
     </section>
 
