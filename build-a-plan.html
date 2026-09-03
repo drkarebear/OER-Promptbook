@@ -1,1 +1,1079 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ready-to-use AI prompts that help faculty map OER and other zero-cost materials into an existing course, week by week, without rebuilding from scratch.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Build a Plan | The OER Promptbook</title>
+
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --orange: #c85d13;
+      --orange-dark: #a84a0f;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --simple-bg: #fff6ef;
+      --simple-border: #efd0ba;
+      --power-bg: #effafa;
+      --power-border: #b8dfe0;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #fff7f0 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.8rem 1.25rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .82rem;
+      margin-bottom: .75rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+      max-width: 950px;
+    }
+
+    .hero-lede {
+      max-width: 850px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .hero-points {
+      list-style: none;
+      margin: 1.35rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem 1.2rem;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: .85rem;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 .8rem;
+    }
+
+    .quick-start {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .quick-start h2 {
+      font-size: 1.25rem;
+      margin-bottom: .45rem;
+    }
+
+    .quick-start p {
+      margin: .35rem 0;
+    }
+
+    .goal-nav {
+      margin: 2rem 0 3rem;
+    }
+
+    .goal-nav h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .goal-link {
+      display: flex;
+      flex-direction: column;
+      min-height: 165px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .goal-link:hover {
+      border-color: #e0b99e;
+      box-shadow: var(--shadow);
+    }
+
+    .goal-icon {
+      font-size: 1.55rem;
+      margin-bottom: .4rem;
+    }
+
+    .goal-link strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: .25rem;
+    }
+
+    .goal-link span:last-child {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .prompt-section {
+      scroll-margin-top: 1rem;
+      margin: 3.5rem 0;
+      padding-top: .5rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      color: var(--orange);
+      font-size: .8rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      color: var(--muted);
+      margin: 0 0 1.35rem;
+      font-size: 1.02rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .prompt-card {
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .prompt-card.simple {
+      background: var(--simple-bg);
+      border: 1px solid var(--simple-border);
+    }
+
+    .prompt-card.power {
+      background: var(--power-bg);
+      border: 1px solid var(--power-border);
+    }
+
+    .prompt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .prompt-card > p {
+      margin: .2rem 0 .9rem;
+      color: #405064;
+      font-size: .94rem;
+    }
+
+    .prompt-box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #cfd9e3;
+      border-radius: 14px;
+      padding: 1rem;
+      flex-grow: 1;
+      min-height: 400px;
+    }
+
+    .prompt-text {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .91rem;
+      line-height: 1.58;
+      color: #1d2938;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      border: 0;
+      border-radius: 10px;
+      min-height: 44px;
+      padding: .68rem 1rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-button:hover {
+      background: var(--navy-2);
+    }
+
+    .copy-status {
+      font-size: .88rem;
+      color: var(--green);
+      font-weight: 700;
+      min-height: 1.3em;
+    }
+
+    .customize {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--orange);
+      background: #fff8f2;
+      border-radius: 10px;
+    }
+
+    .customize strong {
+      color: var(--navy);
+    }
+
+    .customize p {
+      margin: .35rem 0 0;
+    }
+
+    .verify {
+      margin-top: 3rem;
+      border: 1px solid #bedfce;
+      background: #f1faf6;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .verify h2 {
+      font-size: 1.45rem;
+      margin-bottom: .65rem;
+    }
+
+    .verify ul {
+      margin-bottom: 0;
+    }
+
+    .related {
+      margin-top: 2rem;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .related a {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      background: var(--surface-soft);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .goal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-box {
+        min-height: auto;
+      }
+
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.8rem 1rem 2.2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-card {
+        padding: 1rem;
+      }
+
+      .prompt-box {
+        padding: .9rem;
+      }
+
+      .prompt-text {
+        font-size: .87rem;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <span class="brand-mark" aria-hidden="true">OP</span>
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="find-oer.html">Find OER</a></li>
+          <li><a href="evaluate-oer.html">Evaluate OER</a></li>
+          <li><a href="fill-a-gap.html">Fill a Gap</a></li>
+          <li><a href="build-a-plan.html" aria-current="page">Build a Plan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Avoid rebuilding from scratch</div>
+      <h1 id="page-title">Fit OER Into the Course You Already Teach</h1>
+      <p class="hero-lede">Once you have promising resources, AI can help with the next time-consuming step: matching them to your weeks, units, outcomes, and existing course structure while keeping student workload realistic.</p>
+
+      <ul class="hero-points" aria-label="What this page can help with">
+        <li><span class="check" aria-hidden="true">✓</span> Map materials week by week</li>
+        <li><span class="check" aria-hidden="true">✓</span> Protect student workload</li>
+        <li><span class="check" aria-hidden="true">✓</span> Preserve what already works</li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="quick-start" aria-labelledby="quick-heading">
+      <h2 id="quick-heading">Start With Your Existing Course, Not a Blank Page</h2>
+      <p>Paste your weekly topics, syllabus, modules, COR, or current textbook schedule. Then let AI suggest where OER could fit before you start moving anything around.</p>
+      <p><strong>Good default:</strong> ask for no more than about <strong>one hour of assigned reading per week</strong>, unless your course intentionally requires more. You can change that limit in any prompt below.</p>
+    </section>
+
+    <nav class="goal-nav" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">What Are You Trying to Plan?</h2>
+      <div class="goal-grid">
+        <a class="goal-link" href="#week-by-week">
+          <span class="goal-icon" aria-hidden="true">📅</span>
+          <strong>Map Readings Week by Week</strong>
+          <span>Match readings to weekly topics with a workload limit.</span>
+        </a>
+
+        <a class="goal-link" href="#replace-textbook">
+          <span class="goal-icon" aria-hidden="true">↔</span>
+          <strong>Replace a Textbook Chapter by Chapter</strong>
+          <span>Keep your current sequence while swapping in OER.</span>
+        </a>
+
+        <a class="goal-link" href="#playlist">
+          <span class="goal-icon" aria-hidden="true">🗂️</span>
+          <strong>Build a Reading Playlist</strong>
+          <span>Combine several resources into one coherent course path.</span>
+        </a>
+
+        <a class="goal-link" href="#workload">
+          <span class="goal-icon" aria-hidden="true">⏱️</span>
+          <strong>Check Workload and Gaps</strong>
+          <span>Spot overloaded weeks, repetition, and missing coverage.</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="prompt-section" id="week-by-week" aria-labelledby="week-heading">
+      <span class="section-number">Plan 1</span>
+      <h2 id="week-heading">Map OER Readings to Your Course Week by Week</h2>
+      <p class="section-intro">This is the simplest way to turn “I found some OER” into an actual teaching plan. Give AI your weeks or units plus the resources you are considering.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a brief weekly chart without redesigning the course.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-week-simple">I'm new to AI. Keep this simple.
+
+I teach [COURSE NAME] at a community college.
+
+Here are my weekly topics or units:
+[PASTE YOUR WEEKLY SCHEDULE OR UNIT LIST]
+
+Here are the OER readings or resources I am considering:
+[PASTE TITLES, LINKS, TABLE OF CONTENTS, OR UPLOAD THE MATERIALS]
+
+Help me match the best readings to each week.
+
+Keep the total assigned reading to no more than about 1 hour per week unless I specify otherwise.
+
+Create a brief table:
+
+Week | Topic | Suggested Reading | Why It Fits | Estimated Reading Time
+
+Important:
+- Do not force a reading into a week if it does not genuinely fit.
+- Do not invent chapters, page numbers, or reading lengths.
+- If a week has no strong match, write "Gap — needs another resource."
+- Avoid assigning the same content twice unless repetition serves a clear purpose.
+- Keep the plan simple enough that I can review it quickly.
+
+At the end, tell me which 2–3 weeks need the most attention from me.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-week-simple" data-status-target="status-week-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-week-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Build a Deeper Map</div>
+          <p>Best when you want alignment, workload, and gaps considered together.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-week-power">I'm a power user. Build a week-by-week OER reading map for my existing community college course.
+
+COURSE STRUCTURE
+[PASTE WEEKLY TOPICS, UNITS, MODULES, OR SYLLABUS SCHEDULE]
+
+COURSE OUTCOMES OR MAJOR GOALS
+[OPTIONAL BUT RECOMMENDED]
+
+OER MATERIALS AVAILABLE
+[UPLOAD OR PASTE TITLES, LINKS, TABLES OF CONTENTS, CHAPTER LISTS, OR OTHER RESOURCE INFORMATION]
+
+WORKLOAD CONSTRAINT
+Keep required reading to a maximum of [60] minutes per week unless a week clearly needs a different load. Explain any exception.
+
+PROCESS
+1. Identify the main instructional purpose of each week.
+2. Match only readings that directly support that purpose.
+3. Estimate reading time conservatively when evidence allows; otherwise label the estimate as uncertain.
+4. Avoid unnecessary duplication.
+5. Flag weeks with no strong resource.
+6. Flag weeks where the available OER would require too much reading.
+7. Distinguish required from optional/enrichment material when that would improve workload.
+
+OUTPUT
+Create a table:
+Week | Topic/Goal | Required OER | Optional OER | Est. Required Time | Why It Fits | Gap/Concern
+
+Then provide:
+- 3 weeks with the strongest fit
+- 3 weeks needing the most faculty attention
+- content that appears repeatedly and could be trimmed
+- important course needs that remain uncovered
+- a short list of targeted searches I should run next
+
+Do not invent chapter contents, page numbers, links, or reading times. If evidence is insufficient, say so.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-week-power" data-status-target="status-week-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-week-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="customize">
+        <strong>Want a different workload limit?</strong>
+        <p>Replace “1 hour” with the reading target that fits your course, such as 30, 45, 75, or 90 minutes. You can also ask AI to separate <strong>required</strong> and <strong>optional</strong> reading.</p>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="replace-textbook" aria-labelledby="replace-heading">
+      <span class="section-number">Plan 2</span>
+      <h2 id="replace-heading">Replace a Textbook Chapter by Chapter</h2>
+      <p class="section-intro">Use this when your current textbook already gives the course a structure you like. Instead of rebuilding the sequence, ask AI to map open alternatives onto it.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you can paste your current table of contents.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-replace-simple">I'm new to AI. Keep this simple.
+
+I currently use this textbook or sequence:
+[PASTE THE TABLE OF CONTENTS OR WEEKLY CHAPTER LIST]
+
+I have these OER resources available:
+[PASTE OR UPLOAD THE OER MATERIALS]
+
+Help me see what could replace each chapter or topic.
+
+Create a table:
+
+Current Chapter/Topic | Possible OER Replacement | Strong Match / Partial Match / No Match | Notes
+
+Do not claim an OER is equivalent unless the content supports that.
+
+If the match is partial, briefly explain what is missing.
+
+If there is no good match, write "Needs another resource."
+
+Do not invent OER contents or textbook contents.
+
+At the end, tell me:
+- which replacements look easiest
+- which ones would require supplementation
+- which parts of my current course would be hardest to replace</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-replace-simple" data-status-target="status-replace-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-replace-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Build a Replacement Map</div>
+          <p>Best when you want to preserve course architecture but diagnose the labor each replacement would require.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-replace-power">I'm a power user. Help me map OER onto the structure of a course currently organized around a commercial or non-open textbook.
+
+CURRENT COURSE/TEXTBOOK STRUCTURE
+[PASTE TABLE OF CONTENTS, CHAPTER SEQUENCE, OR WEEKLY READING PLAN]
+
+AVAILABLE OER
+[UPLOAD OR PASTE OER TITLES, LINKS, CHAPTER LISTS, OR FULL MATERIALS]
+
+TASK
+For each current chapter or major topic:
+1. Identify the closest OER coverage.
+2. Rate the match as Strong / Partial / Weak / None.
+3. Identify important content lost in the replacement.
+4. Identify unnecessary content the OER would add.
+5. Estimate whether the replacement requires:
+   - little or no adaptation
+   - light supplementation
+   - moderate redesign
+   - substantial redesign
+
+OUTPUT
+Create a table:
+Current Topic | OER Replacement | Match | Missing Content | Extra Content | Faculty Work | Notes
+
+Then identify:
+- easiest substitutions
+- substitutions most likely to increase prep time
+- places where a small supplemental OER could solve the gap
+- places where keeping the current structure may no longer make pedagogical sense
+
+Be candid. The goal is not to force a one-to-one replacement if a different OER structure would work better.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-replace-power" data-status-target="status-replace-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-replace-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="playlist" aria-labelledby="playlist-heading">
+      <span class="section-number">Plan 3</span>
+      <h2 id="playlist-heading">Build a Coherent Reading Playlist</h2>
+      <p class="section-intro">Use this when no single textbook is perfect and you want a small set of readings that feels intentional rather than like a folder full of links.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you have several resources and want help choosing what actually earns a place.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-playlist-simple">I'm new to AI. Keep this simple.
+
+I teach:
+[COURSE]
+
+Here are the major units or topics:
+[PASTE UNIT LIST]
+
+Here are OER readings I am considering:
+[PASTE TITLES, LINKS, OR UPLOAD MATERIALS]
+
+Help me build a simple reading playlist for the course.
+
+For each unit, choose only the readings that add something important.
+
+Create a table:
+Unit | Required Reading | Optional Reading | Why It Belongs
+
+Keep the total reading workload reasonable and avoid assigning several resources that say essentially the same thing.
+
+If a resource does not earn a clear place in the course, leave it out.
+
+If a unit still has a gap, label it clearly.
+
+At the end, list any resources you recommend removing because they are redundant, too long, or not closely aligned.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-playlist-simple" data-status-target="status-playlist-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-playlist-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Curate the Course</div>
+          <p>Best when you want coherence, sequencing, and student workload treated as design constraints.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-playlist-power">I'm a power user. Curate a coherent OER reading playlist for this community college course.
+
+COURSE GOALS / UNITS
+[PASTE]
+
+CANDIDATE OER
+[UPLOAD OR PASTE]
+
+DESIGN PRINCIPLES
+- Prefer fewer, stronger resources over a large collection.
+- Each required reading should have a clear instructional purpose.
+- Avoid redundancy unless repetition is intentional.
+- Sequence readings so concepts build logically.
+- Keep workload within [60] minutes of required reading per week unless I specify otherwise.
+- Use optional/enrichment materials when something is valuable but not essential.
+
+FOR EACH RESOURCE
+Assess:
+- what unique contribution it makes
+- where it fits best
+- whether it duplicates another resource
+- whether it is too long for the value it adds
+- whether it appears necessary, optional, or removable
+
+OUTPUT
+Create a course playlist table:
+Week/Unit | Instructional Goal | Required OER | Optional OER | Est. Time | Why This Sequence Works
+
+Then provide:
+- resources to keep
+- resources to cut
+- resources to shorten or excerpt, if licensing permits
+- remaining gaps
+- places where the sequence may need instructor-created transitions or context
+
+Do not maximize the number of resources. Optimize for coherence, usefulness, and manageable student workload.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-playlist-power" data-status-target="status-playlist-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-playlist-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="workload" aria-labelledby="workload-heading">
+      <span class="section-number">Plan 4</span>
+      <h2 id="workload-heading">Check Workload, Repetition, and Course Gaps</h2>
+      <p class="section-intro">Use this after you have a draft plan. AI can help identify the weeks where students may be overloaded and the places where your new zero-cost course still needs attention.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a quick sanity check before finalizing the schedule.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-workload-simple">I'm new to AI. Keep this simple.
+
+Here is my draft course reading plan:
+[PASTE WEEK-BY-WEEK PLAN]
+
+Please check it for:
+- weeks with too much reading
+- weeks with very little reading
+- repeated content
+- topics that seem missing
+- readings that do not clearly fit the week's goal
+
+My target is about [60] minutes of assigned reading per week.
+
+Create a short table:
+Week | Workload | Possible Issue | Suggested Adjustment
+
+Do not invent reading lengths if they are not available.
+
+If you are unsure, label the estimate as uncertain.
+
+At the end, tell me the 3 changes most likely to make the course more manageable for students.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-workload-simple" data-status-target="status-workload-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-workload-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Audit the Plan</div>
+          <p>Best when you want to balance workload, alignment, sequence, and faculty labor before launch.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-workload-power">I'm a power user. Audit this draft OER/ZTC course plan for student workload, coherence, and remaining design problems.
+
+COURSE PLAN
+[PASTE WEEK-BY-WEEK SCHEDULE, READINGS, ACTIVITIES, AND OPTIONAL MATERIALS]
+
+COURSE GOALS
+[OPTIONAL]
+
+TARGET READING WORKLOAD
+[60] minutes of required reading per week.
+
+AUDIT FOR
+1. Overloaded weeks
+2. Underdeveloped weeks
+3. Redundant content
+4. Gaps in course coverage
+5. Weak sequencing
+6. Readings that do not earn their place
+7. Weeks where students are asked to learn too many new concepts at once
+8. Places where optional material should be separated from required material
+9. Places likely to create unnecessary faculty prep or explanation
+
+OUTPUT
+Create a table:
+Week | Goal | Est. Workload | Strength | Concern | Suggested Adjustment
+
+Then identify:
+- highest-priority workload fixes
+- content that can be cut without meaningful loss
+- gaps that still need another resource
+- weeks where instructor context or transition may be more useful than adding another reading
+- any places where the plan appears to be recreating the complexity of a commercial textbook rather than simplifying the student experience
+
+Use cautious estimates and state uncertainty clearly.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-workload-power" data-status-target="status-workload-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-workload-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="verify" aria-labelledby="verify-heading">
+      <h2 id="verify-heading">Before You Publish the New Plan</h2>
+      <p>A neat AI-generated table can make a course look finished before it actually is. Do one final human pass.</p>
+      <ul>
+        <li><strong>Check the readings themselves.</strong> Make sure the assigned sections really contain what the plan says they do.</li>
+        <li><strong>Check workload in context.</strong> Reading time is only one part of student labor; include writing, discussion, practice, and major assignments in your judgment.</li>
+        <li><strong>Keep transitions in mind.</strong> A course built from multiple OER may need short instructor introductions that explain how the pieces connect.</li>
+        <li><strong>Trim aggressively.</strong> Zero-cost materials still cost students time. Every required resource should earn its place.</li>
+      </ul>
+    </section>
+
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">What Next?</h2>
+      <div class="related-links">
+        <a href="fill-a-gap.html">Still have an empty week? Find one missing resource.</a>
+        <a href="evaluate-oer.html">Unsure about a resource in the plan? Evaluate it.</a>
+        <a href="ztc-options.html">Can't fill a gap with OER? Explore other ZTC options.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("[data-copy-target]");
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", async function () {
+          const targetId = button.getAttribute("data-copy-target");
+          const statusId = button.getAttribute("data-status-target");
+          const target = document.getElementById(targetId);
+          const status = document.getElementById(statusId);
+
+          if (!target) return;
+
+          const text = target.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (status) status.textContent = "Copied to clipboard.";
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(target);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) status.textContent = "Prompt selected. Copy it with Ctrl+C or Command+C.";
+          }
+
+          window.setTimeout(function () {
+            if (status) status.textContent = "";
+          }, 4000);
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
