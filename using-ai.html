@@ -1,1 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A brief faculty guide to using AI with The OER Promptbook, including what prompts are, choosing an AI tool, privacy settings, and verifying AI-generated OER results.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Using AI | The OER Promptbook</title>
 
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --orange: #c85d13;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1040px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.6rem 1.25rem 2.8rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .7rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.25rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 850px;
+    }
+
+    .hero-lede {
+      max-width: 790px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      line-height: 1.2;
+      margin: 0 0 .75rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.25;
+      margin-top: 0;
+    }
+
+    .intro-note {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-note p {
+      margin: .35rem 0;
+    }
+
+    .section {
+      margin: 3.2rem 0;
+    }
+
+    .section-lede {
+      max-width: 800px;
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+    }
+
+    .example-grid,
+    .mode-grid,
+    .tool-grid,
+    .privacy-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .example-grid,
+    .mode-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tool-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .privacy-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+    }
+
+    .card.soft {
+      background: var(--surface-soft);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .label {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .76rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .prompt-sample {
+      margin: .8rem 0 0;
+      padding: 1rem;
+      border: 1px solid #cfd9e3;
+      border-radius: 12px;
+      background: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .9rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+
+    .steps {
+      margin: .8rem 0 0;
+      padding-left: 1.35rem;
+    }
+
+    .steps li {
+      margin-bottom: .45rem;
+    }
+
+    .mode-card {
+      border-radius: var(--radius);
+      padding: 1.3rem;
+    }
+
+    .mode-card.simple {
+      border: 1px solid #bfd5f4;
+      background: #f2f7ff;
+    }
+
+    .mode-card.power {
+      border: 1px solid #d9cdf3;
+      background: #f7f3ff;
+    }
+
+    .mode-card h3 {
+      margin-bottom: .45rem;
+    }
+
+    .mode-card p {
+      margin: .35rem 0;
+    }
+
+    .tool-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      background: #fff;
+    }
+
+    .tool-card h3 {
+      margin-bottom: .4rem;
+    }
+
+    .tool-card p {
+      margin: .35rem 0;
+      color: #405064;
+    }
+
+    .recommended {
+      border: 2px solid #9ccfc4;
+      background: #f2faf7;
+    }
+
+    .privacy-callout {
+      border-left: 5px solid var(--teal);
+      background: #f1fafa;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      margin: 1.2rem 0;
+    }
+
+    .privacy-callout p {
+      margin: .35rem 0;
+    }
+
+    .privacy-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      padding: 1.15rem;
+    }
+
+    .privacy-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: .45rem;
+    }
+
+    .privacy-card p {
+      margin: .3rem 0;
+      color: #405064;
+    }
+
+    .verify-box {
+      border: 1px solid #bedfce;
+      background: #f1faf6;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .verify-box ul {
+      margin-bottom: 0;
+    }
+
+    .resources {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .resource-link {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      background: var(--surface-soft);
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .cta {
+      margin-top: 2.5rem;
+      text-align: center;
+      border: 1px solid #b8dfe0;
+      border-radius: var(--radius);
+      background: #f1fafa;
+      padding: 1.5rem;
+    }
+
+    .cta p {
+      margin: .5rem auto 1rem;
+      max-width: 650px;
+    }
+
+    .cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    @media (max-width: 850px) {
+      .example-grid,
+      .mode-grid,
+      .tool-grid,
+      .privacy-grid,
+      .resource-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.7rem 1rem 2.1rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <img class="brand-icon" src="favicon6.png" alt="">
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html" aria-current="page">Using AI</a></li>
+          <li><a href="find-oer.html">Find OER</a></li>
+          <li><a href="evaluate-oer.html">Evaluate OER</a></li>
+          <li><a href="index.html#prompt-tasks">All Prompts</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">New to AI? Start here</div>
+      <h1 id="page-title">Using AI With The OER Promptbook</h1>
+      <p class="hero-lede">You do not need to become a prompt engineer. Choose a prompt, add information about your course, paste it into an AI tool, and then verify the results before you use them.</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="intro-note" aria-labelledby="fast-start-heading">
+      <h2 id="fast-start-heading">The 30-Second Version</h2>
+      <p><strong>A prompt is simply an instruction you give an AI tool.</strong></p>
+      <p>The prompts on this site are already written for you. Replace anything in <strong>[brackets]</strong> with your own course information, then copy and paste the prompt into the AI tool you use.</p>
+    </section>
+
+    <section class="section" aria-labelledby="prompt-heading">
+      <h2 id="prompt-heading">What Is a Prompt?</h2>
+      <p class="section-lede">A useful prompt tells the AI what you are trying to accomplish, gives it enough context to understand your course, and explains what kind of answer would be useful.</p>
+
+      <div class="example-grid">
+        <article class="card soft">
+          <span class="label">Very broad</span>
+          <h3>A prompt that gives AI little direction</h3>
+          <div class="prompt-sample">Find OER for psychology.</div>
+        </article>
+
+        <article class="card">
+          <span class="label">More useful</span>
+          <h3>A prompt with context and a clear result</h3>
+          <div class="prompt-sample">I teach introductory psychology at a community college. Help me find OER that covers learning, memory, development, and social psychology. Give me no more than five strong options, identify the open license, and link to the original source.</div>
+        </article>
+      </div>
+
+      <p>That is the basic idea. You do not need special vocabulary, formulas, or a perfect first attempt.</p>
+    </section>
+
+    <section class="section" aria-labelledby="how-heading">
+      <h2 id="how-heading">How to Use a Prompt From This Site</h2>
+      <ol class="steps">
+        <li><strong>Choose the task you want help with.</strong> For example, find OER, evaluate a resource, fill a gap, or build a course plan.</li>
+        <li><strong>Choose your prompt level.</strong> Use the simple version when you want a quick, manageable result or the power-user version when you want a deeper workflow.</li>
+        <li><strong>Replace the brackets.</strong> Add your course name, topics, outcomes, workload limit, or other requested information.</li>
+        <li><strong>Paste the prompt into your AI tool.</strong> If the prompt asks for a syllabus, COR, PDF, or other file, upload it when your tool supports file analysis.</li>
+        <li><strong>Review the result.</strong> Open the sources, verify important claims, and use your faculty judgment before adopting anything.</li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="levels-heading">
+      <h2 id="levels-heading">Choose the Level That Fits You</h2>
+      <p class="section-lede">Both versions are meant to be copied and pasted. The difference is how much work you are asking the AI to do.</p>
+
+      <div class="mode-grid">
+        <article class="mode-card simple">
+          <h3>I'm New to AI — Keep It Simple</h3>
+          <p>Use this when you want a short prompt, a focused answer, and only a few strong options.</p>
+          <p><strong>Good for:</strong> getting started, quick searches, one unit, one decision, or anyone who does not want to manage a complicated AI workflow.</p>
+        </article>
+
+        <article class="mode-card power">
+          <h3>I'm a Power User — Go Deeper</h3>
+          <p>Use this when you want AI to work in stages, search again when results are weak, compare evidence, identify gaps, and document uncertainty.</p>
+          <p><strong>Good for:</strong> full-course research, difficult searches, multiple resources, complex comparisons, or major course redesigns.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tool-heading">
+      <h2 id="tool-heading">What AI Tool Can I Use?</h2>
+      <p class="section-lede">The Promptbook is not tied to one company. A general-purpose AI assistant that can follow detailed instructions, work with links, and ideally analyze uploaded files can usually work with these prompts.</p>
+
+      <div class="tool-grid">
+        <article class="tool-card recommended">
+          <span class="label">Best place to start</span>
+          <h3>Check What Your College Provides</h3>
+          <p>Your college or district may already provide access to an AI tool such as Microsoft Copilot or another institutionally supported service.</p>
+          <p>An institution-provided account may come with additional privacy, security, accessibility, support, and compliance protections. Ask your IT, library, distance education, or professional development office what is available.</p>
+        </article>
+
+        <article class="tool-card">
+          <span class="label">Personal AI accounts</span>
+          <h3>General-Purpose AI Assistants</h3>
+          <p>You can also use a personal account with tools such as ChatGPT, Claude, Gemini, or another general-purpose AI assistant.</p>
+          <p>Features differ by product and plan. File uploads, web access, longer context windows, and search capabilities can affect how well a particular prompt works.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Protect Privacy Before You Paste</h2>
+      <p class="section-lede">If you use a personal or public AI account, review its privacy controls first. Where the service offers the option, we recommend turning off the use of your conversations for model improvement or training.</p>
+
+      <div class="privacy-callout">
+        <p><strong>Turning off model training does not make a public AI tool appropriate for confidential information.</strong></p>
+        <p>Do not paste student names, identifiable student work, grades, accommodations, personnel matters, passwords, protected records, or other confidential college information into a public AI tool. Follow your college or district policies.</p>
+      </div>
+
+      <div class="privacy-grid">
+        <article class="privacy-card">
+          <h3>ChatGPT Personal Accounts</h3>
+          <p>Look for <strong>Settings → Data Controls → Improve the model for everyone</strong> and turn that setting off if you do not want new conversations used to improve OpenAI's models.</p>
+          <p><a href="https://help.openai.com/en/articles/7730893-data-controls">Read OpenAI's current Data Controls guidance</a></p>
+        </article>
+
+        <article class="privacy-card">
+          <h3>Claude Personal Accounts</h3>
+          <p>Look for <strong>Settings → Privacy → Help Improve our AI models</strong> and turn the model-improvement setting off if that is your preference.</p>
+          <p><a href="https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings">Read Anthropic's current model-improvement privacy guidance</a></p>
+        </article>
+
+        <article class="privacy-card">
+          <h3>Gemini Personal Accounts</h3>
+          <p>Review the <strong>Keep Activity</strong> setting and temporary-chat options. Google's current guidance explains how these choices affect whether future chats may be used to improve its AI models.</p>
+          <p><a href="https://support.google.com/gemini/answer/13594961">Read Google's current Gemini Apps privacy guidance</a></p>
+        </article>
+
+        <article class="privacy-card">
+          <h3>Microsoft Copilot at Work or School</h3>
+          <p>Microsoft states that prompts and responses covered by enterprise data protection are not used to train foundation models. Your institution may still retain or audit work-account activity according to its own policies.</p>
+          <p><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/enterprise-data-protection">Read Microsoft's current enterprise data protection guidance</a></p>
+        </article>
+      </div>
+
+      <p><strong>Privacy controls change.</strong> If the menu names above no longer match what you see, look for settings labeled <em>Privacy</em>, <em>Data Controls</em>, <em>Activity</em>, <em>Model Improvement</em>, or similar language, and check the provider's current documentation.</p>
+    </section>
+
+    <section class="section verify-box" aria-labelledby="verify-heading">
+      <h2 id="verify-heading">AI Can Be Wrong. Verify Before You Use the Result.</h2>
+      <p>AI can save search and comparison time, but it can also misunderstand a source, give you an outdated link, or confidently invent information.</p>
+      <ul>
+        <li><strong>Open the original source.</strong> Do not rely only on the AI summary.</li>
+        <li><strong>Verify the license.</strong> A resource that is free to read online is not automatically OER.</li>
+        <li><strong>Check accessibility yourself.</strong> AI should not be treated as an accessibility certifier.</li>
+        <li><strong>Verify library access locally.</strong> Another institution's ebook license does not mean your students have access.</li>
+        <li><strong>Use your academic judgment.</strong> You decide whether the content is accurate, appropriate, current, and worth assigning.</li>
+      </ul>
+    </section>
+
+    <section class="section resources" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Want to Learn More About Prompting?</h2>
+      <p class="section-lede">You do not need these resources before using the Promptbook, but they can help if you want to understand why stronger prompts work.</p>
+
+      <div class="resource-links">
+        <a class="resource-link" href="https://academy.openai.com/en/public/clubs/work-users-ynjqu/resources/prompting">Read OpenAI Academy's beginner guide to prompting</a>
+        <a class="resource-link" href="https://cdn.openai.com/pdf/47c0215b-8976-4f60-8e13-d69c2ddbc15e/a-practical-guide-to-building-with-gpt-5.pdf">Read OpenAI's advanced practical guide to prompting and iteration</a>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="ready-heading">
+      <h2 id="ready-heading">Ready to Try One?</h2>
+      <p>Start with the most common faculty pain point: finding a manageable shortlist of OER without spending hours searching repositories.</p>
+      <a href="find-oer.html">Start With Find OER Prompts</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+</body>
+</html>
