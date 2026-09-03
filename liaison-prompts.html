@@ -1,1 +1,1144 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI prompts for OER and ZTC liaisons supporting faculty conversations, campus opportunity-finding, ZTC pathway planning, outreach, and program-level OER work.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>OER/ZTC Liaison Prompts | The OER Promptbook</title>
+
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --simple-bg: #effafa;
+      --simple-border: #b8dfe0;
+      --power-bg: #f2f7ff;
+      --power-border: #bfd5f4;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11,41,72,.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #eefafa 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.6rem 1.25rem 2.8rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .7rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.25rem, 5vw, 3.9rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 900px;
+    }
+
+    .hero-lede {
+      max-width: 850px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 .8rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .intro-note {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.3rem;
+    }
+
+    .intro-note h2 {
+      font-size: 1.25rem;
+      margin-bottom: .45rem;
+    }
+
+    .intro-note p {
+      margin: .35rem 0;
+    }
+
+    .goal-nav {
+      margin: 2rem 0 3rem;
+    }
+
+    .goal-nav h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .goal-link {
+      display: flex;
+      flex-direction: column;
+      min-height: 172px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .goal-link:hover {
+      border-color: #8fc8cb;
+      box-shadow: var(--shadow);
+    }
+
+    .goal-icon {
+      font-size: 1.45rem;
+      margin-bottom: .4rem;
+    }
+
+    .goal-link strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .goal-link span:last-child {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .prompt-section {
+      scroll-margin-top: 1rem;
+      margin: 3.5rem 0;
+      padding-top: .5rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .8rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      color: var(--muted);
+      margin: 0 0 1.35rem;
+      font-size: 1.02rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .prompt-card {
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .prompt-card.simple {
+      background: var(--simple-bg);
+      border: 1px solid var(--simple-border);
+    }
+
+    .prompt-card.power {
+      background: var(--power-bg);
+      border: 1px solid var(--power-border);
+    }
+
+    .prompt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .prompt-card > p {
+      margin: .2rem 0 .9rem;
+      color: #405064;
+      font-size: .94rem;
+    }
+
+    .prompt-box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #cfd9e3;
+      border-radius: 14px;
+      padding: 1rem;
+      flex-grow: 1;
+      min-height: 410px;
+    }
+
+    .prompt-text {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .9rem;
+      line-height: 1.58;
+      color: #1d2938;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      border: 0;
+      border-radius: 10px;
+      min-height: 44px;
+      padding: .68rem 1rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-button:hover {
+      background: var(--navy-2);
+    }
+
+    .copy-status {
+      font-size: .88rem;
+      color: var(--green);
+      font-weight: 700;
+      min-height: 1.3em;
+    }
+
+    .boundary {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--teal);
+      background: #f1fafa;
+      border-radius: 10px;
+    }
+
+    .boundary strong {
+      color: var(--navy);
+    }
+
+    .boundary p {
+      margin: .35rem 0 0;
+    }
+
+    .resource-box {
+      margin-top: 3rem;
+      border: 1px solid #b8dfe0;
+      background: #f1fafa;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .resource-box h2 {
+      font-size: 1.45rem;
+      margin-bottom: .65rem;
+    }
+
+    .resource-box ul {
+      margin-bottom: 0;
+    }
+
+    .related {
+      margin-top: 2rem;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .related a {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      background: var(--surface-soft);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 1050px) {
+      .goal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-box {
+        min-height: auto;
+      }
+
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goal-link {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.7rem 1rem 2.1rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .prompt-card {
+        padding: 1rem;
+      }
+
+      .prompt-box {
+        padding: .9rem;
+      }
+
+      .prompt-text {
+        font-size: .86rem;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <img class="brand-icon" src="favicon6.png" alt="">
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="ztc-options.html">Faculty ZTC Prompts</a></li>
+          <li><a href="librarian-prompts.html">Librarians</a></li>
+          <li><a href="liaison-prompts.html" aria-current="page">OER/ZTC Liaisons</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Additional prompt collection</div>
+      <h1 id="page-title">AI Prompts for OER/ZTC Liaisons</h1>
+      <p class="hero-lede">Use AI to reduce the sorting, planning, and drafting work around campus OER and Zero Textbook Cost efforts, while keeping faculty choice, local policy, accessibility, funding, and implementation decisions in human hands.</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="intro-note" aria-labelledby="role-heading">
+      <h2 id="role-heading">AI Can Help Organize the Work. It Should Not Run the Program.</h2>
+      <p>These prompts are designed for <strong>first-pass analysis, planning, outreach, and communication</strong>. They can help you spot patterns, prepare conversations, and turn scattered information into a manageable next step.</p>
+      <p>Verify anything that affects local policy, funding, course designation, accessibility, licensing, faculty workload, or student access. Faculty still choose their course materials, and local OER/ZTC professionals still make program decisions.</p>
+    </section>
+
+    <nav class="goal-nav" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">What Are You Trying to Do?</h2>
+      <div class="goal-grid">
+        <a class="goal-link" href="#conversation">
+          <span class="goal-icon" aria-hidden="true">💬</span>
+          <strong>Prepare for a Faculty Conversation</strong>
+          <span>Turn a broad request or concern into a useful, low-pressure conversation.</span>
+        </a>
+
+        <a class="goal-link" href="#opportunities">
+          <span class="goal-icon" aria-hidden="true">🔎</span>
+          <strong>Identify Promising Opportunities</strong>
+          <span>Find courses or needs where OER/ZTC support may have the most value.</span>
+        </a>
+
+        <a class="goal-link" href="#pathway">
+          <span class="goal-icon" aria-hidden="true">🧭</span>
+          <strong>Map a ZTC Pathway</strong>
+          <span>Organize known course options and identify the gaps that still need work.</span>
+        </a>
+
+        <a class="goal-link" href="#prioritize">
+          <span class="goal-icon" aria-hidden="true">✓</span>
+          <strong>Prioritize Campus Efforts</strong>
+          <span>Sort a long list of possible projects into a realistic action plan.</span>
+        </a>
+
+        <a class="goal-link" href="#outreach">
+          <span class="goal-icon" aria-hidden="true">✉</span>
+          <strong>Draft Faculty Outreach</strong>
+          <span>Write invitations and follow-ups that are useful rather than salesy.</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="prompt-section" id="conversation" aria-labelledby="conversation-heading">
+      <span class="section-number">Liaison 1</span>
+      <h2 id="conversation-heading">Prepare for a Faculty OER/ZTC Conversation</h2>
+      <p class="section-intro">Use this when a faculty member is interested, hesitant, overwhelmed, or simply asking what options exist. The goal is not to persuade them into a predetermined choice. It is to make the next conversation more useful.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you have an email, note, or short description of the situation.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-conversation-simple">I support OER and Zero Textbook Cost work at a college.
+
+Here is the faculty situation:
+[PASTE THE EMAIL, REQUEST, OR BRIEF DESCRIPTION]
+
+Help me prepare for a supportive faculty conversation.
+
+Identify:
+1. What the faculty member appears to need or care about
+2. Any practical concern they may be signaling, such as time, quality, ancillaries, accessibility, course fit, or uncertainty about where to start
+3. The 2-3 questions most worth asking next
+4. Resources or kinds of support I could offer without overwhelming them
+5. A reasonable next step that preserves faculty choice
+
+Do not assume the faculty member is resistant to OER.
+Do not frame OER as automatically better than every other option.
+Do not invent local funding, policy, library access, or available resources.
+
+End with a short conversation checklist.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-conversation-simple" data-status-target="status-conversation-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-conversation-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when the conversation involves several barriers or a more complicated course context.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-conversation-power">Act as a planning assistant for an OER/ZTC liaison preparing to support a faculty member.
+
+FACULTY CONTEXT
+[PASTE REQUEST, NOTES, COURSE INFORMATION, OR OTHER CONTEXT]
+
+LOCAL SUPPORT I KNOW IS AVAILABLE
+[OPTIONAL: LIBRARY HELP, OER GRANT, DESIGN SUPPORT, DEPARTMENT SUPPORT, ETC.]
+
+PHASE 1 - UNDERSTAND THE NEED
+Separate:
+- the instructional goal
+- the current material or access problem
+- faculty concerns
+- student access concerns
+- workload or time concerns
+- questions that are still unknown
+
+PHASE 2 - AVOID ASSUMPTIONS
+Flag anything that would require local verification, including:
+- funding
+- policy
+- course designation
+- library licensing
+- accessibility
+- staffing
+- deadlines
+
+PHASE 3 - PLAN THE CONVERSATION
+Give me no more than 4 useful questions to ask.
+Then suggest 2-3 kinds of support that fit the situation.
+
+PHASE 4 - NEXT STEP
+Recommend the smallest useful next action. Prefer something manageable, such as reviewing one course need, identifying 3-5 possible resources, or connecting the faculty member with the right person.
+
+Do not pressure the faculty member to adopt OER.
+Do not invent local resources.
+
+OUTPUT
+A. What seems to matter most
+B. Questions to ask
+C. Support I could offer
+D. What I need to verify
+E. Smallest useful next step</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-conversation-power" data-status-target="status-conversation-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-conversation-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="opportunities" aria-labelledby="opportunities-heading">
+      <span class="section-number">Liaison 2</span>
+      <h2 id="opportunities-heading">Identify Promising OER/ZTC Opportunities</h2>
+      <p class="section-intro">Use this when you have a list of courses, costs, enrollments, faculty requests, or other non-sensitive program information and need a first-pass way to see where support might have the greatest payoff.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best for turning a messy list into a shortlist worth human review.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-opportunities-simple">I support OER/ZTC work at a college.
+
+Here is a list of courses or program information:
+[PASTE NON-SENSITIVE COURSE DATA OR NOTES]
+
+Help me identify a manageable shortlist of promising OER/ZTC support opportunities.
+
+Consider only information actually present in my data, such as:
+- enrollment or number of sections
+- current material cost
+- repeated faculty requests
+- known access problems
+- existing OER or library-supported possibilities
+- courses that may affect a larger pathway
+
+Create a table:
+Course/Area | Why It May Be Worth Exploring | Evidence From My Data | What I Still Need to Learn
+
+Then identify 3-5 items that appear most worth a human follow-up.
+
+Do not rank faculty members.
+Do not infer faculty willingness.
+Do not invent textbook costs, enrollment, adoption status, or available OER.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-simple" data-status-target="status-opportunities-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-opportunities-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when you want transparent criteria rather than a vague AI ranking.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-opportunities-power">Act as an analysis assistant for a college OER/ZTC liaison.
+
+DATA
+[PASTE NON-SENSITIVE COURSE, COST, ENROLLMENT, PATHWAY, OR PROGRAM INFORMATION]
+
+MY CURRENT PRIORITIES
+[OPTIONAL: STUDENT SAVINGS, HIGH-ENROLLMENT COURSES, PATHWAY COMPLETION, FACULTY SUPPORT, ACCESS GAPS, ETC.]
+
+STEP 1 - CLEAN THE INPUT
+List the fields actually available in my data.
+Identify important information that is missing.
+
+STEP 2 - CREATE TRANSPARENT CRITERIA
+Using only my stated priorities and available data, propose 3-5 criteria for identifying opportunities.
+Explain why each criterion matters.
+Do not assign hidden weights.
+
+STEP 3 - APPLY THE CRITERIA
+Create a table:
+Course/Area | Evidence | Relevant Criteria | Potential Value | Unknowns | Follow-Up Needed
+
+STEP 4 - SHORTLIST
+Identify no more than 5 promising opportunities for human review.
+For each, explain the evidence behind the suggestion.
+
+STEP 5 - CHECK THE LIMITS
+List reasons the shortlist could change after talking with faculty, librarians, disability/accessibility staff, administrators, or students.
+
+Do not infer faculty willingness, quality of a resource, or local feasibility from data that does not establish it.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-power" data-status-target="status-opportunities-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-opportunities-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="boundary">
+        <strong>Keep the shortlist about opportunities, not people.</strong>
+        <p>A course can be promising for OER/ZTC support without implying that its current instructor is doing anything wrong or is ready to change materials.</p>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="pathway" aria-labelledby="pathway-heading">
+      <span class="section-number">Liaison 3</span>
+      <h2 id="pathway-heading">Map a ZTC Pathway and Find the Remaining Gaps</h2>
+      <p class="section-intro">Use this when you are looking across a degree, certificate, transfer pattern, or other sequence and need to distinguish known ZTC options from unresolved gaps.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you already have a course list and some known ZTC information.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-pathway-simple">I am reviewing this program or course sequence for possible ZTC pathway planning.
+
+PROGRAM / PATHWAY
+[PASTE COURSE REQUIREMENTS OR SEQUENCE]
+
+KNOWN ZTC INFORMATION
+[PASTE WHAT IS ALREADY CONFIRMED]
+
+Organize this into a pathway table:
+Requirement | Course/Choice | Confirmed ZTC? | Evidence I Provided | Gap or Question | Next Check
+
+Then identify:
+1. Courses already covered by confirmed ZTC options
+2. Courses where I need more information
+3. Courses that appear to be the most important remaining gaps
+4. Cases where multiple course choices make the pathway more complicated
+
+Use only the information I provide.
+Do not label a course ZTC unless my information confirms it.
+Do not invent scheduling, section availability, course rotations, or faculty adoption.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-pathway-simple" data-status-target="status-pathway-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-pathway-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when electives, multiple pathways, or uncertain course status make the map harder to interpret.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-pathway-power">Act as a planning assistant for an OER/ZTC liaison mapping a possible ZTC pathway.
+
+PROGRAM REQUIREMENTS
+[PASTE CATALOG OR PROGRAM REQUIREMENTS]
+
+CONFIRMED LOCAL ZTC INFORMATION
+[PASTE CONFIRMED COURSE/SECTION/RESOURCE INFORMATION]
+
+OTHER VERIFIED CONTEXT
+[OPTIONAL: COURSE ROTATION, ENROLLMENT, SEQUENCING, LOCAL DEFINITIONS]
+
+PHASE 1 - MAP THE REQUIREMENTS
+Separate:
+- required courses
+- choose-one groups
+- electives
+- prerequisites or sequencing information that I actually provided
+
+PHASE 2 - APPLY ONLY CONFIRMED ZTC INFORMATION
+For every requirement, mark:
+- Confirmed ZTC
+- Not confirmed
+- More information needed
+
+PHASE 3 - FIND GAPS
+Identify where a student could still encounter a non-ZTC requirement or an uncertain choice.
+Distinguish:
+- a single-course gap
+- an elective-choice gap
+- an information gap
+- an implementation gap
+
+PHASE 4 - PRIORITIZE FOLLOW-UP
+Suggest a practical order for investigating the gaps, based only on the evidence I provided.
+
+OUTPUT
+A. Pathway map
+B. Confirmed coverage
+C. Remaining gaps
+D. Questions requiring local verification
+E. 3-5 next actions
+
+Do not claim the pathway is fully ZTC unless the supplied information actually establishes that.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-pathway-power" data-status-target="status-pathway-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-pathway-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="prioritize" aria-labelledby="prioritize-heading">
+      <span class="section-number">Liaison 4</span>
+      <h2 id="prioritize-heading">Turn a Long OER/ZTC Wish List Into a Realistic Action Plan</h2>
+      <p class="section-intro">Use this when your campus has more possible projects than time. AI can help sort the work, but priorities should come from stated local goals and verified constraints.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you need a short now-next-later plan.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-prioritize-simple">I support OER/ZTC work at a college and have more possible projects than I can do at once.
+
+POSSIBLE PROJECTS
+[PASTE LIST]
+
+KNOWN DEADLINES OR CONSTRAINTS
+[PASTE IF RELEVANT]
+
+MY STATED PRIORITIES
+[PASTE IF RELEVANT]
+
+Organize the projects into:
+DO NOW
+DO NEXT
+LATER / WHEN CAPACITY ALLOWS
+NEEDS MORE INFORMATION
+
+For each item, give a one-sentence reason based only on the information I supplied.
+
+Also identify:
+- quick wins
+- projects with dependencies
+- projects that may require collaboration before work begins
+- anything that should not be prioritized without more evidence
+
+Do not invent deadlines, staffing, funding, authority, or campus priorities.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-simple" data-status-target="status-prioritize-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-prioritize-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when you are balancing impact, effort, dependencies, and limited capacity.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-prioritize-power">Act as a project-planning assistant for a college OER/ZTC liaison.
+
+PROJECT LIST
+[PASTE]
+
+LOCAL GOALS
+[PASTE]
+
+KNOWN CAPACITY / DEADLINES / CONSTRAINTS
+[PASTE]
+
+COLLABORATORS OR DEPENDENCIES I KNOW ABOUT
+[PASTE]
+
+STEP 1 - NORMALIZE THE LIST
+Turn each item into a clear project or next action.
+Flag items that are too vague to prioritize.
+
+STEP 2 - USE TRANSPARENT FACTORS
+Compare projects using only factors supported by my input, such as:
+- potential reach
+- urgency
+- student access impact
+- effort
+- dependency on another person or office
+- readiness
+- connection to a stated local goal
+
+STEP 3 - BUILD A PLAN
+Create a table:
+Project | Why It Matters | Effort/Dependency Evidence | Readiness | Suggested Timing | Next Action
+
+STEP 4 - PROTECT CAPACITY
+Recommend no more than 3 immediate priorities.
+Move the rest into a visible queue rather than pretending everything can happen at once.
+
+STEP 5 - FLAG HUMAN DECISIONS
+Identify any item that needs leadership, faculty, library, accessibility, curriculum, or funding input before it can move forward.
+
+Do not invent authority, staffing, timelines, or outcomes.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-power" data-status-target="status-prioritize-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-prioritize-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="outreach" aria-labelledby="outreach-heading">
+      <span class="section-number">Liaison 5</span>
+      <h2 id="outreach-heading">Draft Faculty Outreach That Respects Faculty Choice</h2>
+      <p class="section-intro">Use this for invitations, follow-ups, or targeted outreach. The strongest messages usually offer concrete help and a manageable first step rather than asking faculty to “switch to OER.”</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best for a short email that sounds like support rather than a campaign.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-outreach-simple">I support OER/ZTC work at a college.
+
+AUDIENCE
+[ONE FACULTY MEMBER / DEPARTMENT / PROGRAM / GROUP]
+
+WHY I AM REACHING OUT
+[PASTE THE REAL REASON]
+
+SUPPORT I CAN ACTUALLY OFFER
+[PASTE VERIFIED SUPPORT]
+
+Draft a brief, collegial outreach email.
+
+It should:
+- explain why I am contacting them
+- connect the message to a practical faculty or student need
+- make clear that participation or material choice remains theirs
+- offer one specific kind of help
+- give one easy next step
+- avoid guilt, pressure, or exaggerated claims about OER
+
+Do not add grants, stipends, services, deadlines, or policies that I did not provide.
+
+Keep it concise and human.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-outreach-simple" data-status-target="status-outreach-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-outreach-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when outreach needs to be tailored to a specific department or situation.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-outreach-power">I am an OER/ZTC liaison preparing faculty outreach.
+
+AUDIENCE
+[DEPARTMENT, PROGRAM, FACULTY GROUP, OR INDIVIDUAL]
+
+CONTEXT
+[WHY THIS OUTREACH MAKES SENSE NOW]
+
+VERIFIED LOCAL SUPPORT
+[LIBRARY HELP, SEARCH SUPPORT, WORKSHOP, FUNDING, DESIGN HELP, ETC.]
+
+KNOWN CONCERNS OR CONSTRAINTS
+[OPTIONAL]
+
+Create two versions:
+
+VERSION A - VERY SHORT
+75-120 words for a busy faculty audience.
+
+VERSION B - SLIGHTLY MORE CONTEXT
+150-220 words for a department or program conversation.
+
+Both versions should:
+1. Lead with the practical reason for the message.
+2. Avoid implying that current faculty choices are a problem.
+3. Describe OER/ZTC as an option or support opportunity, not a mandate.
+4. Name only resources and support I actually provided.
+5. Offer one low-effort next step.
+6. Avoid generic claims such as “OER improves student success” unless I supplied evidence for that claim.
+
+Then give me 3 possible subject lines that are specific and not promotional.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-outreach-power" data-status-target="status-outreach-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-outreach-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="resource-box" aria-labelledby="resource-heading">
+      <h2 id="resource-heading">California OER and ZTC Resources</h2>
+      <p>For California Community Colleges, pair AI-assisted planning with current statewide guidance and your own district or college policies.</p>
+      <ul>
+        <li><a href="https://asccc-oeri.org/">Explore the ASCCC Open Educational Resources Initiative</a></li>
+        <li><a href="https://www.ztctap.org/">Explore California ZTC Technical Assistance resources</a></li>
+      </ul>
+    </section>
+
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Related Prompt Collections</h2>
+      <div class="related-links">
+        <a href="ztc-options.html">Helping faculty explore library-supported or no-cost options? Browse Faculty ZTC Prompts.</a>
+        <a href="librarian-prompts.html">Working on licensing or library access questions? Browse Librarian Prompts.</a>
+        <a href="power-prompts.html">Need a deeper custom workflow? Use Power Prompts.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("[data-copy-target]");
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", async function () {
+          const targetId = button.getAttribute("data-copy-target");
+          const statusId = button.getAttribute("data-status-target");
+          const target = document.getElementById(targetId);
+          const status = document.getElementById(statusId);
+
+          if (!target) return;
+
+          const text = target.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (status) status.textContent = "Copied to clipboard.";
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(target);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) status.textContent = "Prompt selected. Copy it with Ctrl+C or Command+C.";
+          }
+
+          window.setTimeout(function () {
+            if (status) status.textContent = "";
+          }, 4000);
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
