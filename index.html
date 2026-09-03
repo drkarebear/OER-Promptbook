@@ -22,13 +22,15 @@
       --surface: #ffffff;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --max: 1180px;
       --radius: 18px;
       --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -49,6 +51,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -57,6 +62,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -80,6 +88,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -127,7 +136,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -198,7 +207,7 @@
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      background: #198760;
+      background: #197a5b;
       color: #fff;
       display: inline-grid;
       place-items: center;
@@ -361,7 +370,9 @@
     }
 
     .workflow-list a {
-      display: block;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
       font-weight: 850;
       margin-bottom: .18rem;
     }
@@ -613,7 +624,7 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
@@ -625,7 +636,7 @@
     </div>
   </header>
 
-  <main id="main-content">
+  <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <div class="hero-copy">
@@ -633,7 +644,7 @@
           <h1 id="hero-heading">Find and Evaluate OER <span class="accent">Without Losing Hours to the Search</span></h1>
           <p>The OER Promptbook gives community college faculty ready-to-use AI prompts for the time-consuming parts of OER: finding promising resources, comparing options, filling gaps, and fitting materials into a course you already teach.</p>
 
-          <ul class="benefits" aria-label="Benefits">
+          <ul role="list" class="benefits" aria-label="Benefits">
             <li><span class="check" aria-hidden="true">✓</span> Start with a shortlist</li>
             <li><span class="check" aria-hidden="true">✓</span> Compare faster</li>
             <li><span class="check" aria-hidden="true">✓</span> Keep your course structure</li>
@@ -674,7 +685,7 @@
       <div class="workflow-panel">
         <h2 id="workflow-heading">Not Sure Where to Start?</h2>
         <p>You can jump directly to any task. If you are building or revising a course, this is a common path through the Promptbook.</p>
-        <ol class="workflow-list">
+        <ol role="list" class="workflow-list">
           <li><a href="build-a-plan.html#week-by-week">Map what you need</a><span>Start from your existing weeks, units, or course plan.</span></li>
           <li><a href="find-oer.html">Find + verify</a><span>Build a shortlist and clean up candidate links, licenses, and source details.</span></li>
           <li><a href="evaluate-oer.html">Evaluate</a><span>Check quality, fit, accessibility evidence, licensing, and gaps.</span></li>
@@ -748,7 +759,7 @@
       <div class="info-grid">
         <section class="info-card" aria-labelledby="how-heading">
           <h3 id="how-heading">How It Works</h3>
-          <ol class="steps">
+          <ol role="list" class="steps">
             <li>Choose the part of OER work that is costing you time.</li>
             <li>Choose the shorter prompt or the deeper workflow based on the task.</li>
             <li>Add your course information and copy the prompt into the AI tool you use.</li>
@@ -799,8 +810,21 @@
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

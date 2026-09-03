@@ -20,7 +20,7 @@
       --muted: #516070;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --simple-bg: #effafa;
       --simple-border: #b8dfe0;
       --power-bg: #f2f7ff;
@@ -33,6 +33,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -55,6 +57,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -64,6 +69,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -87,6 +95,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -134,7 +143,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -544,17 +553,19 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
           <li><a href="community-prompts.html">Community</a></li>
-          <li><a href="index.html#oer-support" aria-current="page">For OER Support</a></li>
+          <li><a href="index.html#oer-support" aria-current="location">For OER Support</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
+  <main id="main-content" tabindex="-1">
 
   <section class="page-hero" aria-labelledby="page-title">
     <div class="hero-inner">
@@ -563,8 +574,6 @@
       <p class="hero-lede">Use AI to reduce the repetitive research and communication work around faculty requests, while keeping acquisitions, licensing, accessibility, and local access decisions in librarian hands.</p>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="intro-note" aria-labelledby="role-heading">
       <h2 id="role-heading">The Librarian Still Makes the Library Decision</h2>
       <p>These prompts are designed to help with <strong>research, comparison, organization, and communication</strong>. AI should not invent institutional prices, user models, vendor availability, license terms, or accessibility claims.</p>
@@ -639,8 +648,8 @@ End with a short checklist I can use to work the request.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-triage-simple" data-status-target="status-triage-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-triage-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-triage-simple" data-status-target="status-triage-simple" aria-label="Copy Quick Prompt for Triage a Faculty ZTC Request">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-triage-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -701,8 +710,8 @@ E. Best next action</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-triage-power" data-status-target="status-triage-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-triage-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-triage-power" data-status-target="status-triage-power" aria-label="Copy Deeper Workflow for Triage a Faculty ZTC Request">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-triage-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -749,8 +758,8 @@ End with a checklist of what I still need to verify locally.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-title-simple" data-status-target="status-title-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-title-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-title-simple" data-status-target="status-title-simple" aria-label="Copy Quick Prompt for Investigate a Specific Requested Title">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-title-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -811,8 +820,8 @@ End with the 3 most important things to check first.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-title-power" data-status-target="status-title-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-title-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-title-power" data-status-target="status-title-power" aria-label="Copy Deeper Workflow for Investigate a Specific Requested Title">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-title-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -858,8 +867,8 @@ End with the 3 alternatives most worth checking first.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-alt-simple" data-status-target="status-alt-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-alt-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-alt-simple" data-status-target="status-alt-simple" aria-label="Copy Quick Prompt for Find Alternatives When the Requested Title Will Not Work">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-alt-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -913,8 +922,8 @@ Do not invent licensing terms to make an alternative look more promising.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-alt-power" data-status-target="status-alt-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-alt-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-alt-power" data-status-target="status-alt-power" aria-label="Copy Deeper Workflow for Find Alternatives When the Requested Title Will Not Work">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-alt-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -958,8 +967,8 @@ Then identify:
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-compare-simple" data-status-target="status-compare-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-compare-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-compare-simple" data-status-target="status-compare-simple" aria-label="Copy Quick Prompt for Compare Library Access Options">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-compare-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -1006,8 +1015,8 @@ Do not create a recommendation based on features I did not provide.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-compare-power" data-status-target="status-compare-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-compare-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-compare-power" data-status-target="status-compare-power" aria-label="Copy Deeper Workflow for Compare Library Access Options">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-compare-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1046,8 +1055,8 @@ Keep the tone supportive and practical.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-reply-simple" data-status-target="status-reply-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-reply-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-reply-simple" data-status-target="status-reply-simple" aria-label="Copy Quick Prompt for Turn the Research Into a Clear Faculty Reply">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-reply-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -1087,8 +1096,8 @@ At the end, include a compact internal note for me listing any follow-up I still
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-reply-power" data-status-target="status-reply-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-reply-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-reply-power" data-status-target="status-reply-power" aria-label="Copy Deeper Workflow for Turn the Research Into a Clear Faculty Reply">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-reply-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1097,7 +1106,7 @@ At the end, include a compact internal note for me listing any follow-up I still
     <section class="resource-box" aria-labelledby="resource-heading">
       <h2 id="resource-heading">California Library and ZTC Guidance</h2>
       <p>For California Community Colleges, keep local work grounded in current statewide guidance and your own district or college policies.</p>
-      <ul>
+      <ul role="list">
         <li><a href="https://asccc-oeri.org/libraries-and-ztc-ltc-frequently-asked-questions/">Read the ASCCC OERI Libraries and ZTC/LTC Frequently Asked Questions</a></li>
         <li><a href="https://www.ztctap.org/">Explore California ZTC Technical Assistance resources</a></li>
       </ul>
@@ -1117,7 +1126,7 @@ At the end, include a compact internal note for me listing any follow-up I still
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
 
@@ -1155,5 +1164,18 @@ At the end, include a compact internal note for me listing any follow-up I still
       });
     }());
   </script>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

@@ -22,7 +22,7 @@
       --muted: #536170;
       --border: #d9e3ec;
       --soft: #f6f9fc;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --max: 980px;
       --radius: 18px;
     }
@@ -55,6 +55,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
     }
@@ -63,6 +66,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -88,6 +94,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -134,7 +141,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -368,7 +375,7 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
@@ -381,7 +388,7 @@
     </div>
   </header>
 
-  <main id="main-content">
+  <main id="main-content" tabindex="-1">
 
     <section class="hero" aria-labelledby="page-heading">
       <div class="hero-inner">
@@ -545,6 +552,37 @@
 
       </section>
 
+
+      <section class="section" id="accessibility" aria-labelledby="accessibility-heading">
+
+        <h2 id="accessibility-heading">
+          Accessibility
+        </h2>
+
+        <p>
+          I aim to make <em>The OER Promptbook</em> usable by as many people
+          as possible and to meet or exceed WCAG 2.2 Level AA where the
+          project itself controls the experience. The site uses semantic
+          headings and landmarks, keyboard-accessible navigation, visible
+          focus indicators, high-contrast text and controls, responsive
+          reflow, large interaction targets, and reduced-motion support.
+        </p>
+
+        <p>
+          Third-party services linked or embedded here, including Google
+          Forms, Padlet, and external AI tools, are maintained by their own
+          providers and may have different accessibility features or barriers.
+        </p>
+
+        <p>
+          If you encounter an accessibility barrier in the Promptbook itself,
+          please <a href="mailto:karencrozer@gmail.com?subject=OER%20Promptbook%20Accessibility">email me about the accessibility issue</a>
+          and, if possible, include the page and a short description of what
+          was difficult to use.
+        </p>
+
+      </section>
+
       <section
         class="contribute"
         aria-labelledby="contribute-heading"
@@ -585,9 +623,22 @@
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
+
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>

@@ -20,7 +20,7 @@
       --muted: #516070;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --simple-bg: #effafa;
       --simple-border: #b8dfe0;
       --power-bg: #f2f7ff;
@@ -33,6 +33,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -55,6 +57,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -64,6 +69,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -87,6 +95,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -134,7 +143,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -544,17 +553,19 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
           <li><a href="community-prompts.html">Community</a></li>
-          <li><a href="index.html#oer-support" aria-current="page">For OER Support</a></li>
+          <li><a href="index.html#oer-support" aria-current="location">For OER Support</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
+  <main id="main-content" tabindex="-1">
 
   <section class="page-hero" aria-labelledby="page-title">
     <div class="hero-inner">
@@ -563,8 +574,6 @@
       <p class="hero-lede">Use AI to reduce the sorting, planning, and drafting work around campus OER and Zero Textbook Cost efforts, while keeping faculty choice, local policy, accessibility, funding, and implementation decisions in human hands.</p>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="intro-note" aria-labelledby="role-heading">
       <h2 id="role-heading">AI Can Help Organize the Work. It Should Not Run the Program.</h2>
       <p>These prompts are designed for <strong>first-pass analysis, planning, outreach, and communication</strong>. They can help you spot patterns, prepare conversations, and turn scattered information into a manageable next step.</p>
@@ -639,8 +648,8 @@ End with a short conversation checklist.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-conversation-simple" data-status-target="status-conversation-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-conversation-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-conversation-simple" data-status-target="status-conversation-simple" aria-label="Copy Quick Prompt for Prepare for a Faculty OER/ZTC Conversation">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-conversation-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -695,8 +704,8 @@ E. Smallest useful next step</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-conversation-power" data-status-target="status-conversation-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-conversation-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-conversation-power" data-status-target="status-conversation-power" aria-label="Copy Deeper Workflow for Prepare for a Faculty OER/ZTC Conversation">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-conversation-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -739,8 +748,8 @@ Do not invent textbook costs, enrollment, adoption status, or available OER.</pr
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-simple" data-status-target="status-opportunities-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-opportunities-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-simple" data-status-target="status-opportunities-simple" aria-label="Copy Quick Prompt for Identify Promising OER/ZTC Opportunities">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-opportunities-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -781,8 +790,8 @@ Do not infer faculty willingness, quality of a resource, or local feasibility fr
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-power" data-status-target="status-opportunities-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-opportunities-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-opportunities-power" data-status-target="status-opportunities-power" aria-label="Copy Deeper Workflow for Identify Promising OER/ZTC Opportunities">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-opportunities-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -827,8 +836,8 @@ Do not invent scheduling, section availability, course rotations, or faculty ado
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-pathway-simple" data-status-target="status-pathway-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-pathway-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-pathway-simple" data-status-target="status-pathway-simple" aria-label="Copy Quick Prompt for Map a ZTC Pathway and Find the Remaining Gaps">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-pathway-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -883,8 +892,8 @@ Do not claim the pathway is fully ZTC unless the supplied information actually e
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-pathway-power" data-status-target="status-pathway-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-pathway-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-pathway-power" data-status-target="status-pathway-power" aria-label="Copy Deeper Workflow for Map a ZTC Pathway and Find the Remaining Gaps">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-pathway-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -930,8 +939,8 @@ Do not invent deadlines, staffing, funding, authority, or campus priorities.</pr
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-simple" data-status-target="status-prioritize-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-prioritize-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-simple" data-status-target="status-prioritize-simple" aria-label="Copy Quick Prompt for Turn a Long OER/ZTC Wish List Into a Realistic Action Plan">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-prioritize-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -983,8 +992,8 @@ Do not invent authority, staffing, timelines, or outcomes.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-power" data-status-target="status-prioritize-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-prioritize-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-prioritize-power" data-status-target="status-prioritize-power" aria-label="Copy Deeper Workflow for Turn a Long OER/ZTC Wish List Into a Realistic Action Plan">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-prioritize-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1028,8 +1037,8 @@ Keep it concise and human.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-outreach-simple" data-status-target="status-outreach-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-outreach-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-outreach-simple" data-status-target="status-outreach-simple" aria-label="Copy Quick Prompt for Draft Faculty Outreach That Respects Faculty Choice">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-outreach-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -1072,8 +1081,8 @@ Then give me 3 possible subject lines that are specific and not promotional.</pr
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-outreach-power" data-status-target="status-outreach-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-outreach-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-outreach-power" data-status-target="status-outreach-power" aria-label="Copy Deeper Workflow for Draft Faculty Outreach That Respects Faculty Choice">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-outreach-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1082,7 +1091,7 @@ Then give me 3 possible subject lines that are specific and not promotional.</pr
     <section class="resource-box" aria-labelledby="resource-heading">
       <h2 id="resource-heading">California OER and ZTC Resources</h2>
       <p>For California Community Colleges, pair AI-assisted planning with current statewide guidance and your own district or college policies.</p>
-      <ul>
+      <ul role="list">
         <li><a href="https://asccc-oeri.org/">Explore the ASCCC Open Educational Resources Initiative</a></li>
         <li><a href="https://www.ztctap.org/">Explore California ZTC Technical Assistance resources</a></li>
       </ul>
@@ -1102,7 +1111,7 @@ Then give me 3 possible subject lines that are specific and not promotional.</pr
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
 
@@ -1139,6 +1148,19 @@ Then give me 3 possible subject lines that are specific and not promotional.</pr
         });
       });
     }());
+  </script>
+
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
   </script>
 
 </body>

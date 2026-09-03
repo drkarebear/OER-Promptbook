@@ -16,13 +16,13 @@
       --green: #197a5b;
       --blue: #1f63b5;
       --purple: #6750a4;
-      --gold: #b97b00;
+      --gold: #9a6500;
       --gold-dark: #946300;
       --text: #172033;
       --muted: #516070;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --prompt-bg: #fff9ed;
       --prompt-border: #ebd79f;
       --tool-bg: #f7f3ff;
@@ -35,6 +35,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -58,6 +60,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -67,6 +72,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -90,6 +98,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -143,7 +152,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -547,10 +556,10 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
-          <li><a href="index.html#prompt-tasks" aria-current="page">Prompts</a></li>
+          <li><a href="index.html#prompt-tasks" aria-current="location">Prompts</a></li>
           <li><a href="community-prompts.html">Community</a></li>
           <li><a href="index.html#oer-support">For OER Support</a></li>
           <li><a href="about.html">About</a></li>
@@ -559,21 +568,21 @@
     </div>
   </header>
 
+  <main id="main-content" tabindex="-1">
+
   <section class="page-hero" aria-labelledby="page-title">
     <div class="hero-inner">
       <div class="eyebrow">Go deeper when you want to</div>
       <h1 id="page-title">Advanced AI Workflows for Harder OER Problems</h1>
       <p class="hero-lede">Use these multi-step workflows when a straightforward prompt is not enough. They help AI work in stages, check evidence, refine weak searches, and turn successful processes into reusable tools.</p>
 
-      <ul class="hero-points" aria-label="What this page can help with">
+      <ul role="list" class="hero-points" aria-label="What this page can help with">
         <li><span class="check" aria-hidden="true">✓</span> Run deeper research</li>
         <li><span class="check" aria-hidden="true">✓</span> Iterate instead of starting over</li>
         <li><span class="check" aria-hidden="true">✓</span> Turn what works into reusable prompts</li>
       </ul>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="quick-start" aria-labelledby="quick-heading">
       <h2 id="quick-heading">Advanced Workflows Are About Process, Not Prompt Length</h2>
       <p>A strong advanced workflow may ask AI to analyze your course, search, verify, compare, identify gaps, run a second search, and then report what still needs human judgment.</p>
@@ -699,8 +708,8 @@ Keep the final report decision-focused. I want a research strategy and shortlist
         </div>
 
         <div class="copy-row">
-          <button class="copy-button" type="button" data-copy-target="prompt-deep" data-status-target="status-deep">Copy Advanced Workflow</button>
-          <span class="copy-status" id="status-deep" aria-live="polite"></span>
+          <button class="copy-button" type="button" data-copy-target="prompt-deep" data-status-target="status-deep" aria-label="Copy Advanced Workflow for Run a Deep OER Research Workflow">Copy Advanced Workflow</button>
+          <span class="copy-status" role="status" id="status-deep" aria-live="polite" aria-atomic="true"></span>
         </div>
       </article>
 
@@ -766,8 +775,8 @@ Do not invent resources or licensing information to make the revised search look
         </div>
 
         <div class="copy-row">
-          <button class="copy-button" type="button" data-copy-target="prompt-iterate" data-status-target="status-iterate">Copy Search Repair Prompt</button>
-          <span class="copy-status" id="status-iterate" aria-live="polite"></span>
+          <button class="copy-button" type="button" data-copy-target="prompt-iterate" data-status-target="status-iterate" aria-label="Copy Search Repair Prompt for Diagnose and Improve a Weak OER Search">Copy Search Repair Prompt</button>
+          <span class="copy-status" role="status" id="status-iterate" aria-live="polite" aria-atomic="true"></span>
         </div>
       </article>
 
@@ -827,8 +836,8 @@ Do not execute the revised prompt unless I ask you to.</pre>
         </div>
 
         <div class="copy-row">
-          <button class="copy-button" type="button" data-copy-target="prompt-meta" data-status-target="status-meta">Copy Metaprompt</button>
-          <span class="copy-status" id="status-meta" aria-live="polite"></span>
+          <button class="copy-button" type="button" data-copy-target="prompt-meta" data-status-target="status-meta" aria-label="Copy Metaprompt for Ask AI to Improve Your Prompt">Copy Metaprompt</button>
+          <span class="copy-status" role="status" id="status-meta" aria-live="polite" aria-atomic="true"></span>
         </div>
       </article>
     </section>
@@ -897,15 +906,15 @@ Keep the final prompt reusable and focused. Do not preserve unnecessary complexi
         </div>
 
         <div class="copy-row">
-          <button class="copy-button" type="button" data-copy-target="prompt-template" data-status-target="status-template">Copy Template Builder</button>
-          <span class="copy-status" id="status-template" aria-live="polite"></span>
+          <button class="copy-button" type="button" data-copy-target="prompt-template" data-status-target="status-template" aria-label="Copy Template Builder for Turn a Successful Conversation Into a Reusable Prompt">Copy Template Builder</button>
+          <span class="copy-status" role="status" id="status-template" aria-live="polite" aria-atomic="true"></span>
         </div>
       </article>
     </section>
 
     <section class="principles" aria-labelledby="principles-heading">
       <h2 id="principles-heading">Advanced AI Habits That Matter More Than Fancy Prompting</h2>
-      <ul>
+      <ul role="list">
         <li><strong>Start with a clear goal.</strong> More instructions cannot rescue a fuzzy task.</li>
         <li><strong>Iterate deliberately.</strong> When something fails, diagnose the failure and change the part most likely to matter.</li>
         <li><strong>Use AI to improve prompts.</strong> You do not have to manually guess which wording would work better.</li>
@@ -929,7 +938,7 @@ Keep the final prompt reusable and focused. Do not preserve unnecessary complexi
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
 
@@ -967,5 +976,18 @@ Keep the final prompt reusable and focused. Do not preserve unnecessary complexi
       });
     }());
   </script>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

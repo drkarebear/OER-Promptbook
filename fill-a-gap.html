@@ -22,7 +22,7 @@
       --muted: #516070;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --simple-bg: #f7f3ff;
       --simple-border: #d9cdf3;
       --power-bg: #effafa;
@@ -35,6 +35,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -58,6 +60,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -67,6 +72,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -90,6 +98,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -143,7 +152,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -583,10 +592,10 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
-          <li><a href="index.html#prompt-tasks" aria-current="page">Prompts</a></li>
+          <li><a href="index.html#prompt-tasks" aria-current="location">Prompts</a></li>
           <li><a href="community-prompts.html">Community</a></li>
           <li><a href="index.html#oer-support">For OER Support</a></li>
           <li><a href="about.html">About</a></li>
@@ -595,21 +604,21 @@
     </div>
   </header>
 
+  <main id="main-content" tabindex="-1">
+
   <section class="page-hero" aria-labelledby="page-title">
     <div class="hero-inner">
       <div class="eyebrow">Diagnose before you add</div>
       <h1 id="page-title">Your Course Almost Works. Fix the Missing Piece.</h1>
       <p class="hero-lede">If a course or unit is mostly working, start by identifying what is actually missing. Then use AI to find the smallest useful addition: practice, media, a primary source, context, perspective, or a targeted reading.</p>
 
-      <ul class="hero-points" aria-label="What this page can help with">
+      <ul role="list" class="hero-points" aria-label="What this page can help with">
         <li><span class="check" aria-hidden="true">✓</span> Identify the real gap</li>
         <li><span class="check" aria-hidden="true">✓</span> Add only what earns its place</li>
         <li><span class="check" aria-hidden="true">✓</span> Protect student workload</li>
       </ul>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="quick-start" aria-labelledby="quick-heading">
       <h2 id="quick-heading">Start by Diagnosing the Gap</h2>
       <p>Sometimes a weak week needs another resource. Sometimes it needs a clearer example, more practice, a different kind of source, or simply less repetition. The first prompt below helps you identify the instructional need before you start searching.</p>
@@ -705,8 +714,8 @@ End with one clear next step: find a reading, find practice, find media or a pri
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-simple" data-status-target="status-diagnose-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-diagnose-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-simple" data-status-target="status-diagnose-simple" aria-label="Copy Quick Prompt for Figure Out What This Unit Is Missing">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-diagnose-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -763,8 +772,8 @@ End with the best next step and point me toward one category: reading, practice/
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-power" data-status-target="status-diagnose-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-diagnose-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-power" data-status-target="status-diagnose-power" aria-label="Copy Deeper Workflow for Figure Out What This Unit Is Missing">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-diagnose-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -825,8 +834,8 @@ If you cannot find a strong existing OER, clearly say so instead of pretending o
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-activity-simple" data-status-target="status-activity-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-activity-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-activity-simple" data-status-target="status-activity-simple" aria-label="Copy Quick Prompt for Find Practice, an Activity, or an Ancillary">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-activity-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -876,8 +885,8 @@ Only after that, optionally suggest what kind of activity I could create or adap
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-activity-power" data-status-target="status-activity-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-activity-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-activity-power" data-status-target="status-activity-power" aria-label="Copy Deeper Workflow for Find Practice, an Activity, or an Ancillary">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-activity-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -925,8 +934,8 @@ If rights information is unclear, label it "Rights need verification."</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-media-simple" data-status-target="status-media-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-media-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-media-simple" data-status-target="status-media-simple" aria-label="Copy Quick Prompt for Find Media, Data, or a Primary Source">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-media-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -980,8 +989,8 @@ Then:
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-media-power" data-status-target="status-media-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-media-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-media-power" data-status-target="status-media-power" aria-label="Copy Deeper Workflow for Find Media, Data, or a Primary Source">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-media-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1026,8 +1035,8 @@ Do not invent resources, links, licenses, or demographic information.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-perspective-simple" data-status-target="status-perspective-simple">Copy Quick Prompt</button>
-            <span class="copy-status" id="status-perspective-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-perspective-simple" data-status-target="status-perspective-simple" aria-label="Copy Quick Prompt for Add a Missing Perspective, Example, or Context">Copy Quick Prompt</button>
+            <span class="copy-status" role="status" id="status-perspective-simple" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
 
@@ -1086,8 +1095,8 @@ Then:
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-perspective-power" data-status-target="status-perspective-power">Copy Deeper Workflow</button>
-            <span class="copy-status" id="status-perspective-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-perspective-power" data-status-target="status-perspective-power" aria-label="Copy Deeper Workflow for Add a Missing Perspective, Example, or Context">Copy Deeper Workflow</button>
+            <span class="copy-status" role="status" id="status-perspective-power" aria-live="polite" aria-atomic="true"></span>
           </div>
         </article>
       </div>
@@ -1096,7 +1105,7 @@ Then:
     <section class="verify" aria-labelledby="verify-heading">
       <h2 id="verify-heading">Before You Add Another Resource</h2>
       <p>Filling a gap should make the course stronger, not just make it longer. Before adding something, ask whether it earns its place.</p>
-      <ul>
+      <ul role="list">
         <li><strong>Check the original source and rights.</strong> Verify open licensing or public-domain status yourself.</li>
         <li><strong>Protect student workload.</strong> If you add something, consider whether another reading or activity can become optional or shorter.</li>
         <li><strong>Look for real instructional value.</strong> A new resource should add depth, practice, context, or perspective rather than repeat what students already have.</li>
@@ -1118,7 +1127,7 @@ Then:
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
 
@@ -1156,5 +1165,18 @@ Then:
       });
     }());
   </script>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

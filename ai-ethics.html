@@ -19,7 +19,7 @@
       --muted: #516070;
       --surface-soft: #f6f9fc;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --note-bg: #fff9e8;
       --note-border: #e5c56a;
       --max: 1040px;
@@ -28,6 +28,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -48,6 +50,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
     }
@@ -56,6 +61,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -79,6 +87,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -126,7 +135,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -391,9 +400,9 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="using-ai.html" aria-current="page">Using AI</a></li>
+          <li><a href="using-ai.html" aria-current="location">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
           <li><a href="community-prompts.html">Community</a></li>
           <li><a href="index.html#oer-support">For OER Support</a></li>
@@ -403,6 +412,8 @@
     </div>
   </header>
 
+  <main id="main-content" tabindex="-1">
+
   <section class="hero" aria-labelledby="page-title">
     <div class="hero-inner">
       <div class="eyebrow">Responsible use</div>
@@ -410,8 +421,6 @@
       <p class="hero-lede">The OER Promptbook encourages experimentation with AI when it can meaningfully reduce faculty workload. It also recognizes that generative AI has real environmental, labor, bias, privacy, and intellectual-property concerns.</p>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="lead-box" aria-labelledby="why-heading">
       <h2 id="why-heading">Why Use AI If AI Is Problematic?</h2>
       <p>That tension is worth naming. AI is already shaping education and work, and learning how to use it critically can be valuable. At the same time, useful technology is not automatically ethical, neutral, or cost-free.</p>
@@ -499,7 +508,7 @@
 
     <section class="section small-actions" aria-labelledby="practice-heading">
       <h2 id="practice-heading">What Thoughtful Use Can Look Like</h2>
-      <ul>
+      <ul role="list">
         <li><strong>Ask for a shortlist, not 50 results.</strong> More output is not necessarily more useful.</li>
         <li><strong>Use text when text will do.</strong> Do not generate images or video for a task that only needs a few sentences or a table.</li>
         <li><strong>Choose efficient tools or models when appropriate.</strong> A complex reasoning workflow is not necessary for every search.</li>
@@ -530,8 +539,21 @@
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

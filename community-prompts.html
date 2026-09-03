@@ -23,7 +23,7 @@
       --surface-teal: #f0f9f9;
       --surface-purple: #f8f5ff;
       --border: #d9e3ec;
-      --focus: #ffbf47;
+      --focus: #1a73e8;
       --danger: #9f2430;
       --radius: 18px;
       --shadow: 0 8px 24px rgba(11,41,72,.08);
@@ -31,6 +31,8 @@
     }
 
     * { box-sizing: border-box; }
+
+    h1, h2, h3 { overflow-wrap: anywhere; }
 
     html { scroll-behavior: smooth; }
 
@@ -62,6 +64,9 @@
     }
 
     .skip-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       position: absolute;
       left: -9999px;
       top: auto;
@@ -71,6 +76,9 @@
       left: 1rem;
       top: 1rem;
       z-index: 9999;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       padding: .75rem 1rem;
       background: #fff;
       color: #000;
@@ -94,6 +102,7 @@
     }
 
     .brand {
+      min-height: 44px;
       display: flex;
       align-items: center;
       gap: .8rem;
@@ -141,7 +150,7 @@
     }
 
     nav a:hover,
-    nav a[aria-current="page"] {
+    nav a[aria-current] {
       background: rgba(255,255,255,.12);
     }
 
@@ -298,6 +307,8 @@
     }
 
     .reset-button {
+      min-height: 44px;
+      min-width: 44px;
       border: 0;
       background: transparent;
       color: var(--blue);
@@ -450,7 +461,7 @@
     }
 
     .small-button {
-      min-height: 42px;
+      min-height: 44px;
       padding: .58rem .72rem;
       border-radius: 9px;
       border: 1px solid #bfcbd7;
@@ -720,7 +731,7 @@
       </a>
 
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="index.html#prompt-tasks">Prompts</a></li>
@@ -732,6 +743,8 @@
     </div>
   </header>
 
+  <main id="main-content" tabindex="-1">
+
   <section class="hero" aria-labelledby="page-title">
     <div class="hero-inner">
       <div class="eyebrow">Community Prompt Lab</div>
@@ -739,13 +752,11 @@
       <p class="hero-lede">Browse prompts shared by faculty, librarians, and OER/ZTC colleagues. Adapt what is useful, verify the results, and contribute something that saved you time.</p>
 
       <div class="hero-actions">
-        <a class="button" id="submitPromptButton" href="#" target="_blank" rel="noopener">Share a Prompt</a>
+        <a class="button" id="submitPromptButton" href="#" target="_blank" rel="noopener" aria-label="Share a Prompt (opens in a new tab)">Share a Prompt</a>
         <a class="button-secondary" href="#showcase">See Community Examples</a>
       </div>
     </div>
   </section>
-
-  <main id="main-content">
     <section class="community-note" aria-labelledby="community-note-heading">
       <h2 id="community-note-heading">Community Submitted, Not Individually Reviewed</h2>
       <p>The core prompts in The OER Promptbook are maintained separately. Prompts on this page are shared by community members and may not have been tested or reviewed by the Promptbook maintainer.</p>
@@ -755,7 +766,7 @@
     <section aria-labelledby="browse-heading">
       <h2 id="browse-heading">Browse Community Prompts</h2>
 
-      <div class="filter-panel" aria-label="Community prompt filters">
+      <div class="filter-panel" role="search" aria-label="Community prompt filters">
         <div class="filter-grid">
           <div class="field search">
             <label for="searchInput">Search prompts</label>
@@ -792,16 +803,16 @@
         </div>
 
         <div class="filter-actions">
-          <span class="result-count" id="resultCount" aria-live="polite"></span>
+          <span class="result-count" id="resultCount" role="status" aria-live="polite" aria-atomic="true"></span>
           <button class="reset-button" id="resetFilters" type="button">Clear filters</button>
         </div>
       </div>
 
-      <div id="libraryStatus" class="status-box" role="status" aria-live="polite">
+      <div id="libraryStatus" class="status-box" role="status" aria-live="polite" aria-atomic="true">
         Loading community prompts…
       </div>
 
-      <div id="promptGrid" class="prompt-grid"></div>
+      <div id="promptGrid" class="prompt-grid" aria-busy="true"></div>
     </section>
 
     <section class="how-it-works" aria-labelledby="how-heading">
@@ -834,7 +845,7 @@
 
       <div class="showcase-ideas" aria-labelledby="showcase-ideas-heading">
         <h3 id="showcase-ideas-heading">What You Might Share</h3>
-        <ul>
+        <ul role="list">
           <li>A 2–5 minute screen-share showing how you used a prompt to find or evaluate OER.</li>
           <li>An example of locating an EBSCOhost ebook, library article, or other library-provided zero-cost resource.</li>
           <li>A course map that combines OER, library materials, and other ZTC readings.</li>
@@ -857,7 +868,7 @@
         The embedded showcase is not available in this view. You can still open it directly in Padlet.
       </div>
 
-      <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener">Open the OER Promptbook Showcase in Padlet</a></p>
+      <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener" aria-label="Open the OER Promptbook Showcase in Padlet (opens in a new tab)">Open the OER Promptbook Showcase in Padlet</a></p>
     </section>
 
     <section class="safety-note" aria-labelledby="sharing-heading">
@@ -872,7 +883,7 @@
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
       <p>Independent faculty project created and maintained by Karen Crozer.</p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
 
@@ -1067,6 +1078,9 @@
 
       const promptText = document.createElement("pre");
       promptText.className = "prompt-text";
+      promptText.tabIndex = 0;
+      promptText.setAttribute("role", "region");
+      promptText.setAttribute("aria-label", `Prompt text: ${title.textContent}`);
       promptText.textContent = safe(item.prompt);
       promptBox.appendChild(promptText);
       body.appendChild(promptBox);
@@ -1112,12 +1126,14 @@
       copy.type = "button";
       copy.className = "small-button primary";
       copy.textContent = "Copy Prompt";
+      copy.setAttribute("aria-label", `Copy prompt: ${title.textContent}`);
       copy.addEventListener("click", () => copyPrompt(safe(item.prompt), copy));
       actions.appendChild(copy);
 
       const feedback = document.createElement("a");
       feedback.className = "small-button";
       feedback.textContent = "This Worked for Me";
+      feedback.setAttribute("aria-label", `This Worked for Me: ${title.textContent} (opens in a new tab)`);
       feedback.target = "_blank";
       feedback.rel = "noopener";
       const feedbackUrl = makePrefilledUrl(
@@ -1137,6 +1153,7 @@
       const report = document.createElement("a");
       report.className = "small-button report";
       report.textContent = "Report a Problem";
+      report.setAttribute("aria-label", `Report a Problem: ${title.textContent} (opens in a new tab)`);
       report.target = "_blank";
       report.rel = "noopener";
       const reportUrl = makePrefilledUrl(
@@ -1205,6 +1222,7 @@
     }
 
     function renderPrompts(prompts) {
+      promptGrid.setAttribute("aria-busy", "false");
       promptGrid.innerHTML = "";
       resultCount.textContent = `${prompts.length} ${prompts.length === 1 ? "prompt" : "prompts"}`;
 
@@ -1224,6 +1242,7 @@
     async function loadPrompts() {
       if (!isConfigured(CONFIG.DATA_FEED_URL)) {
         libraryStatus.textContent = "The Community Prompt Lab is ready to connect. Add the Apps Script data-feed URL in the configuration section of this page to begin displaying submissions automatically.";
+        promptGrid.setAttribute("aria-busy", "false");
         resultCount.textContent = "0 prompts";
         return;
       }
@@ -1254,6 +1273,7 @@
 
       } catch (error) {
         libraryStatus.classList.add("error");
+        promptGrid.setAttribute("aria-busy", "false");
         libraryStatus.textContent = "The community library could not be loaded right now. Please try again later.";
         console.error(error);
       }
@@ -1296,5 +1316,18 @@
     configureExternalLinks();
     loadPrompts();
   </script>
+  <script>
+    // Keep keyboard focus aligned with the visible skip-link destination.
+    (() => {
+      const accessibilitySkipLink = document.querySelector(".skip-link");
+      const accessibilityMainContent = document.getElementById("main-content");
+      if (accessibilitySkipLink && accessibilityMainContent) {
+        accessibilitySkipLink.addEventListener("click", () => {
+          window.setTimeout(() => accessibilityMainContent.focus(), 0);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>

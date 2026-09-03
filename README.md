@@ -6,6 +6,10 @@ The OER Promptbook is an independent faculty project offering practical AI promp
 
 I, Karen Crozer, created and maintain The OER Promptbook independently on a volunteer basis.
 
+## Accessibility
+
+The site aims to meet or exceed WCAG 2.2 Level AA for the experience controlled by this repository. See [Accessibility](ACCESSIBILITY.md) for the current accessibility features, audit scope, third-party limitations, and barrier-reporting information.
+
 ## License
 
 Unless otherwise noted, the original educational content created by Karen Crozer for The OER Promptbook is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). You may share and adapt that content with attribution for noncommercial purposes.
