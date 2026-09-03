@@ -1,1 +1,1138 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ready-to-use AI prompts that help faculty evaluate Open Educational Resources for quality, course fit, licensing, accessibility, currency, and gaps.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Evaluate OER | The OER Promptbook</title>
+
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --orange: #b84f0a;
+      --red: #aa3434;
+      --text: #172033;
+      --muted: #516070;
+      --surface: #ffffff;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --simple-bg: #f1faf6;
+      --simple-border: #bedfce;
+      --power-bg: #f7f3ff;
+      --power-border: #d9cdf3;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #f2faf6 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.8rem 1.25rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 800;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .82rem;
+      margin-bottom: .75rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+      max-width: 930px;
+    }
+
+    .hero-lede {
+      max-width: 820px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .hero-points {
+      list-style: none;
+      margin: 1.35rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem 1.2rem;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: .85rem;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 .8rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .quick-start {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .quick-start h2 {
+      font-size: 1.25rem;
+      margin-bottom: .45rem;
+    }
+
+    .quick-start p {
+      margin: .35rem 0;
+    }
+
+    .goal-nav {
+      margin: 2rem 0 3rem;
+    }
+
+    .goal-nav h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .goal-link {
+      display: flex;
+      flex-direction: column;
+      min-height: 155px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .goal-link:hover {
+      border-color: #9ab8d1;
+      box-shadow: var(--shadow);
+    }
+
+    .goal-icon {
+      font-size: 1.55rem;
+      margin-bottom: .4rem;
+    }
+
+    .goal-link strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: .25rem;
+    }
+
+    .goal-link span:last-child {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .prompt-section {
+      scroll-margin-top: 1rem;
+      margin: 3.5rem 0;
+      padding-top: .5rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      color: var(--green);
+      font-size: .8rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .section-intro {
+      max-width: 820px;
+      color: var(--muted);
+      margin: 0 0 1.35rem;
+      font-size: 1.02rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .prompt-card {
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .prompt-card.simple {
+      background: var(--simple-bg);
+      border: 1px solid var(--simple-border);
+    }
+
+    .prompt-card.power {
+      background: var(--power-bg);
+      border: 1px solid var(--power-border);
+    }
+
+    .prompt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .prompt-card > p {
+      margin: .2rem 0 .9rem;
+      color: #405064;
+      font-size: .94rem;
+    }
+
+    .prompt-box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #cfd9e3;
+      border-radius: 14px;
+      padding: 1rem;
+      flex-grow: 1;
+      min-height: 390px;
+    }
+
+    .prompt-text {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .91rem;
+      line-height: 1.58;
+      color: #1d2938;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      border: 0;
+      border-radius: 10px;
+      min-height: 44px;
+      padding: .68rem 1rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-button:hover {
+      background: var(--navy-2);
+    }
+
+    .copy-status {
+      font-size: .88rem;
+      color: var(--green);
+      font-weight: 700;
+      min-height: 1.3em;
+    }
+
+    .customize {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--teal);
+      background: #f1fafa;
+      border-radius: 10px;
+    }
+
+    .customize strong {
+      color: var(--navy);
+    }
+
+    .customize p {
+      margin: .35rem 0 0;
+    }
+
+    .verify {
+      margin-top: 3rem;
+      border: 1px solid #bedfce;
+      background: #f1faf6;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .verify h2 {
+      font-size: 1.45rem;
+      margin-bottom: .65rem;
+    }
+
+    .verify ul {
+      margin-bottom: 0;
+    }
+
+    .related {
+      margin-top: 2rem;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .related a {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      background: var(--surface-soft);
+    }
+
+    .related a:hover {
+      border-color: #9ab8d1;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .goal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-box {
+        min-height: auto;
+      }
+
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.8rem 1rem 2.2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-card {
+        padding: 1rem;
+      }
+
+      .prompt-box {
+        padding: .9rem;
+      }
+
+      .prompt-text {
+        font-size: .87rem;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <span class="brand-mark" aria-hidden="true">OP</span>
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="find-oer.html">Find OER</a></li>
+          <li><a href="evaluate-oer.html" aria-current="page">Evaluate OER</a></li>
+          <li><a href="index.html#prompt-tasks">All Prompts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Compare before you deep-read</div>
+      <h1 id="page-title">Decide Whether an OER Is Worth Your Time</h1>
+      <p class="hero-lede">You do not need to read every page before deciding whether a resource deserves a closer look. Use AI for a structured first pass, then focus your own review on the strongest candidates and the issues that matter most for your course.</p>
+
+      <ul class="hero-points" aria-label="What this page can help with">
+        <li><span class="check" aria-hidden="true">✓</span> Check course fit</li>
+        <li><span class="check" aria-hidden="true">✓</span> Spot gaps and red flags</li>
+        <li><span class="check" aria-hidden="true">✓</span> Focus your faculty review</li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="quick-start" aria-labelledby="quick-heading">
+      <h2 id="quick-heading">AI Can Help You Screen an OER. It Cannot Approve It for You.</h2>
+      <p>These prompts are designed to help you decide <strong>what deserves your attention next</strong>. Upload the resource when your AI tool allows file analysis, or provide a direct link if the tool can access the web.</p>
+      <p><strong>Important:</strong> Ask AI to distinguish what it can verify from what it cannot. Accessibility, accuracy, licensing, and course fit still need human review.</p>
+    </section>
+
+    <nav class="goal-nav" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">What Do You Want to Check?</h2>
+      <div class="goal-grid">
+        <a class="goal-link" href="#quick-review">
+          <span class="goal-icon" aria-hidden="true">👀</span>
+          <strong>Is This Worth a Closer Look?</strong>
+          <span>Get a manageable first-pass evaluation of one OER.</span>
+        </a>
+
+        <a class="goal-link" href="#course-fit">
+          <span class="goal-icon" aria-hidden="true">🎯</span>
+          <strong>Does It Fit My Course?</strong>
+          <span>Compare the resource with your COR, outcomes, or syllabus.</span>
+        </a>
+
+        <a class="goal-link" href="#license-access">
+          <span class="goal-icon" aria-hidden="true">🔓</span>
+          <strong>Check License and Accessibility</strong>
+          <span>Flag what appears verified and what still needs manual review.</span>
+        </a>
+
+        <a class="goal-link" href="#gaps">
+          <span class="goal-icon" aria-hidden="true">🧭</span>
+          <strong>Find Gaps and Weak Spots</strong>
+          <span>Look for missing content, dated material, and uneven coverage.</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="prompt-section" id="quick-review" aria-labelledby="quick-review-heading">
+      <span class="section-number">Evaluation 1</span>
+      <h2 id="quick-review-heading">Is This OER Worth a Closer Look?</h2>
+      <p class="section-intro">Use this before you spend hours reading. The goal is not a final verdict. It is a focused screening that tells you where your own attention is most needed.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a quick overview without a giant rubric.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-review-simple">I'm new to AI. Keep this simple.
+
+I am considering this Open Educational Resource for a community college course:
+
+[UPLOAD THE RESOURCE, PROVIDE THE LINK, OR PASTE THE RELEVANT INFORMATION]
+
+My course is:
+[COURSE NAME AND SHORT DESCRIPTION]
+
+Give me a brief first-pass evaluation to help me decide whether this resource is worth reviewing more closely.
+
+Tell me:
+- What the resource appears to cover well
+- What level or audience it seems designed for
+- Its biggest strengths for my course
+- Any obvious gaps, weaknesses, or concerns
+- Whether you can verify an open license
+- What I should personally check before adopting it
+
+Do not invent information that is not in the resource or source page.
+
+Clearly separate:
+1. What you can verify
+2. What you are inferring
+3. What still needs human review
+
+End with one of these:
+- Strong candidate for closer review
+- Possible candidate with important questions
+- Probably not the best fit
+
+Explain that recommendation in 2–3 sentences.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-review-simple" data-status-target="status-review-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-review-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Evaluate More Deeply</div>
+          <p>Best when you want a systematic screening before conducting your own close review.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-review-power">I'm a power user. Conduct a structured first-pass evaluation of the OER below to help me decide whether it deserves a full faculty review.
+
+RESOURCE
+[UPLOAD THE RESOURCE, PROVIDE THE LINK, OR PASTE THE RELEVANT CONTENT]
+
+COURSE CONTEXT
+[COURSE NAME, LEVEL, DESCRIPTION, OUTCOMES, OR OTHER RELEVANT CONTEXT]
+
+EVALUATION AREAS
+Assess only what the available evidence supports:
+
+1. Scope and coverage
+2. Depth and likely academic level
+3. Organization and ease of assigning sections
+4. Clarity and instructional usability
+5. Accuracy or currency concerns that are visible from the material
+6. Availability of examples, exercises, activities, or instructor supports
+7. Open-license information
+8. Accessibility information that is explicitly documented
+9. Major strengths
+10. Major gaps or concerns
+
+EVIDENCE RULES
+- Cite or point to specific sections, pages, headings, or source information when possible.
+- Do not invent features, ancillaries, accessibility claims, or license terms.
+- Distinguish verified facts from reasonable inference.
+- Mark anything that requires manual review.
+- Do not treat "free online" as proof that the resource is OER.
+
+OUTPUT
+Create a concise table:
+Area | What the Evidence Shows | Concern or Strength | Needs Human Review?
+
+Then give me:
+- The 3 strongest reasons to keep reviewing this resource
+- The 3 most important questions or concerns
+- The sections I should personally inspect first
+- A provisional recommendation: Strong candidate / Possible candidate / Weak candidate
+
+Treat this as screening, not a final adoption decision.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-review-power" data-status-target="status-review-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-review-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="customize">
+        <strong>Want a faster review?</strong>
+        <p>Add: “Limit the first pass to the five issues most likely to affect an adoption decision. I can ask for a deeper review afterward.”</p>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="course-fit" aria-labelledby="course-fit-heading">
+      <span class="section-number">Evaluation 2</span>
+      <h2 id="course-fit-heading">Does This OER Fit My Course?</h2>
+      <p class="section-intro">Use this when the resource looks promising, but you need to know how well it actually matches your course before investing more time.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you have a course description, outcomes, or weekly topics you can paste.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-fit-simple">I'm new to AI. Keep this simple.
+
+I am considering this OER:
+[UPLOAD OR LINK TO THE OER]
+
+Here is information about my course:
+[PASTE COURSE DESCRIPTION, LEARNING OUTCOMES, OR MAIN TOPICS]
+
+Compare the OER with my course.
+
+Create a simple table with:
+Course Need | Covered Well | Partly Covered | Missing or Unclear
+
+Then tell me:
+- The strongest matches
+- The biggest gaps
+- Whether the OER seems better as a primary resource or a supplemental resource
+- Which parts of the OER I should review first
+
+Do not assume coverage that you cannot verify.
+
+Do not invent course requirements or OER content.
+
+Keep the answer focused on helping me decide whether this resource is worth my time.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-fit-simple" data-status-target="status-fit-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-fit-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Map the Alignment</div>
+          <p>Best when you want a detailed coverage map grounded in your course documents.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-fit-power">I'm a power user. Evaluate how well this OER aligns with my community college course.
+
+OER
+[UPLOAD OR LINK TO THE RESOURCE]
+
+COURSE MATERIALS
+[PASTE COR LANGUAGE, COURSE DESCRIPTION, OUTCOMES, OBJECTIVES, TOPICS, SYLLABUS, OR WEEKLY SCHEDULE]
+
+PHASE 1: COURSE-NEEDS MAP
+Extract the major content, skills, and recurring practices that are explicitly supported by my course materials.
+
+Do not invent requirements.
+
+PHASE 2: ALIGNMENT MAP
+For each major course need, identify whether the OER:
+- covers it strongly
+- covers it partially
+- appears to omit it
+- cannot be assessed from the available evidence
+
+Where possible, point to the specific chapter, section, page, or feature that supports your assessment.
+
+PHASE 3: ADOPTION FIT
+Assess whether the OER is more suitable as:
+- a primary course resource
+- one major component of a multi-resource course
+- a supplemental resource
+- a poor fit
+
+OUTPUT
+Create a table:
+Course Need | OER Evidence | Alignment | Important Notes
+
+Then provide:
+1. Overall estimated coverage in plain language, not a fake precision score.
+2. The strongest areas of alignment.
+3. The most consequential gaps.
+4. Parts of my existing course that would likely need replacement, supplementation, or redesign.
+5. The 3 sections of the OER I should inspect personally before making a decision.
+
+Do not claim alignment unless you can point to evidence.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-fit-power" data-status-target="status-fit-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-fit-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="license-access" aria-labelledby="license-heading">
+      <span class="section-number">Evaluation 3</span>
+      <h2 id="license-heading">Check Licensing, Accessibility, and Practical Usability</h2>
+      <p class="section-intro">Use this to flag issues that are easy to overlook. AI can help surface evidence, but this prompt deliberately tells it not to certify accessibility or licensing when the source does not support that conclusion.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a short checklist of what looks good and what still needs verification.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-license-simple">I'm new to AI. Keep this simple.
+
+Please review this OER or its source page:
+[UPLOAD OR LINK]
+
+Help me check three things:
+
+1. LICENSE
+Can you verify the specific open license or public-domain status?
+What does that license appear to allow me to do?
+
+2. ACCESSIBILITY
+What accessibility information is explicitly documented?
+Do not assume the resource is accessible if there is no evidence.
+
+3. PRACTICAL USE
+Can students access it without paying?
+Is it easy to navigate and assign by section?
+Are download or format options clearly available?
+
+For each area, label the result:
+- Verified
+- Appears promising but needs checking
+- Not enough information
+
+Do not invent license terms, accessibility features, or access conditions.
+
+End with a short "Check This Yourself" list of anything I should verify manually.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-license-simple" data-status-target="status-license-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-license-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Audit the Evidence</div>
+          <p>Best when licensing, remix rights, accessibility, and technical usability may affect adoption.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-license-power">I'm a power user. Conduct an evidence-based licensing, accessibility, and usability review of this OER.
+
+RESOURCE
+[UPLOAD OR LINK]
+
+LICENSE REVIEW
+- Identify the exact license from the original source.
+- State the license version when available.
+- Summarize what the license permits regarding reuse, revision, remixing, redistribution, and commercial use.
+- Identify any attribution, ShareAlike, or NonCommercial conditions that are explicitly present.
+- Do not infer a license from a repository label if the resource itself provides conflicting or incomplete information.
+
+ACCESSIBILITY REVIEW
+Report only accessibility evidence that is actually available, such as:
+- accessibility statement or VPAT/ACR
+- tagged or structured document information
+- heading structure
+- alt text evidence
+- captions or transcripts
+- keyboard/navigation information
+- accessible file-format options
+- known barriers visible in the resource
+
+Do not certify WCAG or ADA compliance unless an authoritative source explicitly establishes it.
+
+PRACTICAL-USABILITY REVIEW
+Check:
+- whether student access appears free
+- sign-in or account requirements
+- download options
+- print/PDF/EPUB/HTML availability
+- ease of linking to chapters or sections
+- visible update/version information
+- whether ancillaries are openly available or separately restricted
+
+OUTPUT
+Create a table:
+Area | Verified Evidence | Concern | What I Still Need to Check
+
+Then provide:
+1. License summary for faculty use.
+2. Accessibility questions requiring manual review.
+3. Student-access or usability concerns.
+4. Any issue serious enough that I should resolve it before adoption.
+
+Be conservative. "Not verified" is better than guessing.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-license-power" data-status-target="status-license-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-license-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="gaps" aria-labelledby="gaps-heading">
+      <span class="section-number">Evaluation 4</span>
+      <h2 id="gaps-heading">Find Gaps, Dated Material, and Uneven Coverage</h2>
+      <p class="section-intro">Use this when an OER is almost right and you need to know what you would still have to supplement, update, or teach around.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a focused list of the places most likely to create extra prep work.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-gaps-simple">I'm new to AI. Keep this simple.
+
+Review this OER:
+[UPLOAD OR LINK]
+
+My course is:
+[COURSE NAME AND SHORT DESCRIPTION]
+
+Help me identify the parts that may create extra work for me.
+
+Look for:
+- important topics that seem missing
+- sections that may be too shallow or too advanced
+- examples or data that may be dated
+- areas where students may need more explanation or practice
+- perspectives, examples, or contexts that seem limited or uneven
+- places where I may need another reading, activity, or resource
+
+For each concern, point to the evidence you are using.
+
+Do not invent problems just to fill the list.
+
+End with:
+- "Probably fine as is"
+- "Needs a few supplements"
+- "Would require substantial rebuilding"
+
+Explain why in a few sentences.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-gaps-simple" data-status-target="status-gaps-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-gaps-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Diagnose the Gaps</div>
+          <p>Best when you want to understand how much adoption work the resource would actually create.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-gaps-power">I'm a power user. Diagnose the likely adoption work required by this OER.
+
+OER
+[UPLOAD OR LINK]
+
+COURSE CONTEXT
+[COURSE DESCRIPTION, OUTCOMES, TOPICS, OR SYLLABUS]
+
+Evaluate the resource for:
+
+CONTENT GAPS
+- required or important course topics that appear absent
+- areas with insufficient depth
+- areas that substantially exceed the likely course level
+
+CURRENCY
+- dated examples, statistics, links, technology, policies, terminology, or research where currency matters
+- distinguish content that is merely old from content that is actually outdated
+
+LEARNING SUPPORT
+- places where students may need more explanation, examples, practice, scaffolding, or application
+- missing ancillaries or exercises when they materially affect usability
+
+RANGE OF PERSPECTIVES
+- note whether examples, authors, cases, populations, or contexts appear narrow or uneven when that matters to the discipline
+- describe evidence rather than making unsupported claims about representation
+
+ADOPTION LABOR
+Estimate the kind of work I would need to do:
+- use as is
+- light supplementation
+- moderate adaptation
+- substantial rebuilding
+
+OUTPUT
+Create a table:
+Issue | Evidence | Why It Matters | Likely Faculty Work | Possible Fix
+
+Then identify:
+1. The 5 highest-priority issues.
+2. Which issues can likely be solved with one supplemental OER.
+3. Which issues would require instructor-created material or deeper redesign.
+4. Whether the resource still appears worth adopting given the likely workload.
+
+Do not manufacture deficiencies. If the evidence is insufficient, say so.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-gaps-power" data-status-target="status-gaps-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-gaps-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="verify" aria-labelledby="verify-heading">
+      <h2 id="verify-heading">Before You Adopt</h2>
+      <p>An AI evaluation is a screening tool, not a substitute for faculty review. Use it to decide where to spend your attention.</p>
+      <ul>
+        <li><strong>Read representative sections yourself.</strong> Check accuracy, tone, depth, and whether the material works for your students.</li>
+        <li><strong>Verify the license at the original source.</strong> Do not rely only on an AI summary.</li>
+        <li><strong>Check accessibility directly.</strong> Automated or AI review can miss barriers.</li>
+        <li><strong>Look at the student experience.</strong> Open the resource the way a student would and test navigation, downloads, links, and formats.</li>
+        <li><strong>Be realistic about adoption labor.</strong> A resource that is "free" may still cost you a great deal of redesign time.</li>
+      </ul>
+    </section>
+
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">What Next?</h2>
+      <div class="related-links">
+        <a href="fill-a-gap.html">Good resource with a few holes? Fill the gaps.</a>
+        <a href="build-a-plan.html">Ready to use it? Map it into your course.</a>
+        <a href="find-oer.html">Not a fit? Go back and find stronger OER options.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("[data-copy-target]");
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", async function () {
+          const targetId = button.getAttribute("data-copy-target");
+          const statusId = button.getAttribute("data-status-target");
+          const target = document.getElementById(targetId);
+          const status = document.getElementById(statusId);
+
+          if (!target) return;
+
+          const text = target.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (status) status.textContent = "Copied to clipboard.";
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(target);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) status.textContent = "Prompt selected. Copy it with Ctrl+C or Command+C.";
+          }
+
+          window.setTimeout(function () {
+            if (status) status.textContent = "";
+          }, 4000);
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
