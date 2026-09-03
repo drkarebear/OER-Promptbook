@@ -258,7 +258,7 @@
 
     .goal-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: .85rem;
     }
 
@@ -613,7 +613,7 @@
   <main id="main-content">
     <section class="quick-start" aria-labelledby="quick-heading">
       <h2 id="quick-heading">New to AI? You Can Start Right Here.</h2>
-      <p>Choose the job you want done, copy the <strong>Keep It Simple</strong> prompt, and replace anything in <strong>[brackets]</strong> with information about your course.</p>
+      <p>Choose the job you want done, copy the <strong>Quick Prompt</strong>, and replace anything in <strong>[brackets]</strong> with information about your course.</p>
       <p><strong>Important:</strong> Something that is free to read online is not automatically OER. The prompts below tell AI to verify an open license or public-domain status and to say when it cannot verify one.</p>
     </section>
 
@@ -642,6 +642,12 @@
           <span class="goal-icon" aria-hidden="true">📄</span>
           <strong>Turn My COR or Syllabus Into an OER Search</strong>
           <span>Identify what the course needs, then search for resources that fit.</span>
+        </a>
+
+        <a class="goal-link" href="#verify-candidates">
+          <span class="goal-icon" aria-hidden="true">✓</span>
+          <strong>Verify a Candidate List</strong>
+          <span>Clean up AI-generated or collected leads before you spend time evaluating them.</span>
         </a>
       </div>
     </nav>
@@ -1058,6 +1064,117 @@ Keep the output decision-focused. The goal is to turn my existing course into a 
       </div>
     </section>
 
+    <section class="prompt-section" id="verify-candidates" aria-labelledby="verify-candidates-heading">
+      <span class="section-number">Search 5</span>
+      <h2 id="verify-candidates-heading">Verify and Clean My Candidate List</h2>
+      <p class="section-intro">Use this after an AI search, web search, colleague recommendation, or repository search has given you a messy list of possibilities. The goal is not to decide which OER is best yet. It is to remove bad leads, correct details, and send only real candidates forward for faculty review.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you already have a short list and want to know which items are real OER candidates worth opening.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-verify-simple">I have a list of possible OER resources. Help me verify and clean the list before I spend time evaluating them.
+
+MY CANDIDATE LIST
+[PASTE TITLES, LINKS, CITATIONS, OR AI-GENERATED RESULTS]
+
+For each item:
+- Confirm whether the resource appears to exist.
+- Give me the correct title and author or organization, if the information I pasted is inaccurate.
+- Link to the original or most authoritative source rather than a search result, mirror, or aggregator when possible.
+- Identify the specific open license or public-domain status from the original source when possible.
+- Tell me if it is only free to access rather than openly licensed.
+- Flag broken links, duplicate entries, partial previews, outdated versions, or items you cannot verify.
+
+Use one of these labels for each item:
+- KEEP FOR SCREENING — the resource, source, and open status are sufficiently verified to deserve faculty review.
+- NEEDS MANUAL VERIFICATION — the resource may be useful, but an important detail could not be confirmed.
+- REMOVE AS DISCOVERY NOISE — the item is duplicated, broken, unverifiable, not actually OER, or otherwise not a useful lead.
+
+Create a brief table:
+Candidate | Status | Corrected Details | License/Open Status | Best Direct Link | Verification Note
+
+Do not invent corrections, licenses, links, or verification. If you cannot open webpages or verify current information, say so clearly instead of pretending that you checked it.
+
+Do not deeply evaluate course quality or make an adoption decision yet. I only want a clean, trustworthy candidate list for the next stage.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-verify-simple" data-status-target="status-verify-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-verify-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when the list is long, came from several searches, or contains uncertain citations, mirrors, duplicates, and mixed free/OER materials.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-verify-power">Audit and clean the candidate list below before I begin a full OER evaluation.
+
+CANDIDATE LIST
+[PASTE TITLES, URLS, CITATIONS, REPOSITORY RESULTS, OR AI-GENERATED RECOMMENDATIONS]
+
+PURPOSE
+This is a discovery-quality audit, not an adoption decision. I want to know which candidates are real, correctly identified, openly licensed, and worth sending forward for deeper faculty review.
+
+PHASE 1: RESOLVE EACH CANDIDATE
+For every item:
+1. Determine whether the resource actually exists.
+2. Identify the canonical title, author/creator or organization, and edition/version when available.
+3. Find the original or most authoritative landing page. Prefer the publisher, authoring institution, government agency, or established OER repository over mirrors and search-result pages.
+4. Identify the exact open license or public-domain status from the source itself when possible.
+5. Distinguish among:
+   - verified OER/openly licensed
+   - verified public domain
+   - free to access but open license not verified
+   - access restricted, preview only, or paywalled
+   - unverifiable or apparently nonexistent
+6. Check for duplicate records, alternate URLs for the same work, superseded editions, and obvious citation errors.
+
+PHASE 2: CLEAN THE LIST
+Assign exactly one status:
+- KEEP FOR SCREENING — sufficiently verified as a real open/public-domain candidate.
+- NEEDS MANUAL VERIFICATION — plausible candidate, but a material fact remains uncertain.
+- REMOVE AS DISCOVERY NOISE — duplicate, broken, fabricated/unverifiable, preview-only, not actually open, or clearly not the resource represented in the original list.
+
+Do not remove something merely because it may be imperfect for my course. Course fit belongs in the evaluation stage.
+
+PHASE 3: REPORT
+Create a table:
+Original Candidate | Clean Status | Canonical Resource | Creator/Organization | License/Open Status | Best Direct Link | What You Verified | What Still Needs Checking
+
+Then provide:
+1. A deduplicated list of only the KEEP FOR SCREENING candidates.
+2. A short manual-check list for NEEDS MANUAL VERIFICATION items.
+3. A brief explanation for anything removed as discovery noise.
+4. Any patterns in the bad leads, such as repeated mirrors, hallucinated citations, confusingly similar titles, or resources that are free but not OER.
+
+VERIFICATION RULES
+- Never infer an open license from free access.
+- Do not invent titles, authors, URLs, editions, or license information.
+- Prefer evidence from the original source.
+- If your current AI environment cannot browse, open links, or verify current webpages, state that limitation and convert uncertain claims into a manual-check list instead of presenting them as verified.
+- Keep verified facts separate from inference.
+
+Stop at discovery cleanup. Do not rank the resources by quality or recommend adoption unless I ask for that in a separate step.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-verify-power" data-status-target="status-verify-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-verify-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="customize">
+        <strong>Why do this before evaluating?</strong>
+        <p>It prevents you from spending faculty review time on hallucinated citations, dead links, duplicate records, previews, or materials that are free online but are not actually OER.</p>
+      </div>
+    </section>
+
     <section class="verify" aria-labelledby="verify-heading">
       <h2 id="verify-heading">Before You Decide</h2>
       <p>AI can save you search time, but it should not make the adoption decision for you. Open the original resource and check the things that matter for your course.</p>
@@ -1072,7 +1189,8 @@ Keep the output decision-focused. The goal is to turn my existing course into a 
     <section class="related" aria-labelledby="related-heading">
       <h2 id="related-heading">What Next?</h2>
       <div class="related-links">
-        <a href="evaluate-oer.html">Found something promising? Evaluate the OER.</a>
+        <a href="#verify-candidates">Have a messy candidate list? Verify and clean it first.</a>
+        <a href="evaluate-oer.html">Candidates verified? Evaluate the OER.</a>
         <a href="build-a-plan.html#week-by-week">Already have candidate readings? Map them to your course week by week.</a>
         <a href="fill-a-gap.html">Almost a fit? Find OER to fill the gaps.</a>
         <a href="ztc-options.html">No strong OER? Explore other ZTC options.</a>
