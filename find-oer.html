@@ -640,8 +640,8 @@
 
         <a class="goal-link" href="#course-materials">
           <span class="goal-icon" aria-hidden="true">📄</span>
-          <strong>Search From My COR or Syllabus</strong>
-          <span>Let AI turn your existing course materials into search criteria.</span>
+          <strong>Turn My COR or Syllabus Into an OER Search</strong>
+          <span>Identify what the course needs, then search for resources that fit.</span>
         </a>
       </div>
     </nav>
@@ -946,38 +946,46 @@ Be candid if the OER options are substantially weaker than my current resource. 
 
     <section class="prompt-section" id="course-materials" aria-labelledby="materials-heading">
       <span class="section-number">Search 4</span>
-      <h2 id="materials-heading">Search From Your COR, Syllabus, or Course Schedule</h2>
-      <p class="section-intro">Use this when you do not want to translate your course into search terms yourself. Paste the course material you already have and let AI identify what needs to be covered.</p>
+      <h2 id="materials-heading">Turn Your COR or Syllabus Into an OER Search Plan</h2>
+      <p class="section-intro">Use this when you know what you teach but have not yet found the resources. AI first identifies the course's reading and resource needs, then searches for OER that could meet them. If you already have candidate readings and want to place them week by week, use <a href="build-a-plan.html#week-by-week">Map OER Readings to Your Course</a> instead.</p>
 
       <div class="prompt-grid">
         <article class="prompt-card simple">
           <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
-          <p>Best when you already have a course description, outcomes, syllabus, or weekly schedule you can paste.</p>
+          <p>Best when you have course materials to paste but do not yet know what OER to search for.</p>
 
           <div class="prompt-box">
             <pre class="prompt-text" id="prompt-materials-simple">I'm new to AI. Keep this simple.
 
 I teach at a community college.
 
-Below is information from my course:
-[PASTE YOUR COR, COURSE DESCRIPTION, LEARNING OUTCOMES, SYLLABUS, OR WEEKLY TOPICS]
+Here is information from my course:
+[PASTE YOUR COR, COURSE DESCRIPTION, LEARNING OUTCOMES, SYLLABUS, WEEKLY TOPICS, OR UNIT LIST]
 
-First, identify the major things students need to learn in this course.
+Help me turn this into a focused OER search.
 
-Then find up to 5 strong OER resources that could cover a substantial part of those needs.
+STEP 1: WHAT DOES MY COURSE NEED?
+Create a brief list of the major content, skills, readings, examples, or other resources the course appears to need. Do not invent requirements that are not supported by what I pasted.
+
+STEP 2: SEARCH
+Use that list to find up to 5 strong OER resources that could meet a substantial part of those needs. Prioritize credible OER repositories, colleges and universities, government sources, and established open publishers.
 
 For each resource, tell me:
 - Title
-- Which parts of my course it could support
-- Important course needs it does not appear to cover
+- Which course needs it could support
+- Important needs it does not appear to cover
 - Open license or public-domain status
 - Direct link to the original resource
 
-Do not invent resources, links, licenses, or course requirements.
+STEP 3: WHAT IS STILL MISSING?
+End with a short list of course needs that still need another resource or a more focused search.
 
-Do not call something OER simply because it is free online.
-
-Keep the answer manageable. I want a shortlist to review, not a giant list.</pre>
+Important:
+- Do not invent resources, links, licenses, or course requirements.
+- Do not call something OER simply because it is free online.
+- Verify the open license or public-domain status when possible.
+- If you cannot verify something, write “Needs verification.”
+- Keep the answer manageable. I want a search plan and shortlist, not a giant catalog.</pre>
           </div>
 
           <div class="copy-row">
@@ -988,50 +996,58 @@ Keep the answer manageable. I want a shortlist to review, not a giant list.</pre
 
         <article class="prompt-card power">
           <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Search More Deeply</div>
-          <p>Best when you want AI to turn course documents into a search and coverage framework.</p>
+          <p>Best when you want a course-needs map, a deliberate search strategy, and a documented shortlist of what was and was not found.</p>
 
           <div class="prompt-box">
             <pre class="prompt-text" id="prompt-materials-power">I'm a power user. Use the course materials below to build and execute a structured OER discovery workflow.
 
 COURSE MATERIALS
-[PASTE COR, COURSE DESCRIPTION, SLOS, OBJECTIVES, TOPICS, SYLLABUS, WEEKLY SCHEDULE, OR OTHER RELEVANT MATERIAL]
+[PASTE COR, COURSE DESCRIPTION, SLOS, OBJECTIVES, TOPICS, SYLLABUS, WEEKLY SCHEDULE, UNIT LIST, OR OTHER RELEVANT MATERIAL]
 
-PHASE 1: ANALYZE THE COURSE
-Create a concise course-needs map that separates:
-- essential content
+PHASE 1: BUILD A COURSE-NEEDS MAP
+Translate the material I provided into a concise map of what I may need to locate. Separate, when supported by the course materials:
+- essential content or concepts
 - recurring skills or practices
-- major assignments or applications, if provided
+- types of readings, examples, primary sources, media, or activities that appear useful
+- major assignments or applications
+- needs tied to particular units or weeks
 - content that appears optional or instructor-specific
 
-Do not invent requirements that are not supported by the material I provide.
+Do not invent requirements that are not supported by the material I provide. If the materials are ambiguous, label the inference rather than treating it as a requirement.
 
-PHASE 2: SEARCH
-Search multiple credible OER repositories and original institutional or publisher sources. Use the course-needs map to search for both:
-- substantial resources that could cover much of the course
-- targeted resources for important needs that full texts miss
+PHASE 2: TURN THE MAP INTO SEARCH CRITERIA
+For each major need, identify useful search terms, alternate terminology, and related disciplinary language where appropriate. Combine overlapping needs so the search does not become unnecessarily repetitive.
 
-Use alternate search terms and related disciplines where appropriate.
+PHASE 3: SEARCH
+Search multiple credible OER repositories and original institutional, governmental, or open-publisher sources. Use the course-needs map to look for both:
+- substantial resources that could cover multiple course needs
+- targeted resources for important needs that broader texts miss
 
-PHASE 3: VERIFY
+If an initial search for an important need is weak, try at least one materially different search strategy before calling it a gap.
+
+PHASE 4: VERIFY
 For each serious candidate:
 - confirm the resource exists
 - provide a direct link to the original source
 - identify the open license or public-domain status from the source when possible
-- separate verified facts from inference
-- label any unverified detail
-- never treat "free online" as proof that something is OER
+- distinguish verified facts from inference
+- label any unverified detail “Needs verification”
+- never treat “free online” as proof that something is OER
 
-PHASE 4: REPORT
-Create a table:
+PHASE 5: REPORT
+First, show a brief table:
+Course Need | Search Terms/Strategy | What a Useful Resource Should Provide
+
+Then show the strongest results in a second table:
 Resource | Course Needs Covered | Important Gaps | Type | License | Direct Link | Verification Notes
 
 Then provide:
-1. The 3 strongest overall candidates.
-2. A brief explanation of why each is worth faculty review.
-3. A list of course needs that remain uncovered.
-4. The next 3 focused searches you would run for those gaps.
+1. The 3 strongest overall candidates and why they deserve faculty review.
+2. Course needs that remain uncovered or weakly covered.
+3. The next 3 focused searches you would run for those gaps.
+4. Any places where one strong resource could replace several weaker or repetitive resources.
 
-Keep the output decision-focused. Do not bury the strongest resources inside a long list.</pre>
+Keep the output decision-focused. The goal is to turn my existing course into a search strategy and a manageable shortlist, not to redesign my weekly schedule or bury me in a long catalog.</pre>
           </div>
 
           <div class="copy-row">
@@ -1057,6 +1073,7 @@ Keep the output decision-focused. Do not bury the strongest resources inside a l
       <h2 id="related-heading">What Next?</h2>
       <div class="related-links">
         <a href="evaluate-oer.html">Found something promising? Evaluate the OER.</a>
+        <a href="build-a-plan.html#week-by-week">Already have candidate readings? Map them to your course week by week.</a>
         <a href="fill-a-gap.html">Almost a fit? Find OER to fill the gaps.</a>
         <a href="ztc-options.html">No strong OER? Explore other ZTC options.</a>
       </div>

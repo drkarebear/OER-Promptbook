@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ready-to-use AI prompts that help faculty fill specific gaps in OER courses with open readings, chapters, activities, media, primary sources, and perspectives.">
+  <meta name="description" content="AI prompts that help faculty diagnose what an OER course or unit is missing, then find targeted open activities, media, primary sources, perspectives, or readings without adding unnecessary workload.">
   <link rel="icon" href="favicon6a.png" type="image/png">
   <title>Fill a Gap | The OER Promptbook</title>
 
@@ -259,7 +259,7 @@
 
     .goal-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: .85rem;
     }
 
@@ -597,32 +597,38 @@
 
   <section class="page-hero" aria-labelledby="page-title">
     <div class="hero-inner">
-      <div class="eyebrow">Keep what already works</div>
-      <h1 id="page-title">You Don't Have to Replace Everything</h1>
-      <p class="hero-lede">If your course or OER is mostly working, use AI to help find the one missing piece: a reading, activity, video, primary source, example, or perspective that makes the unit stronger.</p>
+      <div class="eyebrow">Diagnose before you add</div>
+      <h1 id="page-title">Your Course Almost Works. Fix the Missing Piece.</h1>
+      <p class="hero-lede">If a course or unit is mostly working, start by identifying what is actually missing. Then use AI to find the smallest useful addition: practice, media, a primary source, context, perspective, or a targeted reading.</p>
 
       <ul class="hero-points" aria-label="What this page can help with">
-        <li><span class="check" aria-hidden="true">✓</span> Fill one specific hole</li>
-        <li><span class="check" aria-hidden="true">✓</span> Avoid rebuilding the course</li>
-        <li><span class="check" aria-hidden="true">✓</span> Keep the search manageable</li>
+        <li><span class="check" aria-hidden="true">✓</span> Identify the real gap</li>
+        <li><span class="check" aria-hidden="true">✓</span> Add only what earns its place</li>
+        <li><span class="check" aria-hidden="true">✓</span> Protect student workload</li>
       </ul>
     </div>
   </section>
 
   <main id="main-content">
     <section class="quick-start" aria-labelledby="quick-heading">
-      <h2 id="quick-heading">A Gap Does Not Mean You Need a New Textbook</h2>
-      <p>Sometimes the best ZTC course is a thoughtful mix of resources rather than one perfect book. These prompts help you search for a specific missing piece without turning one weak week into a full course redesign.</p>
-      <p><strong>Tip:</strong> Tell AI what students need to do with the resource, not just the topic. “Students need to compare two perspectives on immigration policy” will usually produce a better search than “find something about immigration.”</p>
+      <h2 id="quick-heading">Start by Diagnosing the Gap</h2>
+      <p>Sometimes a weak week needs another resource. Sometimes it needs a clearer example, more practice, a different kind of source, or simply less repetition. The first prompt below helps you identify the instructional need before you start searching.</p>
+      <p><strong>Tip:</strong> Describe what students need to <em>do</em>, where they are getting stuck, and what they already have. The goal is not to add more material. It is to find the smallest change that makes the unit work better.</p>
     </section>
 
     <nav class="goal-nav" aria-labelledby="goal-heading">
       <h2 id="goal-heading">What Kind of Gap Are You Filling?</h2>
       <div class="goal-grid">
-        <a class="goal-link" href="#reading">
+        <a class="goal-link" href="#diagnose">
+          <span class="goal-icon" aria-hidden="true">🧭</span>
+          <strong>Not Sure What Is Missing?</strong>
+          <span>Diagnose the instructional gap before adding another resource.</span>
+        </a>
+
+        <a class="goal-link" href="find-oer.html#one-unit">
           <span class="goal-icon" aria-hidden="true">📖</span>
-          <strong>A Missing Reading or Chapter</strong>
-          <span>Find one strong text for a topic, week, or concept.</span>
+          <strong>A Reading or Chapter</strong>
+          <span>Already know you need a text? Go directly to the targeted OER search.</span>
         </a>
 
         <a class="goal-link" href="#activity">
@@ -639,122 +645,138 @@
 
         <a class="goal-link" href="#perspective">
           <span class="goal-icon" aria-hidden="true">🌐</span>
-          <strong>A Missing Perspective or Example</strong>
-          <span>Broaden a unit that feels narrow, dated, or disconnected from students.</span>
+          <strong>A Perspective, Example, or Context</strong>
+          <span>Broaden a unit that feels narrow, dated, abstract, or disconnected.</span>
         </a>
       </div>
     </nav>
 
-    <section class="prompt-section" id="reading" aria-labelledby="reading-heading">
-      <span class="section-number">Gap 1</span>
-      <h2 id="reading-heading">Find One Reading or Chapter</h2>
-      <p class="section-intro">Use this when you know exactly where the hole is and want a short, assignable resource rather than another 400-page textbook.</p>
+    <section class="prompt-section" id="diagnose" aria-labelledby="diagnose-heading">
+      <span class="section-number">Start Here</span>
+      <h2 id="diagnose-heading">Figure Out What This Unit Is Missing</h2>
+      <p class="section-intro">Use this before searching when a unit feels weak but you are not sure another reading is actually the answer. AI can help name the instructional gap and recommend the smallest useful next step.</p>
 
       <div class="prompt-grid">
         <article class="prompt-card simple">
           <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
-          <p>Best when you want only a few realistic readings to review.</p>
+          <p>Best when you know something is not working but are not sure what kind of resource would help.</p>
 
           <div class="prompt-box">
-            <pre class="prompt-text" id="prompt-reading-simple">I'm new to AI. Keep this simple.
+            <pre class="prompt-text" id="prompt-diagnose-simple">I'm new to AI. Keep this simple.
 
 I teach [COURSE] at a community college.
 
-I need one good OER reading for:
-[TOPIC OR CONCEPT]
+This unit or week is about:
+[TOPIC]
 
-Students need the reading to help them:
-[WHAT STUDENTS SHOULD UNDERSTAND, ANALYZE, COMPARE, OR PRACTICE]
+Students should be able to:
+[LEARNING GOAL]
 
-Please find 3–5 strong options.
+What students already have:
+[READINGS, VIDEOS, LECTURES, ACTIVITIES, OR OTHER MATERIALS]
 
-For each option, tell me:
-- Title and author or organization
-- What kind of resource it is
-- Why it fits this learning goal
-- Approximate length or reading time, only if you can verify or reasonably estimate it
-- Open license or public-domain status
-- Direct link to the original source
+What seems weak or where students tend to get stuck:
+[DESCRIBE THE PROBLEM]
 
-Prioritize resources that are clear, assignable, and appropriate for community college students.
+Before suggesting more material, help me diagnose what this unit actually needs.
 
-Do not invent titles, links, licenses, or length information.
+Consider whether the main gap is:
+- explanation or content
+- an example or model
+- practice or application
+- context or a different perspective
+- evidence, data, media, or a primary source
+- accessibility or format
+- updated information
+- unnecessary repetition or too much material
+- something else
 
-Do not call something OER simply because it is free online.
+Tell me:
+1. The 1–2 most likely gaps.
+2. Why you think those are the gaps based on what I provided.
+3. Whether I actually need another resource.
+4. The smallest change that would most likely improve the unit.
 
-End by recommending the 2 readings I should review first.</pre>
+If a new resource would help, describe exactly what kind of resource I should look for and what students should do with it.
+
+Do not search for resources yet.
+
+End with one clear next step: find a reading, find practice, find media or a primary source, add perspective/context, revise what I already have, or add nothing.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-reading-simple" data-status-target="status-reading-simple">Copy Simple Prompt</button>
-            <span class="copy-status" id="status-reading-simple" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-simple" data-status-target="status-diagnose-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-diagnose-simple" aria-live="polite"></span>
           </div>
         </article>
 
         <article class="prompt-card power">
-          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Search More Deeply</div>
-          <p>Best when you want the search tuned to learning goals, student workload, and the rest of the unit.</p>
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Diagnose Before Searching</div>
+          <p>Best when you want AI to distinguish a real instructional gap from a resource problem, workload problem, or design problem.</p>
 
           <div class="prompt-box">
-            <pre class="prompt-text" id="prompt-reading-power">I'm a power user. Help me fill one specific reading gap in my course with a strong OER.
+            <pre class="prompt-text" id="prompt-diagnose-power">I'm a power user. Diagnose this unit before recommending that I add another resource.
 
 COURSE
 [COURSE NAME AND LEVEL]
 
-UNIT CONTEXT
-[BRIEFLY DESCRIBE WHAT STUDENTS HAVE ALREADY READ OR LEARNED]
+UNIT OR WEEK
+[TOPIC]
 
-MISSING NEED
-[TOPIC, CONCEPT, QUESTION, OR PERSPECTIVE]
-
-LEARNING PURPOSE
+LEARNING GOAL
 Students should be able to:
 [LEARNING GOAL]
 
-CONSTRAINTS
-- Maximum reading time: [OPTIONAL]
-- Preferred resource type: [ARTICLE / CHAPTER / ESSAY / PRIMARY TEXT / OPEN]
-- Reading level or accessibility needs: [OPTIONAL]
-- Perspectives or contexts to prioritize: [OPTIONAL]
+CURRENT MATERIALS
+[PASTE TITLES, LINKS, SHORT DESCRIPTIONS, ASSIGNMENTS, OR A UNIT OUTLINE]
 
-SEARCH
-Search multiple credible OER repositories, institutional collections, open journals, government sources, and discipline-specific collections when appropriate.
+WHAT I AM NOTICING
+[CONFUSION, WEAK TRANSFER, LACK OF PRACTICE, OUTDATED EXAMPLES, NARROW CONTEXT, LOW ENGAGEMENT, WORKLOAD, OR OTHER CONCERN]
 
-Look for resources that serve the instructional purpose, even if their titles use different terminology.
+PHASE 1: INVENTORY
+Briefly identify what instructional functions the current materials already serve. For example: introduce content, model a skill, provide evidence, offer practice, add context, or assess learning.
 
-VERIFICATION
-- Verify that each resource exists.
-- Link to the original source.
-- Identify the open license or public-domain status when possible.
-- Do not confuse free access with OER.
-- Mark anything uncertain as needing verification.
+PHASE 2: DIAGNOSE
+Identify the strongest evidence for any meaningful gap. Consider:
+- missing explanation or foundational content
+- missing model or worked example
+- insufficient practice or application
+- missing context or perspective
+- missing primary source, evidence, data, or media
+- accessibility or format barriers
+- currency or outdated information
+- redundancy or excess workload
+- unclear alignment between the materials and the learning goal
 
-OUTPUT
-Give me the 5 strongest candidates:
-Resource | Why It Fits | Student Workload | License | Direct Link | Verification Notes
+Do not assume that more content is the solution.
 
-Then:
-1. Recommend the strongest 2.
-2. Explain how each would function in the unit.
-3. Identify what each adds that my current materials are missing.
-4. Tell me if no candidate truly solves the gap rather than forcing a weak recommendation.</pre>
+PHASE 3: RECOMMEND THE SMALLEST INTERVENTION
+Rank up to 3 possible interventions from highest to lowest value. These may include revising, replacing, shortening, reordering, making something optional, adding practice, or adding one targeted resource.
+
+PHASE 4: CREATE A SEARCH BRIEF ONLY IF NEEDED
+If a new resource is justified, give me a concise search brief with:
+Resource type | Instructional purpose | What it must add | What it should not duplicate | Suggested maximum student time
+
+Do not search for resources yet.
+
+End with the best next step and point me toward one category: reading, practice/activity, media/primary source, perspective/context, revise existing materials, or no new resource.</pre>
           </div>
 
           <div class="copy-row">
-            <button class="copy-button" type="button" data-copy-target="prompt-reading-power" data-status-target="status-reading-power">Copy Power Prompt</button>
-            <span class="copy-status" id="status-reading-power" aria-live="polite"></span>
+            <button class="copy-button" type="button" data-copy-target="prompt-diagnose-power" data-status-target="status-diagnose-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-diagnose-power" aria-live="polite"></span>
           </div>
         </article>
       </div>
 
       <div class="customize">
-        <strong>Need to protect student reading time?</strong>
-        <p>Add: “Keep the total estimated student reading time under [30/45/60] minutes. Favor shorter resources that still provide enough depth for the learning goal.”</p>
+        <strong>Diagnosis says you need a reading?</strong>
+        <p>Use the <a href="find-oer.html#one-unit">Find OER for One Unit, Week, or Topic prompt</a>. Paste the search brief from this prompt so AI knows exactly what the new reading needs to accomplish.</p>
       </div>
     </section>
 
     <section class="prompt-section" id="activity" aria-labelledby="activity-heading">
-      <span class="section-number">Gap 2</span>
+      <span class="section-number">Gap Search 1</span>
       <h2 id="activity-heading">Find Practice, an Activity, or an Ancillary</h2>
       <p class="section-intro">Use this when the content is there, but students need something to do with it: practice, discussion, application, self-checks, or other learning support.</p>
 
@@ -862,7 +884,7 @@ Only after that, optionally suggest what kind of activity I could create or adap
     </section>
 
     <section class="prompt-section" id="media-source" aria-labelledby="media-heading">
-      <span class="section-number">Gap 3</span>
+      <span class="section-number">Gap Search 2</span>
       <h2 id="media-heading">Find Media, Data, or a Primary Source</h2>
       <p class="section-intro">Use this when students need something concrete to analyze: a speech, image, map, dataset, historical document, government report, video, recording, or other source material.</p>
 
@@ -966,7 +988,7 @@ Then:
     </section>
 
     <section class="prompt-section" id="perspective" aria-labelledby="perspective-heading">
-      <span class="section-number">Gap 4</span>
+      <span class="section-number">Gap Search 3</span>
       <h2 id="perspective-heading">Add a Missing Perspective, Example, or Context</h2>
       <p class="section-intro">Use this when a unit technically covers the topic but still feels narrow, dated, abstract, or disconnected from the students in front of you.</p>
 
@@ -1085,9 +1107,9 @@ Then:
     <section class="related" aria-labelledby="related-heading">
       <h2 id="related-heading">What Next?</h2>
       <div class="related-links">
+        <a href="find-oer.html#one-unit">Diagnosis says you need a reading? Run a targeted OER search.</a>
         <a href="build-a-plan.html">Have the pieces? Map them into your weeks or units.</a>
-        <a href="evaluate-oer.html">Not sure a new resource is good enough? Evaluate it first.</a>
-        <a href="ztc-options.html">Can't find an OER? Explore library-supported ZTC options.</a>
+        <a href="evaluate-oer.html">Found a possibility? Evaluate it before you add it.</a>
       </div>
     </section>
   </main>
