@@ -1,1 +1,1158 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI prompts for academic librarians supporting faculty with OER, library ebooks, licensing questions, and Zero Textbook Cost course materials.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Librarian Prompts | The OER Promptbook</title>
+
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --simple-bg: #effafa;
+      --simple-border: #b8dfe0;
+      --power-bg: #f2f7ff;
+      --power-border: #bfd5f4;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11,41,72,.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #eefafa 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.6rem 1.25rem 2.8rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .7rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.25rem, 5vw, 3.9rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 900px;
+    }
+
+    .hero-lede {
+      max-width: 850px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 .8rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .intro-note {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.3rem;
+    }
+
+    .intro-note h2 {
+      font-size: 1.25rem;
+      margin-bottom: .45rem;
+    }
+
+    .intro-note p {
+      margin: .35rem 0;
+    }
+
+    .goal-nav {
+      margin: 2rem 0 3rem;
+    }
+
+    .goal-nav h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .goal-link {
+      display: flex;
+      flex-direction: column;
+      min-height: 172px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .goal-link:hover {
+      border-color: #8fc8cb;
+      box-shadow: var(--shadow);
+    }
+
+    .goal-icon {
+      font-size: 1.45rem;
+      margin-bottom: .4rem;
+    }
+
+    .goal-link strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .goal-link span:last-child {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .prompt-section {
+      scroll-margin-top: 1rem;
+      margin: 3.5rem 0;
+      padding-top: .5rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .8rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      color: var(--muted);
+      margin: 0 0 1.35rem;
+      font-size: 1.02rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .prompt-card {
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .prompt-card.simple {
+      background: var(--simple-bg);
+      border: 1px solid var(--simple-border);
+    }
+
+    .prompt-card.power {
+      background: var(--power-bg);
+      border: 1px solid var(--power-border);
+    }
+
+    .prompt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .prompt-card > p {
+      margin: .2rem 0 .9rem;
+      color: #405064;
+      font-size: .94rem;
+    }
+
+    .prompt-box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #cfd9e3;
+      border-radius: 14px;
+      padding: 1rem;
+      flex-grow: 1;
+      min-height: 410px;
+    }
+
+    .prompt-text {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .9rem;
+      line-height: 1.58;
+      color: #1d2938;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      border: 0;
+      border-radius: 10px;
+      min-height: 44px;
+      padding: .68rem 1rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-button:hover {
+      background: var(--navy-2);
+    }
+
+    .copy-status {
+      font-size: .88rem;
+      color: var(--green);
+      font-weight: 700;
+      min-height: 1.3em;
+    }
+
+    .boundary {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--teal);
+      background: #f1fafa;
+      border-radius: 10px;
+    }
+
+    .boundary strong {
+      color: var(--navy);
+    }
+
+    .boundary p {
+      margin: .35rem 0 0;
+    }
+
+    .resource-box {
+      margin-top: 3rem;
+      border: 1px solid #b8dfe0;
+      background: #f1fafa;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .resource-box h2 {
+      font-size: 1.45rem;
+      margin-bottom: .65rem;
+    }
+
+    .resource-box ul {
+      margin-bottom: 0;
+    }
+
+    .related {
+      margin-top: 2rem;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .related a {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      background: var(--surface-soft);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 1050px) {
+      .goal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-box {
+        min-height: auto;
+      }
+
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goal-link {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.7rem 1rem 2.1rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .prompt-card {
+        padding: 1rem;
+      }
+
+      .prompt-box {
+        padding: .9rem;
+      }
+
+      .prompt-text {
+        font-size: .86rem;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <img class="brand-icon" src="favicon6.png" alt="">
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="ztc-options.html">Faculty ZTC Prompts</a></li>
+          <li><a href="librarian-prompts.html" aria-current="page">Librarians</a></li>
+          <li><a href="liaison-prompts.html">OER/ZTC Liaisons</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Additional prompt collection</div>
+      <h1 id="page-title">AI Prompts for Librarians Supporting OER and ZTC</h1>
+      <p class="hero-lede">Use AI to reduce the repetitive research and communication work around faculty requests, while keeping acquisitions, licensing, accessibility, and local access decisions in librarian hands.</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="intro-note" aria-labelledby="role-heading">
+      <h2 id="role-heading">The Librarian Still Makes the Library Decision</h2>
+      <p>These prompts are designed to help with <strong>research, comparison, organization, and communication</strong>. AI should not invent institutional prices, user models, vendor availability, license terms, or accessibility claims.</p>
+      <p>Use your library systems, vendors, licenses, catalog, and professional judgment to verify anything that affects actual student access.</p>
+    </section>
+
+    <nav class="goal-nav" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">What Are You Trying to Do?</h2>
+      <div class="goal-grid">
+        <a class="goal-link" href="#triage">
+          <span class="goal-icon" aria-hidden="true">📥</span>
+          <strong>Triage a Faculty Request</strong>
+          <span>Turn a vague request into the few questions and searches that matter.</span>
+        </a>
+
+        <a class="goal-link" href="#title">
+          <span class="goal-icon" aria-hidden="true">🔎</span>
+          <strong>Investigate a Specific Title</strong>
+          <span>Organize public evidence before checking your local vendors.</span>
+        </a>
+
+        <a class="goal-link" href="#alternatives">
+          <span class="goal-icon" aria-hidden="true">↔</span>
+          <strong>Find Better Alternatives</strong>
+          <span>When the requested title has a poor access model, search for substitutes.</span>
+        </a>
+
+        <a class="goal-link" href="#compare">
+          <span class="goal-icon" aria-hidden="true">⚖️</span>
+          <strong>Compare Access Options</strong>
+          <span>Organize price, user model, sustainability, and restrictions.</span>
+        </a>
+
+        <a class="goal-link" href="#reply">
+          <span class="goal-icon" aria-hidden="true">✉</span>
+          <strong>Reply to Faculty</strong>
+          <span>Turn technical findings into a clear, collegial recommendation.</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="prompt-section" id="triage" aria-labelledby="triage-heading">
+      <span class="section-number">Librarian 1</span>
+      <h2 id="triage-heading">Triage a Faculty ZTC Request</h2>
+      <p class="section-intro">Use this when a faculty request is broad, such as “Can the library get something for my class?” or “Can you make this book ZTC?”</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you need to turn a messy email into a short research plan.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-triage-simple">I am an academic librarian supporting a faculty request related to OER or Zero Textbook Cost (ZTC).
+
+FACULTY REQUEST
+[PASTE THE REQUEST]
+
+Help me triage it.
+
+Identify:
+1. What the faculty member appears to be asking for
+2. What information I already have
+3. The 1–3 missing details that would materially affect my search
+4. What I should check in our local library systems or vendor tools
+5. What could be researched publicly before I do that
+
+Do not invent institutional access, prices, licenses, or vendor availability.
+
+If the faculty member is not committed to one exact title, suggest a broader search goal based on the instructional need.
+
+End with a short checklist I can use to work the request.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-triage-simple" data-status-target="status-triage-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-triage-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when the request may involve several formats, vendors, or possible substitutes.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-triage-power">Act as a research assistant helping an academic librarian triage a faculty OER/ZTC request.
+
+FACULTY REQUEST
+[PASTE REQUEST]
+
+KNOWN COURSE CONTEXT
+[COURSE, ENROLLMENT, TERM, CURRENT TEXT, TOPIC, OR OTHER INFORMATION]
+
+PHASE 1 — DEFINE THE INSTRUCTIONAL NEED
+Separate:
+- exact-title preference
+- actual instructional purpose
+- required format or use
+- approximate scale of student access needed
+- timing/deadline
+
+If the request is vague, identify no more than 3 questions worth asking the faculty member.
+
+PHASE 2 — DEFINE THE LIBRARY CHECKS
+Create a local verification checklist for:
+- current holdings
+- vendor availability
+- user/access model
+- price
+- perpetual vs. subscription terms
+- DRM/download restrictions
+- accessibility information
+- platform requirements
+- sustainability across future terms
+
+PHASE 3 — PUBLIC RESEARCH
+Identify useful public research that can be done before or alongside local vendor work, such as:
+- publisher information
+- academic-library platform evidence
+- examples of similar ZTC use at other colleges
+- alternative titles serving the same instructional need
+
+PHASE 4 — PRIORITIZE
+Tell me the most efficient order in which to do the work.
+
+Do not invent any local-library fact or vendor term.
+
+OUTPUT
+Give me:
+A. Faculty need
+B. Questions worth asking
+C. Local library checks
+D. Public research
+E. Best next action</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-triage-power" data-status-target="status-triage-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-triage-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="title" aria-labelledby="title-heading">
+      <span class="section-number">Librarian 2</span>
+      <h2 id="title-heading">Investigate a Specific Requested Title</h2>
+      <p class="section-intro">Use this to organize public evidence before you check your own catalog, vendor platforms, or acquisitions systems.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you want a clean public-evidence brief.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-title-simple">I am an academic librarian investigating this requested title:
+
+Title: [TITLE]
+Author: [AUTHOR]
+Publisher: [OPTIONAL]
+ISBN: [OPTIONAL]
+
+Find reliable public evidence related to:
+- publisher ebook availability
+- academic-library ebook platform listings or references
+- college or university library catalog records
+- documented course or ZTC use at another institution, if available
+
+For each source, tell me exactly what the evidence supports.
+
+Do not infer:
+- my library's access
+- institutional price
+- unlimited-user availability
+- DRM-free status
+- perpetual rights
+- any other license term that is not explicitly public
+
+Create a short table:
+Source | What It Shows | Link | What It Does NOT Prove
+
+End with a checklist of what I still need to verify locally.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-title-simple" data-status-target="status-title-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-title-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when you want to compare public evidence with the instructional role of the title.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-title-power">I am an academic librarian preparing to investigate a faculty-requested ebook.
+
+TITLE
+[TITLE / AUTHOR / ISBN / PUBLISHER]
+
+COURSE USE
+[COURSE, APPROXIMATE ENROLLMENT, HOW THE TITLE WILL BE USED]
+
+PUBLIC RESEARCH TASK
+Find reliable public evidence for:
+1. Publisher ebook availability
+2. Academic-library platform presence or references
+3. Other academic-library catalog records
+4. Documented ZTC/course use at other institutions
+5. Publicly stated access-model information, only if it is genuinely documented
+
+EVIDENCE STANDARD
+For every finding, separate:
+- Verified public fact
+- Reasonable lead for local checking
+- Unverified assumption
+
+Do not use consumer prices as institutional prices.
+
+Do not claim a title has an unlimited-user, perpetual, DRM-free, or other license unless the evidence explicitly supports that claim.
+
+OUTPUT
+Create:
+
+PUBLIC EVIDENCE TABLE
+Source | Evidence | Confidence | Local Follow-Up
+
+INSTRUCTIONAL ROLE
+Briefly summarize what the title appears to be doing for the course.
+
+LOCAL VERIFICATION CHECKLIST
+Include:
+- existing holdings
+- vendor/platform availability
+- access model
+- institutional price
+- simultaneous users
+- perpetual/subscription status
+- DRM/download limits
+- accessibility
+- platform requirements
+- alternatives with better access
+
+End with the 3 most important things to check first.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-title-power" data-status-target="status-title-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-title-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="alternatives" aria-labelledby="alternatives-heading">
+      <span class="section-number">Librarian 3</span>
+      <h2 id="alternatives-heading">Find Alternatives When the Requested Title Will Not Work</h2>
+      <p class="section-intro">Use this when the exact title is unavailable, too restrictive, too costly, or otherwise impractical for whole-class use.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you need a few substitute titles that meet the same instructional need.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-alt-simple">I am an academic librarian helping a faculty member find an alternative to this requested title:
+
+[REQUESTED TITLE]
+
+The book is being used for:
+[TOPIC / UNIT / INSTRUCTIONAL PURPOSE]
+
+The reason I need alternatives is:
+[POOR ACCESS MODEL / UNAVAILABLE / COST / OTHER]
+
+Find 5–8 commercially published or openly licensed alternatives that serve the same instructional purpose.
+
+For each option, provide:
+- Title and author
+- Publisher and year
+- Why it may work as a substitute
+- Evidence of academic-library or OER availability, if verifiable
+- What I still need to check locally
+
+Do not assume that a similar title has a better license.
+
+Do not invent institutional prices or access models.
+
+Prioritize pedagogical fit over superficial title similarity.
+
+End with the 3 alternatives most worth checking first.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-alt-simple" data-status-target="status-alt-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-alt-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when you want alternatives ranked by instructional fit and likelihood of practical library access.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-alt-power">I am an academic librarian searching for alternatives to a requested title that is not practical for whole-class ZTC use.
+
+REQUESTED TITLE
+[TITLE / AUTHOR]
+
+INSTRUCTIONAL FUNCTION
+[WHAT THE FACULTY MEMBER NEEDS STUDENTS TO READ, LEARN, ANALYZE, OR DO]
+
+KNOWN PROBLEM
+[ACCESS MODEL / AVAILABILITY / COST / PLATFORM / OTHER]
+
+SEARCH STRATEGY
+Search for:
+- commercially published alternatives
+- academic or university press titles
+- reputable trade titles
+- OER or public-domain options when appropriate
+- titles already documented as library-supported ZTC at another institution, when evidence exists
+
+Do not search only for near-identical titles. Search for resources that accomplish the same instructional job.
+
+FOR EACH CANDIDATE
+Assess:
+- instructional match
+- likely college-level appropriateness
+- publisher
+- public evidence of academic-library availability
+- public evidence of ZTC use elsewhere, if any
+- important differences from the requested title
+- local verification still needed
+
+OUTPUT
+Table:
+Candidate | Instructional Match | Evidence | Difference From Requested Title | Local Check
+
+Then:
+1. Rank the strongest 5.
+2. Identify the top 2 most likely to be worth vendor checking first.
+3. Include one OER option if a credible match exists.
+4. Identify any important content that none of the alternatives appears to replace.
+
+Do not invent licensing terms to make an alternative look more promising.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-alt-power" data-status-target="status-alt-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-alt-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="boundary">
+        <strong>Useful framing for faculty:</strong>
+        <p>“The exact title may not have an access model that works for a full class, but I can look for alternatives that serve the same instructional purpose.”</p>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="compare" aria-labelledby="compare-heading">
+      <span class="section-number">Librarian 4</span>
+      <h2 id="compare-heading">Compare Library Access Options</h2>
+      <p class="section-intro">Use this after you have gathered actual local vendor information. AI can organize the comparison, but it should work only from the data you provide.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you want a clean table from messy vendor notes.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-compare-simple">I am an academic librarian comparing actual access options for a possible ZTC course resource.
+
+Here are my verified vendor/library notes:
+[PASTE VERIFIED DATA]
+
+Organize the information into a table:
+
+Option | Price | User Model | Perpetual or Subscription | DRM/Download Limits | Accessibility Notes | Main Strength | Main Risk
+
+Use only the data I provide.
+
+Do not fill in missing information from general knowledge.
+
+If something is missing, write "Not provided."
+
+Then identify:
+- the option that appears most sustainable
+- the option with the lowest access risk for a whole class
+- any important question I still need answered before recommending a purchase</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-compare-simple" data-status-target="status-compare-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-compare-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when cost, sustainability, student access, and backup planning all matter.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-compare-power">I am an academic librarian comparing verified local acquisition/access options for a potential ZTC course resource.
+
+VERIFIED DATA
+[PASTE PRICE, VENDOR, USER MODEL, TERM, DRM, PLATFORM, ACCESSIBILITY, HOLDINGS, AND OTHER NOTES]
+
+COURSE CONTEXT
+[COURSE / APPROXIMATE ENROLLMENT / EXPECTED FREQUENCY OF USE]
+
+Use only the verified data I provide.
+
+Compare each option on:
+- whole-class access risk
+- sustainability across terms
+- total cost
+- recurring vs. one-time cost
+- simultaneous-user limitations
+- DRM/download friction
+- accessibility information provided
+- platform complexity
+- backup risk if subscription access ends
+
+Do not infer missing facts.
+
+OUTPUT
+Create:
+Option | Verified Terms | Whole-Class Fit | Sustainability | Main Risk | Missing Information
+
+Then provide:
+1. Strongest option if reliable whole-class access is the priority
+2. Strongest option if long-term sustainability is the priority
+3. Strongest option if lowest cost is the priority
+4. Any option I should rule out for this use case
+5. Questions that remain unresolved
+
+Do not create a recommendation based on features I did not provide.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-compare-power" data-status-target="status-compare-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-compare-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="reply" aria-labelledby="reply-heading">
+      <span class="section-number">Librarian 5</span>
+      <h2 id="reply-heading">Turn the Research Into a Clear Faculty Reply</h2>
+      <p class="section-intro">Use this when the research is done but the faculty member does not need a paragraph about DRM, concurrent-user models, or acquisitions systems.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> Quick Prompt</div>
+          <p>Best when you want a short, collegial email.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-reply-simple">I am an academic librarian replying to a faculty member about a possible ZTC resource.
+
+Here are my verified findings:
+[PASTE FINDINGS]
+
+Draft a brief, collegial email.
+
+The email should:
+- answer the faculty member's main question first
+- explain any access limitation in plain language
+- avoid unnecessary acquisitions jargon
+- identify the best available option
+- identify any alternative worth considering
+- clearly say what is confirmed and what is still pending
+- give the faculty member one clear next step, if needed
+
+Do not add facts that are not in my findings.
+
+Keep the tone supportive and practical.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-reply-simple" data-status-target="status-reply-simple">Copy Quick Prompt</button>
+            <span class="copy-status" id="status-reply-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> Deeper Workflow</div>
+          <p>Best when there are several options and you want the explanation to support an actual teaching decision.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-reply-power">I am an academic librarian communicating verified ZTC/library findings to a faculty member.
+
+FACULTY REQUEST
+[PASTE OR SUMMARIZE]
+
+VERIFIED FINDINGS
+[PASTE]
+
+ALTERNATIVES
+[OPTIONAL]
+
+Draft a concise faculty-facing response that:
+
+1. Opens with the practical answer.
+2. Explains the status of the requested title.
+3. Translates technical access terms into plain language.
+4. Explains why any limitation matters for students in a full class.
+5. Presents the strongest alternative(s), if available.
+6. Distinguishes confirmed access from possibilities that still require work.
+7. Recommends a next step without pressuring the faculty member to change materials.
+
+Avoid:
+- unexplained vendor jargon
+- implying that OER is always the preferred answer
+- presenting a library alternative as guaranteed if access is not confirmed
+- overwhelming the faculty member with every detail from the research
+
+At the end, include a compact internal note for me listing any follow-up I still need to do. Keep that internal note separate from the faculty email.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-reply-power" data-status-target="status-reply-power">Copy Deeper Workflow</button>
+            <span class="copy-status" id="status-reply-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="resource-box" aria-labelledby="resource-heading">
+      <h2 id="resource-heading">California Library and ZTC Guidance</h2>
+      <p>For California Community Colleges, keep local work grounded in current statewide guidance and your own district or college policies.</p>
+      <ul>
+        <li><a href="https://asccc-oeri.org/libraries-and-ztc-ltc-frequently-asked-questions/">Read the ASCCC OERI Libraries and ZTC/LTC Frequently Asked Questions</a></li>
+        <li><a href="https://www.ztctap.org/">Explore California ZTC Technical Assistance resources</a></li>
+      </ul>
+    </section>
+
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Related Prompt Collections</h2>
+      <div class="related-links">
+        <a href="ztc-options.html">Faculty looking for library-supported ZTC? Start with Faculty ZTC Prompts.</a>
+        <a href="liaison-prompts.html">Supporting campus OER/ZTC work? Browse OER/ZTC Liaison Prompts.</a>
+        <a href="power-prompts.html">Need a deeper custom workflow? Use Power Prompts.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("[data-copy-target]");
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", async function () {
+          const targetId = button.getAttribute("data-copy-target");
+          const statusId = button.getAttribute("data-status-target");
+          const target = document.getElementById(targetId);
+          const status = document.getElementById(statusId);
+
+          if (!target) return;
+
+          const text = target.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (status) status.textContent = "Copied to clipboard.";
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(target);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) status.textContent = "Prompt selected. Copy it with Ctrl+C or Command+C.";
+          }
+
+          window.setTimeout(function () {
+            if (status) status.textContent = "";
+          }, 4000);
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
