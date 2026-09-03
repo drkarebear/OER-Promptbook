@@ -539,6 +539,35 @@
       color: var(--muted);
     }
 
+
+    .showcase-ideas {
+      max-width: 900px;
+      margin-top: 1.15rem;
+      border: 1px solid #cfe2e3;
+      border-radius: var(--radius);
+      background: var(--surface-teal);
+      padding: 1.15rem 1.25rem;
+    }
+
+    .showcase-ideas h3 {
+      margin-bottom: .55rem;
+      font-size: 1.08rem;
+    }
+
+    .showcase-ideas ul {
+      margin: .4rem 0 0;
+      padding-left: 1.3rem;
+    }
+
+    .showcase-ideas li + li {
+      margin-top: .4rem;
+    }
+
+    .showcase-link {
+      margin: .9rem 0 0;
+      font-weight: 800;
+    }
+
     .padlet-frame-wrap {
       display: none;
       margin-top: 1.2rem;
@@ -801,7 +830,18 @@
 
     <section class="showcase" id="showcase" aria-labelledby="showcase-heading">
       <h2 id="showcase-heading">See What People Are Trying</h2>
-      <p class="showcase-lede">The Promptbook Showcase is a more informal space for screenshots, brief examples, adaptations, and reflections on what happened when people tried a prompt.</p>
+      <p class="showcase-lede">The OER Promptbook Showcase is an informal space for faculty, librarians, and OER/ZTC colleagues to show what happened when they tried a prompt. Share screenshots, short screen-share demonstrations, prompt adaptations, and examples of finding, comparing, or organizing OER and other zero-cost course materials.</p>
+
+      <div class="showcase-ideas" aria-labelledby="showcase-ideas-heading">
+        <h3 id="showcase-ideas-heading">What You Might Share</h3>
+        <ul>
+          <li>A 2–5 minute screen-share showing how you used a prompt to find or evaluate OER.</li>
+          <li>An example of locating an EBSCOhost ebook, library article, or other library-provided zero-cost resource.</li>
+          <li>A course map that combines OER, library materials, and other ZTC readings.</li>
+          <li>A prompt you adapted for your discipline, course, or students.</li>
+          <li>A result that needed correction, along with what you changed or verified.</li>
+        </ul>
+      </div>
 
       <div id="padletFrameWrap" class="padlet-frame-wrap">
         <iframe
@@ -814,8 +854,10 @@
       </div>
 
       <div id="showcasePlaceholder" class="showcase-placeholder">
-        The community showcase will appear here once its Padlet embed URL is added.
+        The embedded showcase is not available in this view. You can still open it directly in Padlet.
       </div>
+
+      <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener">Open the OER Promptbook Showcase in Padlet</a></p>
     </section>
 
     <section class="safety-note" aria-labelledby="sharing-heading">
@@ -894,7 +936,7 @@
       REPORT_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSevJs-aCIHQC06jRM_w8xKl0gytipWOsTrET9Jb5NMjKavjQg/viewform?usp=pp_url",
       FEEDBACK_PROMPT_ID_PARAMETER: "entry.1735160719",
       REPORT_PROMPT_ID_PARAMETER: "entry.161399509",
-      PADLET_EMBED_URL: "PASTE_PADLET_EMBED_URL_HERE"
+      PADLET_EMBED_URL: "https://padlet.com/embed/s0238sdnaebdfej2lfdi"
     };
 
     let allPrompts = [];
