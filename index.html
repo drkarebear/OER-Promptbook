@@ -88,13 +88,9 @@
     }
 
     .brand-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #1aa386;
-      display: grid;
-      place-items: center;
-      font-size: 1.55rem;
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
       flex: 0 0 auto;
     }
 
@@ -146,10 +142,10 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: 4.5rem 1.25rem 3.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
-      gap: 3rem;
-      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 930px;
     }
 
     .eyebrow {
@@ -209,33 +205,6 @@
       font-size: .9rem;
     }
 
-    .hero-symbols {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: .9rem;
-      align-self: stretch;
-    }
-
-    .symbol-card {
-      min-height: 132px;
-      border-radius: 22px;
-      border: 1px solid #cae1e5;
-      background: #fff;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1rem;
-      font-weight: 800;
-      color: var(--navy);
-    }
-
-    .symbol-card .icon {
-      font-size: 2rem;
-      margin-bottom: .4rem;
-    }
 
     .notice-wrap {
       max-width: var(--max);
@@ -433,6 +402,66 @@
       font-size: .94rem;
     }
 
+
+    .support-section {
+      margin-top: 3.4rem;
+      padding-top: 2.6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .support-intro {
+      max-width: 780px;
+      margin-bottom: 1.3rem;
+    }
+
+    .support-intro .support-kicker {
+      display: inline-block;
+      margin-bottom: .35rem;
+      color: var(--teal);
+      font-size: .78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .support-intro h2 {
+      margin-bottom: .6rem;
+    }
+
+    .support-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .support-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      padding: 1.4rem;
+    }
+
+    .support-card h3 {
+      margin: 0 0 .55rem;
+      color: var(--navy);
+      font-size: 1.15rem;
+    }
+
+    .support-card p {
+      margin: 0 0 .85rem;
+      color: #405064;
+    }
+
+    .support-card a {
+      font-weight: 800;
+    }
+
     .site-footer {
       border-top: 1px solid var(--border);
       background: #f5f8fb;
@@ -457,13 +486,10 @@
         grid-template-columns: 1fr;
         padding-top: 3.4rem;
       }
-      .hero-symbols {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-      .symbol-card { min-height: 112px; }
       .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .pain-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
+      .support-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 650px) {
@@ -483,9 +509,6 @@
       .hero-inner {
         padding: 2.75rem 1rem 2rem;
         gap: 1.6rem;
-      }
-      .hero-symbols {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .benefits {
         display: grid;
@@ -511,7 +534,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
-        <span class="brand-icon" aria-hidden="true">📖</span>
+        <img class="brand-icon" src="favicon6.png" alt="">
         <span class="brand-text">
           <strong>The OER Promptbook</strong>
           <span>AI Prompts for Zero-Cost Course Materials</span>
@@ -533,7 +556,7 @@
   <main id="main-content">
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">Less searching • More teaching</div>
           <h1 id="hero-heading">Find and Evaluate OER <span class="accent">Without Losing Hours to the Search</span></h1>
           <p>The OER Promptbook gives community college faculty ready-to-use AI prompts for the time-consuming parts of OER: finding promising resources, comparing options, filling gaps, and fitting materials into a course you already teach.</p>
@@ -543,13 +566,6 @@
             <li><span class="check" aria-hidden="true">✓</span> Compare faster</li>
             <li><span class="check" aria-hidden="true">✓</span> Keep your course structure</li>
           </ul>
-        </div>
-
-        <div class="hero-symbols" aria-label="Ways the Promptbook can save faculty time">
-          <div class="symbol-card"><span class="icon" aria-hidden="true">🔎</span>Search Faster</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">⚖️</span>Compare</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">🧩</span>Fill Gaps</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">📅</span>Plan</div>
         </div>
       </div>
     </section>
@@ -668,6 +684,28 @@
           <p><a href="about.html">Learn more about The OER Promptbook</a></p>
         </section>
       </div>
+
+      <section class="support-section" aria-labelledby="support-heading">
+        <div class="support-intro">
+          <span class="support-kicker">Additional prompt collections</span>
+          <h2 id="support-heading">For the People Helping Faculty Build ZTC Courses</h2>
+          <p>The main Promptbook is designed for faculty. These additional collections support librarians and OER/ZTC liaisons who help faculty find resources, solve access problems, and expand zero-textbook-cost options.</p>
+        </div>
+
+        <div class="support-grid">
+          <article class="support-card">
+            <h3>Librarians</h3>
+            <p>Find ebook alternatives, organize faculty requests, compare licensing information, and support library-based ZTC purchasing and access.</p>
+            <a href="librarian-prompts.html">Browse Librarian Prompts</a>
+          </article>
+
+          <article class="support-card">
+            <h3>OER/ZTC Liaisons</h3>
+            <p>Support faculty conversations, identify promising opportunities, plan ZTC pathways, and prioritize campus OER and ZTC efforts.</p>
+            <a href="liaison-prompts.html">Browse OER/ZTC Liaison Prompts</a>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -675,7 +713,7 @@
     <div class="footer-inner">
       <p>The OER Promptbook is an open educational resource.</p>
       <p>Project maintained by Karen Crozer.</p>
-      <p>Hosted on GitHub Pages.</p>
+      <p>Hosted on GitHub Pages. <a href="privacy.html">Privacy</a></p>
     </div>
   </footer>
 </body>
