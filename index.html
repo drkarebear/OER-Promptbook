@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The OER Promptbook offers practical AI prompts for finding, evaluating, and building zero-cost course materials, including OER and library-supported ZTC options.">
+  <meta name="description" content="The OER Promptbook helps community college faculty save time finding, evaluating, comparing, and planning with OER and other zero-cost course materials.">
+  <link rel="icon" href="favicon6.png" type="image/png">
   <title>The OER Promptbook</title>
   <style>
     :root {
@@ -252,6 +253,64 @@
       font-size: .98rem;
     }
 
+    .pain-section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.2rem 1.25rem .25rem;
+    }
+
+    .pain-intro {
+      max-width: 820px;
+      margin: 0 auto 1.4rem;
+      text-align: center;
+    }
+
+    .pain-intro h2 {
+      margin-bottom: .65rem;
+    }
+
+    .pain-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .pain-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+    }
+
+    .pain-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: .35rem;
+    }
+
+    .pain-card p {
+      margin: 0;
+      color: #3d4a5a;
+    }
+
+    .task-kicker {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+      margin-bottom: .15rem;
+    }
+
     .content {
       max-width: var(--max);
       margin: 0 auto;
@@ -403,6 +462,7 @@
       }
       .symbol-card { min-height: 112px; }
       .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pain-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
     }
 
@@ -434,6 +494,7 @@
       }
       .content { padding: 2.7rem 1rem 3.5rem; }
       .notice-wrap { padding: 0 1rem; }
+      .pain-section { padding: 2rem 1rem .25rem; }
       .task-grid { grid-template-columns: 1fr; }
       .task-card { min-height: auto; }
       .footer-inner { flex-direction: column; }
@@ -460,6 +521,7 @@
       <nav aria-label="Primary navigation">
         <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
           <li><a href="#prompt-tasks">Prompts by Task</a></li>
           <li><a href="#ztc-options">ZTC Options</a></li>
           <li><a href="#about">About</a></li>
@@ -472,82 +534,111 @@
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <div>
-          <div class="eyebrow">Open • Practical • Faculty-Friendly</div>
-          <h1 id="hero-heading">Use AI to Find, Evaluate, and Build <span class="accent">Zero-Cost Course Materials</span></h1>
-          <p>The OER Promptbook helps community college faculty use AI to discover and evaluate Open Educational Resources (OER) and other no-cost-to-student options.</p>
+          <div class="eyebrow">Less searching • More teaching</div>
+          <h1 id="hero-heading">Find and Evaluate OER <span class="accent">Without Losing Hours to the Search</span></h1>
+          <p>The OER Promptbook gives community college faculty ready-to-use AI prompts for the time-consuming parts of OER: finding promising resources, comparing options, filling gaps, and fitting materials into a course you already teach.</p>
 
           <ul class="benefits" aria-label="Benefits">
-            <li><span class="check" aria-hidden="true">✓</span> Save students money</li>
-            <li><span class="check" aria-hidden="true">✓</span> Improve course fit</li>
-            <li><span class="check" aria-hidden="true">✓</span> Support equitable access</li>
+            <li><span class="check" aria-hidden="true">✓</span> Start with a shortlist</li>
+            <li><span class="check" aria-hidden="true">✓</span> Compare faster</li>
+            <li><span class="check" aria-hidden="true">✓</span> Keep your course structure</li>
           </ul>
         </div>
 
-        <div class="hero-symbols" aria-label="Project focus areas">
-          <div class="symbol-card"><span class="icon" aria-hidden="true">🔎</span>Find</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">⚖️</span>Evaluate</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">📚</span>Build</div>
-          <div class="symbol-card"><span class="icon" aria-hidden="true">$0</span>ZTC</div>
+        <div class="hero-symbols" aria-label="Ways the Promptbook can save faculty time">
+          <div class="symbol-card"><span class="icon" aria-hidden="true">🔎</span>Search Faster</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">⚖️</span>Compare</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">🧩</span>Fill Gaps</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">📅</span>Plan</div>
         </div>
       </div>
     </section>
 
     <div class="notice-wrap">
       <div class="notice" role="note">
-        <strong>Includes prompts for OER discovery, evaluation, course design, and ZTC exploration</strong>, including library ebooks and other resources students may be able to access at no cost.
+        <strong>No prompt-engineering expertise required.</strong> Each task is designed around a real faculty time crunch, with a simple copy-and-paste option for newer AI users and a deeper option for power users.
       </div>
     </div>
 
+    <section class="pain-section" aria-labelledby="pain-heading">
+      <div class="pain-intro">
+        <h2 id="pain-heading">OER Can Save Students Money. It Shouldn't Eat Up Your Prep Time.</h2>
+        <p>Use AI for the first-pass work that can make OER adoption feel overwhelming, then use your faculty judgment to decide what is actually worth teaching.</p>
+      </div>
+
+      <div class="pain-grid">
+        <article class="pain-card">
+          <strong>Too many places to search?</strong>
+          <p>Ask AI to search broadly and bring back a manageable shortlist instead of opening repository after repository yourself.</p>
+        </article>
+        <article class="pain-card">
+          <strong>Too much to compare?</strong>
+          <p>Put promising resources side by side for coverage, course fit, currency, accessibility, and licensing before you spend hours reading.</p>
+        </article>
+        <article class="pain-card">
+          <strong>Don't want to rebuild your course?</strong>
+          <p>Map OER to the weeks, units, outcomes, and assignments you already use, or fill only the gaps you actually need to fill.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="content" id="prompt-tasks" aria-labelledby="task-heading">
-      <h2 class="center-heading" id="task-heading">What Would You Like AI to Help You Do?</h2>
+      <h2 class="center-heading" id="task-heading">Which Part of OER Is Taking Up Your Time?</h2>
 
       <div class="task-grid">
         <article class="task-card blue">
           <div class="task-icon" aria-hidden="true">🔎</div>
+          <span class="task-kicker">Skip the search rabbit hole</span>
           <h3>Find OER</h3>
-          <p>Find open textbooks, readings, activities, and other OER for your course, unit, or assignment.</p>
+          <p>Give AI your course, unit, or topic and get a focused shortlist of open textbooks, readings, activities, and other OER to review.</p>
           <a class="button" href="find-oer.html">View Find OER Prompts</a>
         </article>
 
         <article class="task-card green">
           <div class="task-icon" aria-hidden="true">⚖️</div>
+          <span class="task-kicker">Compare before you deep-read</span>
           <h3>Evaluate OER</h3>
-          <p>Evaluate quality, coverage, accessibility, licensing, currency, and alignment with your learning goals.</p>
+          <p>Use AI to do a structured first-pass comparison of quality, coverage, accessibility, licensing, currency, and alignment with your goals.</p>
           <a class="button" href="evaluate-oer.html">View OER Evaluation Prompts</a>
         </article>
 
         <article class="task-card purple">
           <div class="task-icon" aria-hidden="true">🧩</div>
+          <span class="task-kicker">Keep what already works</span>
           <h3>Fill a Gap</h3>
-          <p>Find an open reading, chapter, video, primary source, or activity for a specific topic or assignment.</p>
+          <p>Don't replace everything. Find one open reading, chapter, video, primary source, or activity for the part of your course that's missing.</p>
           <a class="button" href="fill-a-gap.html">View Gap-Finding Prompts</a>
         </article>
 
         <article class="task-card orange">
           <div class="task-icon" aria-hidden="true">📅</div>
+          <span class="task-kicker">Avoid rebuilding from scratch</span>
           <h3>Build a Plan</h3>
-          <p>Map OER readings and activities to your weeks or units and balance student workload.</p>
+          <p>Map OER readings and activities to your existing weeks or units, connect them to course goals, and keep student workload realistic.</p>
           <a class="button" href="build-a-plan.html">View Course Planning Prompts</a>
         </article>
 
         <article class="task-card teal" id="ztc-options">
           <div class="task-icon" aria-hidden="true">📖</div>
+          <span class="task-kicker">When OER isn't enough</span>
           <h3>Explore ZTC Options</h3>
-          <p>Find library ebooks, audiobooks, films, and other no-cost-to-student materials to discuss with your librarian.</p>
+          <p>Surface library ebooks, audiobooks, films, databases, and other no-cost-to-student possibilities to investigate with your librarian.</p>
           <a class="button" href="ztc-options.html">View ZTC Exploration Prompts</a>
         </article>
 
         <article class="task-card red">
           <div class="task-icon" aria-hidden="true">↔</div>
+          <span class="task-kicker">See the tradeoffs at a glance</span>
           <h3>Compare Options</h3>
-          <p>Compare OER, library resources, and other ZTC possibilities to find the strongest fit for your course.</p>
+          <p>Compare OER, library resources, and other ZTC possibilities in one place so you can focus your attention on the strongest candidates.</p>
           <a class="button" href="compare-options.html">View Comparison Prompts</a>
         </article>
 
         <article class="task-card gold">
           <div class="task-icon" aria-hidden="true">🚀</div>
+          <span class="task-kicker">Go deeper when you want to</span>
           <h3>Power Prompts</h3>
-          <p>Use more advanced prompts for deeper research, comparison, course mapping, and custom analysis.</p>
+          <p>Use more detailed prompts for broad searches, deeper comparisons, course mapping, and custom research when the quick version isn't enough.</p>
           <a class="button" href="power-prompts.html">View Advanced Prompts</a>
         </article>
       </div>
@@ -556,18 +647,18 @@
         <section class="info-card" aria-labelledby="how-heading">
           <h3 id="how-heading">How It Works</h3>
           <ol class="steps">
-            <li>Choose a task above.</li>
-            <li>Review the prompt and customize it for your course.</li>
-            <li>Copy the prompt into the AI tool you use.</li>
-            <li>Review the results, verify information, and adapt what is useful.</li>
+            <li>Choose the part of OER work that is costing you time.</li>
+            <li>Pick the simple prompt or the deeper power-user version.</li>
+            <li>Add your course information and copy the prompt into the AI tool you use.</li>
+            <li>Review the shortlist, open the sources, verify important details, and decide what is worth using.</li>
           </ol>
-          <p><strong>AI is your assistant. You are the expert.</strong></p>
+          <p><strong>Let AI reduce the searching. Keep the academic judgment yours.</strong></p>
         </section>
 
         <section class="info-card" aria-labelledby="new-heading">
-          <h3 id="new-heading">New to AI Prompts?</h3>
-          <p>Start with a short guide that explains what to paste into a prompt, how to add course context, and how to check AI-generated results before using them.</p>
-          <p><a href="quick-start.html">Open the AI Prompt Quick Start Guide</a></p>
+          <h3 id="new-heading">New to AI?</h3>
+          <p>You do not need to learn prompt engineering first. See what a prompt is, which AI tools you might use, and basic privacy and verification practices.</p>
+          <p><a href="using-ai.html">Read Using AI with The OER Promptbook</a></p>
         </section>
 
         <section class="info-card" id="about" aria-labelledby="about-heading">
