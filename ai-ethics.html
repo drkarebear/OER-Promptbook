@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The OER Promptbook's approach to thoughtful AI use, informed by the PAIRR project's discussion of environmental impacts, labor, bias, privacy, intellectual property, and human judgment.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Using AI Thoughtfully | The OER Promptbook</title>
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --gold: #a96f00;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1040px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11,41,72,.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.65;
+    }
+
+    a { color: var(--blue); }
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.7rem 1.25rem 2.9rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: .7rem;
+      color: var(--teal);
+      font-size: .82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -.03em;
+    }
+
+    .hero-lede {
+      max-width: 850px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      margin: 0 0 .8rem;
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 0 0 .45rem;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .lead-box {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .lead-box p { margin: .4rem 0; }
+
+    .section {
+      margin: 3.2rem 0;
+    }
+
+    .section-lede {
+      max-width: 840px;
+      color: var(--muted);
+      margin: 0 0 1.2rem;
+    }
+
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .principle-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+    }
+
+    .principle-card p {
+      margin: .35rem 0 0;
+      color: #405064;
+    }
+
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 850;
+      margin-bottom: .7rem;
+    }
+
+    .purpose-box {
+      border-left: 5px solid var(--green);
+      background: #f1faf6;
+      border-radius: 10px;
+      padding: 1.15rem 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .purpose-box p { margin: .35rem 0; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .impact-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      padding: 1.25rem;
+    }
+
+    .impact-card p {
+      margin: .35rem 0;
+      color: #405064;
+    }
+
+    .small-actions {
+      border: 1px solid #b8dfe0;
+      background: #f1fafa;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .small-actions ul {
+      margin-bottom: 0;
+    }
+
+    .source-box {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+    }
+
+    .source-card {
+      border: 1px solid #d9cdf3;
+      background: #f8f5ff;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .source-card p {
+      margin: .45rem 0;
+    }
+
+    .source-card a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      margin-top: .5rem;
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .closing {
+      margin-top: 2.6rem;
+      text-align: center;
+      background: #f5f8fb;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+    }
+
+    .closing p {
+      max-width: 730px;
+      margin: .5rem auto 0;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 800px) {
+      .principle-grid,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner { align-items: flex-start; }
+      nav { width: 100%; }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.8rem 1rem 2.2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <img class="brand-icon" src="favicon6.png" alt="">
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="ai-ethics.html" aria-current="page">Using AI Thoughtfully</a></li>
+          <li><a href="index.html#prompt-tasks">Prompts</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Responsible use</div>
+      <h1 id="page-title">Using AI Thoughtfully</h1>
+      <p class="hero-lede">The OER Promptbook encourages experimentation with AI when it can meaningfully reduce faculty workload. It also recognizes that generative AI has real environmental, labor, bias, privacy, and intellectual-property concerns.</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="lead-box" aria-labelledby="why-heading">
+      <h2 id="why-heading">Why Use AI If AI Is Problematic?</h2>
+      <p>That tension is worth naming. AI is already shaping education and work, and learning how to use it critically can be valuable. At the same time, useful technology is not automatically ethical, neutral, or cost-free.</p>
+      <p><strong>The goal of The OER Promptbook is not maximum AI use. It is purposeful AI use.</strong> We use AI where a focused prompt may reduce repetitive searching, comparison, or organization work, while keeping academic and professional decisions with people.</p>
+    </section>
+
+    <section class="section" aria-labelledby="principles-heading">
+      <h2 id="principles-heading">Principles for Using the Promptbook</h2>
+      <p class="section-lede">These principles are informed by the PAIRR project's approach to critical, ethical, and informed AI use.</p>
+
+      <div class="principle-grid">
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">1</span>
+          <h3>Use AI for a Reason</h3>
+          <p>Use AI when it meaningfully reduces work or opens a useful line of inquiry. If an ordinary search, library database, spreadsheet, or other simpler tool can do the job just as well, use that instead.</p>
+        </article>
+
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">2</span>
+          <h3>Keep Human Expertise in Charge</h3>
+          <p>AI can organize possibilities. Faculty decide what belongs in a course. Librarians verify access and licensing. Accessibility professionals, instructional designers, and other experts should guide decisions in their areas of expertise.</p>
+        </article>
+
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">3</span>
+          <h3>Expect Bias, Not Neutrality</h3>
+          <p>AI models learn patterns from human-produced material that reflects unequal representation, stereotypes, linguistic bias, and other social inequities. Treat AI output as something to examine critically, not as an objective answer.</p>
+        </article>
+
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">4</span>
+          <h3>Protect Privacy, IP, and Human Work</h3>
+          <p>Do not paste confidential student, employee, or institutional information into public AI systems. Think carefully before uploading writing, images, or other work that you do not own or have permission to share.</p>
+        </article>
+
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">5</span>
+          <h3>Verify What Matters</h3>
+          <p>AI can sound confident while being wrong. Open the sources, verify licenses and links, check accessibility claims, confirm library access locally, and distinguish what is documented from what is merely plausible.</p>
+        </article>
+
+        <article class="principle-card">
+          <span class="number" aria-hidden="true">6</span>
+          <h3>Use Enough AI, Not More AI</h3>
+          <p>Repeated generations, oversized outputs, and resource-intensive image or video generation are not automatically better. Ask for the smallest useful result, then stop when the task is solved.</p>
+        </article>
+      </div>
+
+      <div class="purpose-box">
+        <p><strong>A useful Promptbook question:</strong> “Will AI meaningfully reduce the labor of this task?”</p>
+        <p>If the answer is no, you probably do not need AI for it.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="impact-heading">
+      <h2 id="impact-heading">The Costs Are Bigger Than One Prompt</h2>
+      <p class="section-lede">PAIRR's ethics statement emphasizes several connected concerns that are easy to lose sight of when AI appears as a simple text box.</p>
+
+      <div class="impact-grid">
+        <article class="impact-card">
+          <h3>Environmental Impact</h3>
+          <p>Generative AI depends on data centers that require energy, water, land, hardware, and mined resources. Different AI tasks can have very different resource demands, and precise estimates are difficult because companies do not disclose enough information.</p>
+          <p>That uncertainty is a reason for thoughtful use, not a reason to invent a simple per-prompt environmental number.</p>
+        </article>
+
+        <article class="impact-card">
+          <h3>Labor and Human Expertise</h3>
+          <p>AI systems rely on human writing, expertise, software development, data labeling, moderation, and other forms of labor that can become invisible when we describe everything simply as “AI.”</p>
+          <p>Professional communities should have a voice in deciding where AI assists human work and where it should not replace it.</p>
+        </article>
+
+        <article class="impact-card">
+          <h3>Bias and Representation</h3>
+          <p>The material used to train AI is not a neutral record of human knowledge. Some communities, languages, dialects, and perspectives are overrepresented while others are missing, marginalized, or stereotyped.</p>
+          <p>This matters when AI recommends texts, authors, examples, perspectives, or standards of “good” academic language.</p>
+        </article>
+
+        <article class="impact-card">
+          <h3>Privacy, Intellectual Property, and Voice</h3>
+          <p>Human writing and creative work represent time, knowledge, identity, and expertise. Treating that work only as training “data” can obscure questions of permission, ownership, compensation, and control.</p>
+          <p>For the Promptbook, this means protecting confidential information and being cautious about uploading other people's work into public systems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section small-actions" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">What Thoughtful Use Can Look Like</h2>
+      <ul>
+        <li><strong>Ask for a shortlist, not 50 results.</strong> More output is not necessarily more useful.</li>
+        <li><strong>Use text when text will do.</strong> Do not generate images or video for a task that only needs a few sentences or a table.</li>
+        <li><strong>Choose efficient tools or models when appropriate.</strong> A complex reasoning workflow is not necessary for every search.</li>
+        <li><strong>Improve one prompt instead of repeatedly starting over.</strong> Deliberate iteration can reduce unnecessary generations and improve results.</li>
+        <li><strong>Stop when you have enough evidence to make the next human decision.</strong> AI does not need to make the final call.</li>
+        <li><strong>Advocate beyond individual choices.</strong> Responsible AI also requires institutional policy, transparency, sustainable infrastructure, fair labor practices, and meaningful public oversight.</li>
+      </ul>
+    </section>
+
+    <section class="section source-box" aria-labelledby="source-heading">
+      <h2 id="source-heading">About This Ethical Framework</h2>
+      <div class="source-card">
+        <h3>Informed by PAIRR</h3>
+        <p>This page is informed by and adapts ideas from <em>AI is Problematic. Why Does PAIRR Use it?</em>, written by Julie Gamberg, Marit MacArthur, Anna Mills, Aparna Sinha, and Lisa Sperber for the Peer and AI Review + Reflection (PAIRR) project.</p>
+        <p>PAIRR's statement examines environmental impacts, labor concerns, data and bias, privacy, intellectual property, voice, and the importance of continued discussion rather than treating AI ethics as settled.</p>
+        <p>The PAIRR statement is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).</p>
+        <a class="button" href="https://juliegamberg.github.io/ai-is-problematic-why-pairr-uses-ai/">Read the Full PAIRR Statement</a>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-heading">
+      <h2 id="closing-heading">Keep Experimenting. Keep Questioning.</h2>
+      <p>Responsible AI use is not a checklist we finish once. Technologies, evidence, policies, and institutional practices will continue to change. The Promptbook encourages faculty to experiment while remaining skeptical, informed, and willing to decide that AI is not the right tool for a particular task.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+</body>
+</html>
