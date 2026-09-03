@@ -1,1 +1,1138 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ready-to-use AI prompts that help faculty fill specific gaps in OER courses with open readings, chapters, activities, media, primary sources, and perspectives.">
+  <link rel="icon" href="favicon6.png" type="image/png">
+  <title>Fill a Gap | The OER Promptbook</title>
+
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --purple-dark: #55408c;
+      --orange: #b84f0a;
+      --text: #172033;
+      --muted: #516070;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --simple-bg: #f7f3ff;
+      --simple-border: #d9cdf3;
+      --power-bg: #effafa;
+      --power-border: #b8dfe0;
+      --note-bg: #fff9e8;
+      --note-border: #e5c56a;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.62;
+    }
+
+    a { color: var(--blue); }
+
+    a:hover { text-decoration-thickness: 2px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .8rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    .page-hero {
+      background: linear-gradient(180deg, #f8f5ff 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.8rem 1.25rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 800;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .82rem;
+      margin-bottom: .75rem;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+      max-width: 930px;
+    }
+
+    .hero-lede {
+      max-width: 830px;
+      margin: 1rem 0 0;
+      color: #334052;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .hero-points {
+      list-style: none;
+      margin: 1.35rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem 1.2rem;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: .85rem;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 .8rem;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .quick-start {
+      border: 1px solid var(--note-border);
+      background: var(--note-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .quick-start h2 {
+      font-size: 1.25rem;
+      margin-bottom: .45rem;
+    }
+
+    .quick-start p {
+      margin: .35rem 0;
+    }
+
+    .goal-nav {
+      margin: 2rem 0 3rem;
+    }
+
+    .goal-nav h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .goal-link {
+      display: flex;
+      flex-direction: column;
+      min-height: 160px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .goal-link:hover {
+      border-color: #b4a4dc;
+      box-shadow: var(--shadow);
+    }
+
+    .goal-icon {
+      font-size: 1.55rem;
+      margin-bottom: .4rem;
+    }
+
+    .goal-link strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: .25rem;
+    }
+
+    .goal-link span:last-child {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .prompt-section {
+      scroll-margin-top: 1rem;
+      margin: 3.5rem 0;
+      padding-top: .5rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      color: var(--purple);
+      font-size: .8rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .35rem;
+    }
+
+    .section-intro {
+      max-width: 830px;
+      color: var(--muted);
+      margin: 0 0 1.35rem;
+      font-size: 1.02rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .prompt-card {
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .prompt-card.simple {
+      background: var(--simple-bg);
+      border: 1px solid var(--simple-border);
+    }
+
+    .prompt-card.power {
+      background: var(--power-bg);
+      border: 1px solid var(--power-border);
+    }
+
+    .prompt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 850;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+
+    .prompt-card > p {
+      margin: .2rem 0 .9rem;
+      color: #405064;
+      font-size: .94rem;
+    }
+
+    .prompt-box {
+      position: relative;
+      background: #fff;
+      border: 1px solid #cfd9e3;
+      border-radius: 14px;
+      padding: 1rem;
+      flex-grow: 1;
+      min-height: 390px;
+    }
+
+    .prompt-text {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .91rem;
+      line-height: 1.58;
+      color: #1d2938;
+    }
+
+    .copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      border: 0;
+      border-radius: 10px;
+      min-height: 44px;
+      padding: .68rem 1rem;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-button:hover {
+      background: var(--navy-2);
+    }
+
+    .copy-status {
+      font-size: .88rem;
+      color: var(--green);
+      font-weight: 700;
+      min-height: 1.3em;
+    }
+
+    .customize {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--purple);
+      background: #f8f5ff;
+      border-radius: 10px;
+    }
+
+    .customize strong {
+      color: var(--navy);
+    }
+
+    .customize p {
+      margin: .35rem 0 0;
+    }
+
+    .verify {
+      margin-top: 3rem;
+      border: 1px solid #bedfce;
+      background: #f1faf6;
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .verify h2 {
+      font-size: 1.45rem;
+      margin-bottom: .65rem;
+    }
+
+    .verify ul {
+      margin-bottom: 0;
+    }
+
+    .related {
+      margin-top: 2rem;
+    }
+
+    .related-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .related a {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      background: var(--surface-soft);
+    }
+
+    .related a:hover {
+      border-color: #9ab8d1;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .goal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-box {
+        min-height: auto;
+      }
+
+      .related-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+
+      .hero-inner {
+        padding: 2.8rem 1rem 2.2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3.5rem;
+      }
+
+      .goal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .prompt-card {
+        padding: 1rem;
+      }
+
+      .prompt-box {
+        padding: .9rem;
+      }
+
+      .prompt-text {
+        font-size: .87rem;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <span class="brand-mark" aria-hidden="true">OP</span>
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="using-ai.html">Using AI</a></li>
+          <li><a href="find-oer.html">Find OER</a></li>
+          <li><a href="evaluate-oer.html">Evaluate OER</a></li>
+          <li><a href="fill-a-gap.html" aria-current="page">Fill a Gap</a></li>
+          <li><a href="index.html#prompt-tasks">All Prompts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div class="eyebrow">Keep what already works</div>
+      <h1 id="page-title">You Don't Have to Replace Everything</h1>
+      <p class="hero-lede">If your course or OER is mostly working, use AI to help find the one missing piece: a reading, activity, video, primary source, example, or perspective that makes the unit stronger.</p>
+
+      <ul class="hero-points" aria-label="What this page can help with">
+        <li><span class="check" aria-hidden="true">✓</span> Fill one specific hole</li>
+        <li><span class="check" aria-hidden="true">✓</span> Avoid rebuilding the course</li>
+        <li><span class="check" aria-hidden="true">✓</span> Keep the search manageable</li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section class="quick-start" aria-labelledby="quick-heading">
+      <h2 id="quick-heading">A Gap Does Not Mean You Need a New Textbook</h2>
+      <p>Sometimes the best ZTC course is a thoughtful mix of resources rather than one perfect book. These prompts help you search for a specific missing piece without turning one weak week into a full course redesign.</p>
+      <p><strong>Tip:</strong> Tell AI what students need to do with the resource, not just the topic. “Students need to compare two perspectives on immigration policy” will usually produce a better search than “find something about immigration.”</p>
+    </section>
+
+    <nav class="goal-nav" aria-labelledby="goal-heading">
+      <h2 id="goal-heading">What Kind of Gap Are You Filling?</h2>
+      <div class="goal-grid">
+        <a class="goal-link" href="#reading">
+          <span class="goal-icon" aria-hidden="true">📖</span>
+          <strong>A Missing Reading or Chapter</strong>
+          <span>Find one strong text for a topic, week, or concept.</span>
+        </a>
+
+        <a class="goal-link" href="#activity">
+          <span class="goal-icon" aria-hidden="true">🛠️</span>
+          <strong>Practice or an Activity</strong>
+          <span>Add application, discussion, homework, or low-stakes practice.</span>
+        </a>
+
+        <a class="goal-link" href="#media-source">
+          <span class="goal-icon" aria-hidden="true">🎬</span>
+          <strong>Media or a Primary Source</strong>
+          <span>Find videos, images, data, speeches, documents, or other source material.</span>
+        </a>
+
+        <a class="goal-link" href="#perspective">
+          <span class="goal-icon" aria-hidden="true">🌐</span>
+          <strong>A Missing Perspective or Example</strong>
+          <span>Broaden a unit that feels narrow, dated, or disconnected from students.</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="prompt-section" id="reading" aria-labelledby="reading-heading">
+      <span class="section-number">Gap 1</span>
+      <h2 id="reading-heading">Find One Reading or Chapter</h2>
+      <p class="section-intro">Use this when you know exactly where the hole is and want a short, assignable resource rather than another 400-page textbook.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want only a few realistic readings to review.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-reading-simple">I'm new to AI. Keep this simple.
+
+I teach [COURSE] at a community college.
+
+I need one good OER reading for:
+[TOPIC OR CONCEPT]
+
+Students need the reading to help them:
+[WHAT STUDENTS SHOULD UNDERSTAND, ANALYZE, COMPARE, OR PRACTICE]
+
+Please find 3–5 strong options.
+
+For each option, tell me:
+- Title and author or organization
+- What kind of resource it is
+- Why it fits this learning goal
+- Approximate length or reading time, only if you can verify or reasonably estimate it
+- Open license or public-domain status
+- Direct link to the original source
+
+Prioritize resources that are clear, assignable, and appropriate for community college students.
+
+Do not invent titles, links, licenses, or length information.
+
+Do not call something OER simply because it is free online.
+
+End by recommending the 2 readings I should review first.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-reading-simple" data-status-target="status-reading-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-reading-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Search More Deeply</div>
+          <p>Best when you want the search tuned to learning goals, student workload, and the rest of the unit.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-reading-power">I'm a power user. Help me fill one specific reading gap in my course with a strong OER.
+
+COURSE
+[COURSE NAME AND LEVEL]
+
+UNIT CONTEXT
+[BRIEFLY DESCRIBE WHAT STUDENTS HAVE ALREADY READ OR LEARNED]
+
+MISSING NEED
+[TOPIC, CONCEPT, QUESTION, OR PERSPECTIVE]
+
+LEARNING PURPOSE
+Students should be able to:
+[LEARNING GOAL]
+
+CONSTRAINTS
+- Maximum reading time: [OPTIONAL]
+- Preferred resource type: [ARTICLE / CHAPTER / ESSAY / PRIMARY TEXT / OPEN]
+- Reading level or accessibility needs: [OPTIONAL]
+- Perspectives or contexts to prioritize: [OPTIONAL]
+
+SEARCH
+Search multiple credible OER repositories, institutional collections, open journals, government sources, and discipline-specific collections when appropriate.
+
+Look for resources that serve the instructional purpose, even if their titles use different terminology.
+
+VERIFICATION
+- Verify that each resource exists.
+- Link to the original source.
+- Identify the open license or public-domain status when possible.
+- Do not confuse free access with OER.
+- Mark anything uncertain as needing verification.
+
+OUTPUT
+Give me the 5 strongest candidates:
+Resource | Why It Fits | Student Workload | License | Direct Link | Verification Notes
+
+Then:
+1. Recommend the strongest 2.
+2. Explain how each would function in the unit.
+3. Identify what each adds that my current materials are missing.
+4. Tell me if no candidate truly solves the gap rather than forcing a weak recommendation.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-reading-power" data-status-target="status-reading-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-reading-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="customize">
+        <strong>Need to protect student reading time?</strong>
+        <p>Add: “Keep the total estimated student reading time under [30/45/60] minutes. Favor shorter resources that still provide enough depth for the learning goal.”</p>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="activity" aria-labelledby="activity-heading">
+      <span class="section-number">Gap 2</span>
+      <h2 id="activity-heading">Find Practice, an Activity, or an Ancillary</h2>
+      <p class="section-intro">Use this when the content is there, but students need something to do with it: practice, discussion, application, self-checks, or other learning support.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want to find an existing open activity before creating one yourself.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-activity-simple">I'm new to AI. Keep this simple.
+
+I teach [COURSE] at a community college.
+
+Students are learning:
+[TOPIC OR SKILL]
+
+I already have:
+[READING, CHAPTER, VIDEO, LECTURE, OR OTHER MATERIAL]
+
+I need an open resource that gives students practice with:
+[WHAT STUDENTS SHOULD DO]
+
+Look for existing OER such as:
+- activities
+- exercises
+- discussion prompts
+- worksheets
+- low-stakes practice
+- case studies
+- simulations
+- quizzes or self-checks
+
+Find 3–5 strong options.
+
+For each one, tell me:
+- What the activity is
+- What students would do
+- How long it might take
+- Why it fits my goal
+- Open license
+- Direct link
+
+Do not invent an activity and present it as an existing OER.
+
+If you cannot find a strong existing OER, clearly say so instead of pretending one exists.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-activity-simple" data-status-target="status-activity-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-activity-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Search and Diagnose</div>
+          <p>Best when you want AI to distinguish between existing OER and something it could help you create later.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-activity-power">I'm a power user. Search for existing openly licensed learning activities or ancillaries that fill this instructional gap.
+
+COURSE
+[COURSE]
+
+CONTENT STUDENTS ALREADY HAVE
+[READING, TEXTBOOK CHAPTER, VIDEO, OR DESCRIPTION]
+
+TARGET SKILL OR LEARNING GOAL
+[WHAT STUDENTS NEED TO PRACTICE]
+
+PREFERRED ACTIVITY
+[DISCUSSION / PRACTICE / APPLICATION / CASE / QUIZ / SELF-CHECK / WORKSHEET / OPEN]
+
+CONSTRAINTS
+- Approximate student time: [OPTIONAL]
+- Individual or collaborative: [OPTIONAL]
+- Online, in-person, or either: [OPTIONAL]
+- Low-stakes or graded: [OPTIONAL]
+
+SEARCH RULES
+1. Search for existing OER first.
+2. Prioritize activities with a clearly stated open license.
+3. Include instructor resources or ancillary collections when they are openly available.
+4. Do not present AI-generated ideas as if they were existing OER.
+5. If strong existing resources are unavailable, separate that finding from any later suggestion to create or adapt an activity.
+
+OUTPUT
+Table:
+Activity | Source | What Students Do | Fit With Goal | Time | License | Direct Link
+
+Then:
+- Rank the strongest 3.
+- Explain what each adds to the unit.
+- Note adaptation likely required.
+- If no existing OER is strong enough, say: "No strong existing OER found."
+
+Only after that, optionally suggest what kind of activity I could create or adapt myself.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-activity-power" data-status-target="status-activity-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-activity-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="media-source" aria-labelledby="media-heading">
+      <span class="section-number">Gap 3</span>
+      <h2 id="media-heading">Find Media, Data, or a Primary Source</h2>
+      <p class="section-intro">Use this when students need something concrete to analyze: a speech, image, map, dataset, historical document, government report, video, recording, or other source material.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you want a few source materials rather than another explanatory reading.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-media-simple">I'm new to AI. Keep this simple.
+
+I teach [COURSE].
+
+For this unit, students are studying:
+[TOPIC]
+
+I want students to analyze a:
+[PRIMARY SOURCE / VIDEO / IMAGE / SPEECH / MAP / DATASET / GOVERNMENT DOCUMENT / OTHER]
+
+The source should help students:
+[LEARNING GOAL]
+
+Find 3–5 strong options that students can access at no cost.
+
+Prioritize public-domain or openly licensed sources from credible institutions such as libraries, archives, museums, universities, government agencies, or established OER collections.
+
+For each option, give me:
+- Title or description
+- Creator or source institution
+- Date, when relevant
+- Why it fits
+- Rights or license information
+- Direct link to the original source
+
+Do not assume something is public domain or openly licensed.
+
+If rights information is unclear, label it "Rights need verification."</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-media-simple" data-status-target="status-media-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-media-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Search Across Collections</div>
+          <p>Best when provenance, rights, context, and teaching usefulness all matter.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-media-power">I'm a power user. Conduct a targeted search for openly usable media or primary-source material for this community college unit.
+
+COURSE
+[COURSE]
+
+TOPIC
+[TOPIC]
+
+SOURCE TYPE
+[PRIMARY DOCUMENT / VIDEO / IMAGE / AUDIO / SPEECH / DATASET / MAP / GOVERNMENT REPORT / OPEN]
+
+LEARNING PURPOSE
+Students should use the source to:
+[ANALYZE / COMPARE / INTERPRET / APPLY / QUESTION / OTHER]
+
+SEARCH PRIORITIES
+Search credible original collections such as:
+- government archives and agencies
+- university and library digital collections
+- museums and cultural institutions
+- public-domain collections
+- discipline-specific OER repositories
+- other authoritative open collections
+
+For each candidate, verify when possible:
+- creator or issuing body
+- date and historical/contextual information
+- original hosting institution
+- rights statement, public-domain status, or open license
+- accessibility information such as captions, transcripts, alt text, or machine-readable data when relevant
+
+Do not infer rights from age or from the fact that the source is visible online.
+
+OUTPUT
+Table:
+Source | Institution | Why It Fits | Rights/License | Accessibility Notes | Direct Link | Verification Notes
+
+Then:
+1. Recommend the strongest 3.
+2. Explain what students could analyze in each.
+3. Flag context students would need before using the source.
+4. Clearly identify any rights or accessibility question I must verify myself.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-media-power" data-status-target="status-media-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-media-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="perspective" aria-labelledby="perspective-heading">
+      <span class="section-number">Gap 4</span>
+      <h2 id="perspective-heading">Add a Missing Perspective, Example, or Context</h2>
+      <p class="section-intro">Use this when a unit technically covers the topic but still feels narrow, dated, abstract, or disconnected from the students in front of you.</p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card simple">
+          <div class="prompt-label"><span aria-hidden="true">🌱</span> I'm New to AI — Keep It Simple</div>
+          <p>Best when you can describe what feels missing without needing a complicated diversity audit.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-perspective-simple">I'm new to AI. Keep this simple.
+
+I teach [COURSE].
+
+My current unit is about:
+[TOPIC]
+
+What I already use:
+[BRIEF DESCRIPTION OF CURRENT MATERIAL]
+
+The unit feels like it may be missing:
+[A DIFFERENT PERSPECTIVE / A MORE CURRENT EXAMPLE / A LOCAL OR CALIFORNIA EXAMPLE / GLOBAL CONTEXT / A DIFFERENT TYPE OF VOICE / OTHER]
+
+Help me find 3–5 OER or public-domain resources that could broaden the unit.
+
+For each one, tell me:
+- What it adds
+- Why it complements rather than simply repeats my current material
+- Who created or published it
+- Open license or public-domain status
+- Direct link
+
+Use evidence from the resource rather than making assumptions about an author's identity or perspective.
+
+Do not invent resources, links, licenses, or demographic information.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-perspective-simple" data-status-target="status-perspective-simple">Copy Simple Prompt</button>
+            <span class="copy-status" id="status-perspective-simple" aria-live="polite"></span>
+          </div>
+        </article>
+
+        <article class="prompt-card power">
+          <div class="prompt-label"><span aria-hidden="true">🚀</span> I'm a Power User — Broaden the Unit Deliberately</div>
+          <p>Best when you want the search grounded in what the current unit already includes and what it actually lacks.</p>
+
+          <div class="prompt-box">
+            <pre class="prompt-text" id="prompt-perspective-power">I'm a power user. Help me broaden this unit with openly licensed or public-domain material without tokenizing perspectives or adding resources just for the sake of variety.
+
+COURSE
+[COURSE]
+
+UNIT
+[TOPIC]
+
+CURRENT MATERIALS
+[PASTE TITLES, LINKS, AUTHORS, SUMMARIES, OR A SHORT DESCRIPTION]
+
+WHAT I THINK MAY BE MISSING
+[DESCRIBE THE GAP]
+
+PHASE 1: CHECK MY ASSUMPTION
+Based only on the evidence available in my current materials, briefly assess whether the gap I identified appears real, partial, or unclear.
+
+Do not infer an author's race, ethnicity, gender, nationality, ideology, or lived experience unless the source explicitly establishes information relevant to the task.
+
+PHASE 2: SEARCH
+Find OER or public-domain resources that add meaningful:
+- perspective
+- disciplinary approach
+- historical context
+- contemporary example
+- geographic context
+- type of evidence or source
+as appropriate to the gap.
+
+PHASE 3: EVALUATE COMPLEMENTARITY
+For each resource, explain:
+- what it adds
+- how it differs from what students already have
+- how it could deepen the learning goal rather than simply increase reading volume
+
+VERIFICATION
+Verify the resource, original source, and license or public-domain status when possible.
+
+OUTPUT
+Table:
+Resource | What It Adds | How It Complements Existing Material | License/Rights | Direct Link | Verification Notes
+
+Then:
+1. Rank the strongest 3 additions.
+2. Recommend where each could fit in the unit.
+3. Flag anything that risks redundancy or unnecessary workload.
+4. Say if the current materials already provide more range than my initial description suggested.</pre>
+          </div>
+
+          <div class="copy-row">
+            <button class="copy-button" type="button" data-copy-target="prompt-perspective-power" data-status-target="status-perspective-power">Copy Power Prompt</button>
+            <span class="copy-status" id="status-perspective-power" aria-live="polite"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="verify" aria-labelledby="verify-heading">
+      <h2 id="verify-heading">Before You Add Another Resource</h2>
+      <p>Filling a gap should make the course stronger, not just make it longer. Before adding something, ask whether it earns its place.</p>
+      <ul>
+        <li><strong>Check the original source and rights.</strong> Verify open licensing or public-domain status yourself.</li>
+        <li><strong>Protect student workload.</strong> If you add something, consider whether another reading or activity can become optional or shorter.</li>
+        <li><strong>Look for real instructional value.</strong> A new resource should add depth, practice, context, or perspective rather than repeat what students already have.</li>
+        <li><strong>Test the student experience.</strong> Open the resource, check navigation and accessibility, and make sure students can actually use it easily.</li>
+      </ul>
+    </section>
+
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">What Next?</h2>
+      <div class="related-links">
+        <a href="build-a-plan.html">Have the pieces? Map them into your weeks or units.</a>
+        <a href="evaluate-oer.html">Not sure a new resource is good enough? Evaluate it first.</a>
+        <a href="ztc-options.html">Can't find an OER? Explore library-supported ZTC options.</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p><a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("[data-copy-target]");
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", async function () {
+          const targetId = button.getAttribute("data-copy-target");
+          const statusId = button.getAttribute("data-status-target");
+          const target = document.getElementById(targetId);
+          const status = document.getElementById(statusId);
+
+          if (!target) return;
+
+          const text = target.innerText;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (status) status.textContent = "Copied to clipboard.";
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(target);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) status.textContent = "Prompt selected. Copy it with Ctrl+C or Command+C.";
+          }
+
+          window.setTimeout(function () {
+            if (status) status.textContent = "";
+          }, 4000);
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
