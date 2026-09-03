@@ -1,1 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The OER Promptbook offers practical AI prompts for finding, evaluating, and building zero-cost course materials, including OER and library-supported ZTC options.">
+  <title>The OER Promptbook</title>
+  <style>
+    :root {
+      --navy: #0b2948;
+      --navy-2: #123a62;
+      --teal: #0b7c83;
+      --green: #197a5b;
+      --blue: #1f63b5;
+      --purple: #6750a4;
+      --orange: #c85d13;
+      --red: #bb3d3d;
+      --gold: #b97b00;
+      --text: #172033;
+      --muted: #516070;
+      --surface: #ffffff;
+      --surface-soft: #f6f9fc;
+      --border: #d9e3ec;
+      --focus: #ffbf47;
+      --max: 1180px;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(11, 41, 72, 0.08);
+    }
 
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a { color: var(--blue); }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 9999;
+      padding: .75rem 1rem;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    .site-header {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #1aa386;
+      display: grid;
+      place-items: center;
+      font-size: 1.55rem;
+      flex: 0 0 auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: .82rem;
+      opacity: .9;
+      margin-top: .15rem;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .35rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem .78rem;
+      border-radius: 10px;
+      font-weight: 650;
+      font-size: .93rem;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255,255,255,.12);
+    }
+
+    main { display: block; }
+
+    .hero {
+      background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4.5rem 1.25rem 3.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-weight: 800;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: .82rem;
+      margin-bottom: .8rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.03;
+      letter-spacing: -.035em;
+      color: var(--navy);
+      max-width: 900px;
+    }
+
+    .hero h1 .accent { color: #167b8a; }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 780px;
+      margin: 1.2rem 0 0;
+      color: #2f3a49;
+    }
+
+    .benefits {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .benefits li {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #198760;
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: .9rem;
+    }
+
+    .hero-symbols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .9rem;
+      align-self: stretch;
+    }
+
+    .symbol-card {
+      min-height: 132px;
+      border-radius: 22px;
+      border: 1px solid #cae1e5;
+      background: #fff;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .symbol-card .icon {
+      font-size: 2rem;
+      margin-bottom: .4rem;
+    }
+
+    .notice-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      transform: translateY(-1px);
+    }
+
+    .notice {
+      margin-top: 1rem;
+      padding: .9rem 1rem;
+      border: 1px solid #e5c56a;
+      background: #fff9e8;
+      border-radius: 14px;
+      font-size: .98rem;
+    }
+
+    .content {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 4.5rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      line-height: 1.15;
+      margin-top: 0;
+    }
+
+    .center-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .task-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      box-shadow: 0 4px 12px rgba(11,41,72,.04);
+      background: #fff;
+    }
+
+    .task-card h3 {
+      margin: .8rem 0 .45rem;
+      font-size: 1.13rem;
+      line-height: 1.2;
+    }
+
+    .task-card p {
+      margin: 0 0 1rem;
+      color: #334052;
+      flex-grow: 1;
+      font-size: .95rem;
+    }
+
+    .task-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.45rem;
+      font-weight: 900;
+    }
+
+    .task-card a.button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      width: 100%;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      padding: .7rem .8rem;
+    }
+
+    .blue { background: #f2f7ff; border-color: #bfd5f4; }
+    .blue .task-icon, .blue .button { background: var(--blue); }
+    .green { background: #f1faf6; border-color: #bedfce; }
+    .green .task-icon, .green .button { background: var(--green); }
+    .purple { background: #f7f3ff; border-color: #d9cdf3; }
+    .purple .task-icon, .purple .button { background: var(--purple); }
+    .orange { background: #fff6ef; border-color: #efd0ba; }
+    .orange .task-icon, .orange .button { background: var(--orange); }
+    .teal { background: #effafa; border-color: #b8dfe0; }
+    .teal .task-icon, .teal .button { background: var(--teal); }
+    .red { background: #fff4f4; border-color: #ecc7c7; }
+    .red .task-icon, .red .button { background: var(--red); }
+    .gold { background: #fff9ed; border-color: #ebd79f; }
+    .gold .task-icon, .gold .button { background: var(--gold); }
+
+    .info-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .info-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      padding: 1.4rem;
+    }
+
+    .info-card h3 {
+      color: var(--navy);
+      margin: 0 0 .75rem;
+      font-size: 1.1rem;
+    }
+
+    .steps {
+      margin: 0;
+      padding-left: 1.3rem;
+    }
+
+    .steps li { margin-bottom: .35rem; }
+
+    .project-note {
+      margin-top: .9rem;
+      padding-top: .9rem;
+      border-top: 1px solid var(--border);
+      color: #3a4656;
+      font-size: .94rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #f5f8fb;
+      color: #405064;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .9rem;
+    }
+
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 3.4rem;
+      }
+      .hero-symbols {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .symbol-card { min-height: 112px; }
+      .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+      nav { width: 100%; }
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .35rem;
+      }
+      nav a {
+        text-align: center;
+        background: rgba(255,255,255,.07);
+      }
+      .hero-inner {
+        padding: 2.75rem 1rem 2rem;
+        gap: 1.6rem;
+      }
+      .hero-symbols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .benefits {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .65rem;
+      }
+      .content { padding: 2.7rem 1rem 3.5rem; }
+      .notice-wrap { padding: 0 1rem; }
+      .task-grid { grid-template-columns: 1fr; }
+      .task-card { min-height: auto; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+        <span class="brand-icon" aria-hidden="true">📖</span>
+        <span class="brand-text">
+          <strong>The OER Promptbook</strong>
+          <span>AI Prompts for Zero-Cost Course Materials</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="#prompt-tasks">Prompts by Task</a></li>
+          <li><a href="#ztc-options">ZTC Options</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Open • Practical • Faculty-Friendly</div>
+          <h1 id="hero-heading">Use AI to Find, Evaluate, and Build <span class="accent">Zero-Cost Course Materials</span></h1>
+          <p>The OER Promptbook helps community college faculty use AI to discover and evaluate Open Educational Resources (OER) and other no-cost-to-student options.</p>
+
+          <ul class="benefits" aria-label="Benefits">
+            <li><span class="check" aria-hidden="true">✓</span> Save students money</li>
+            <li><span class="check" aria-hidden="true">✓</span> Improve course fit</li>
+            <li><span class="check" aria-hidden="true">✓</span> Support equitable access</li>
+          </ul>
+        </div>
+
+        <div class="hero-symbols" aria-label="Project focus areas">
+          <div class="symbol-card"><span class="icon" aria-hidden="true">🔎</span>Find</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">⚖️</span>Evaluate</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">📚</span>Build</div>
+          <div class="symbol-card"><span class="icon" aria-hidden="true">$0</span>ZTC</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="notice-wrap">
+      <div class="notice" role="note">
+        <strong>Includes prompts for OER discovery, evaluation, course design, and ZTC exploration</strong>, including library ebooks and other resources students may be able to access at no cost.
+      </div>
+    </div>
+
+    <section class="content" id="prompt-tasks" aria-labelledby="task-heading">
+      <h2 class="center-heading" id="task-heading">What Would You Like AI to Help You Do?</h2>
+
+      <div class="task-grid">
+        <article class="task-card blue">
+          <div class="task-icon" aria-hidden="true">🔎</div>
+          <h3>Find OER</h3>
+          <p>Find open textbooks, readings, activities, and other OER for your course, unit, or assignment.</p>
+          <a class="button" href="find-oer.html">View Find OER Prompts</a>
+        </article>
+
+        <article class="task-card green">
+          <div class="task-icon" aria-hidden="true">⚖️</div>
+          <h3>Evaluate OER</h3>
+          <p>Evaluate quality, coverage, accessibility, licensing, currency, and alignment with your learning goals.</p>
+          <a class="button" href="evaluate-oer.html">View OER Evaluation Prompts</a>
+        </article>
+
+        <article class="task-card purple">
+          <div class="task-icon" aria-hidden="true">🧩</div>
+          <h3>Fill a Gap</h3>
+          <p>Find an open reading, chapter, video, primary source, or activity for a specific topic or assignment.</p>
+          <a class="button" href="fill-a-gap.html">View Gap-Finding Prompts</a>
+        </article>
+
+        <article class="task-card orange">
+          <div class="task-icon" aria-hidden="true">📅</div>
+          <h3>Build a Plan</h3>
+          <p>Map OER readings and activities to your weeks or units and balance student workload.</p>
+          <a class="button" href="build-a-plan.html">View Course Planning Prompts</a>
+        </article>
+
+        <article class="task-card teal" id="ztc-options">
+          <div class="task-icon" aria-hidden="true">📖</div>
+          <h3>Explore ZTC Options</h3>
+          <p>Find library ebooks, audiobooks, films, and other no-cost-to-student materials to discuss with your librarian.</p>
+          <a class="button" href="ztc-options.html">View ZTC Exploration Prompts</a>
+        </article>
+
+        <article class="task-card red">
+          <div class="task-icon" aria-hidden="true">↔</div>
+          <h3>Compare Options</h3>
+          <p>Compare OER, library resources, and other ZTC possibilities to find the strongest fit for your course.</p>
+          <a class="button" href="compare-options.html">View Comparison Prompts</a>
+        </article>
+
+        <article class="task-card gold">
+          <div class="task-icon" aria-hidden="true">🚀</div>
+          <h3>Power Prompts</h3>
+          <p>Use more advanced prompts for deeper research, comparison, course mapping, and custom analysis.</p>
+          <a class="button" href="power-prompts.html">View Advanced Prompts</a>
+        </article>
+      </div>
+
+      <div class="info-grid">
+        <section class="info-card" aria-labelledby="how-heading">
+          <h3 id="how-heading">How It Works</h3>
+          <ol class="steps">
+            <li>Choose a task above.</li>
+            <li>Review the prompt and customize it for your course.</li>
+            <li>Copy the prompt into the AI tool you use.</li>
+            <li>Review the results, verify information, and adapt what is useful.</li>
+          </ol>
+          <p><strong>AI is your assistant. You are the expert.</strong></p>
+        </section>
+
+        <section class="info-card" aria-labelledby="new-heading">
+          <h3 id="new-heading">New to AI Prompts?</h3>
+          <p>Start with a short guide that explains what to paste into a prompt, how to add course context, and how to check AI-generated results before using them.</p>
+          <p><a href="quick-start.html">Open the AI Prompt Quick Start Guide</a></p>
+        </section>
+
+        <section class="info-card" id="about" aria-labelledby="about-heading">
+          <h3 id="about-heading">About This Site</h3>
+          <p>The OER Promptbook is an independent faculty resource designed to make AI-assisted OER and ZTC exploration more practical and approachable.</p>
+          <p class="project-note"><strong>This project is maintained by Karen Crozer.</strong></p>
+          <p><a href="about.html">Learn more about The OER Promptbook</a></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>The OER Promptbook is an open educational resource.</p>
+      <p>Project maintained by Karen Crozer.</p>
+      <p>Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
