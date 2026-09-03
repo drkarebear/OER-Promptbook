@@ -17,3 +17,9 @@ Unless otherwise noted, the original educational content created by Karen Crozer
 This license does not automatically apply to community-submitted prompts, embedded third-party materials, or material carrying a separate license or rights statement. Those materials remain subject to their own terms.
 
 See [Privacy](privacy.html) for information about GitHub Pages, the Community Prompt Lab, Google Forms/Apps Script, Padlet, and external services.
+## Using Trusted Resource Lists
+
+The Promptbook can be used with OER lists from librarians, colleges, disciplines, and other trusted sources. For California Community College faculty, the ASCCC OERI OER collections by discipline are a useful starting point. Users can paste a list or source URL into an AI chat, or drag in a saved file when the AI tool supports uploads.
+
+The OER Promptbook is an independent faculty project and is not affiliated with or endorsed by ASCCC, ASCCC OERI, the California Community Colleges Chancellor's Office, or any individual California Community College.
+

@@ -231,6 +231,89 @@
       font-size: .98rem;
     }
 
+    .source-section {
+      max-width: var(--max);
+      margin: 1.4rem auto 0;
+      padding: 0 1.25rem;
+    }
+
+    .source-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(240px, .7fr);
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem;
+      border: 2px solid #a9d3d6;
+      border-radius: var(--radius);
+      background: #effafa;
+      box-shadow: 0 6px 18px rgba(11, 41, 72, .06);
+    }
+
+    .source-kicker {
+      display: inline-block;
+      margin-bottom: .3rem;
+      color: #075f65;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .source-panel h2 {
+      margin: 0 0 .55rem;
+      font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+    }
+
+    .source-panel p {
+      margin: .45rem 0;
+      color: #334052;
+    }
+
+    .source-tip {
+      font-size: .96rem;
+    }
+
+    .source-disclaimer {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    .source-actions {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .source-button,
+    .source-secondary {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem 1rem;
+      border-radius: 11px;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .source-button {
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid var(--teal);
+    }
+
+    .source-secondary {
+      background: #fff;
+      color: var(--navy);
+      border: 2px solid #8ebec2;
+    }
+
+    .source-button:hover,
+    .source-secondary:hover {
+      text-decoration-thickness: 2px;
+    }
+
     .pain-section {
       max-width: var(--max);
       margin: 0 auto;
@@ -568,6 +651,7 @@
       .workflow-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .pain-grid { grid-template-columns: 1fr; }
+      .source-panel { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
       .support-grid { grid-template-columns: 1fr; }
     }
@@ -658,6 +742,22 @@
         <strong>No prompt-engineering expertise required.</strong> Each task is designed around a real faculty time crunch, with a shorter copy-and-paste option and a deeper workflow when the task needs more research or iteration.
       </div>
     </div>
+
+    <section class="source-section" aria-labelledby="source-heading">
+      <div class="source-panel">
+        <div>
+          <span class="source-kicker">Start from a trusted list</span>
+          <h2 id="source-heading">Bring a Curated OER List Into Your Prompt</h2>
+          <p>California Community College faculty can start with the ASCCC OERI discipline collections, which are curated with OERI Discipline Leads. Open the collection for your discipline, then bring promising titles, links, or the collection itself into a Promptbook workflow.</p>
+          <p class="source-tip"><strong>You do not have to retype a list.</strong> Paste the list or source link into your AI chat. If you have a saved PDF, spreadsheet, document, or other file and your AI tool supports uploads, you can drag the file directly into the chat with your prompt.</p>
+          <p class="source-disclaimer">The OER Promptbook is an independent faculty project. It is not affiliated with or endorsed by ASCCC or ASCCC OERI.</p>
+        </div>
+        <div class="source-actions">
+          <a class="source-button" href="https://asccc-oeri.org/open-educational-resources-by-discipline/">Browse ASCCC OERI OER by Discipline</a>
+          <a class="source-secondary" href="https://asccc-oeri.org/open-educational-resources-by-c-id/">Search ASCCC OERI OER by C-ID</a>
+        </div>
+      </div>
+    </section>
 
     <section class="pain-section" aria-labelledby="pain-heading">
       <div class="pain-intro">
@@ -809,7 +909,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
-      <p>Independent faculty project created and maintained by Karen Crozer.</p>
+      <p>Independent faculty project created and maintained by Karen Crozer. Not affiliated with or endorsed by ASCCC, ASCCC OERI, the California Community Colleges Chancellor's Office, or any individual California Community College.</p>
       <p><a href="privacy.html">Privacy</a> · <a href="about.html#accessibility">Accessibility</a></p>
     </div>
   </footer>
