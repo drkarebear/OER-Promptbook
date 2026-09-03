@@ -423,6 +423,52 @@
       margin: .35rem 0 0;
     }
 
+    .focused-check {
+      margin-top: 1.25rem;
+      padding: 1.2rem;
+      border: 1px solid #cfd9e3;
+      border-left: 5px solid var(--red);
+      border-radius: 14px;
+      background: #f8fafc;
+    }
+
+    .focused-check h3 {
+      margin: 0 0 .45rem;
+      color: var(--navy);
+      font-size: 1.16rem;
+    }
+
+    .focused-check > p {
+      margin: 0 0 .85rem;
+      color: #405064;
+    }
+
+    .focused-check .prompt-box {
+      min-height: auto;
+    }
+
+    .final-check {
+      margin-top: 2.5rem;
+      padding: 1.35rem;
+      border: 1px solid #d9cdf3;
+      border-radius: var(--radius);
+      background: #f7f3ff;
+    }
+
+    .final-check h2 {
+      margin-bottom: .55rem;
+      font-size: 1.45rem;
+    }
+
+    .final-check > p {
+      color: #405064;
+    }
+
+    .final-check .prompt-box {
+      min-height: auto;
+      margin-top: .9rem;
+    }
+
     .verify {
       margin-top: 3rem;
       border: 1px solid #bedfce;
@@ -624,8 +670,8 @@
 
         <a class="goal-link" href="#packages">
           <span class="goal-icon" aria-hidden="true">🗂️</span>
-          <strong>Two Course-Material Packages</strong>
-          <span>Compare whole-course combinations rather than single books.</span>
+          <strong>Course Plans or Core + Supplement</strong>
+          <span>Compare whole-course combinations or test whether one targeted supplement fixes a documented gap.</span>
         </a>
 
         <a class="goal-link" href="#decision">
@@ -872,8 +918,8 @@ Do not treat OER as automatically superior or library content as automatically m
 
     <section class="prompt-section" id="packages" aria-labelledby="packages-heading">
       <span class="section-number">Compare 3</span>
-      <h2 id="packages-heading">Compare Two Whole-Course Material Plans</h2>
-      <p class="section-intro">Use this when the real decision is between combinations of materials, not between two individual textbooks.</p>
+      <h2 id="packages-heading">Compare Whole-Course Plans or Test a Core + Supplement</h2>
+      <p class="section-intro">Use this when the real decision is between combinations of materials, or when one promising core OER may need only a carefully targeted supplement.</p>
 
       <div class="prompt-grid">
         <article class="prompt-card simple">
@@ -967,6 +1013,51 @@ If a hybrid is clearly better, propose the simplest hybrid rather than forcing a
           </div>
         </article>
       </div>
+
+      <aside class="focused-check" aria-labelledby="core-supplement-heading">
+        <h3 id="core-supplement-heading">Test a Core OER + One Targeted Supplement</h3>
+        <p>Use this when the core resource is strong but has one documented gap. The goal is to see whether one supplement earns its place without turning the course into a patchwork.</p>
+
+        <div class="prompt-box">
+          <pre class="prompt-text" id="prompt-core-supplement">I have one promising core OER, but it has a documented gap. Help me test whether ONE targeted supplement is a better solution than replacing the core resource or building a complicated package.
+
+COURSE CONTEXT
+[PASTE COURSE, UNIT, OR OUTCOME INFORMATION]
+
+CORE OER
+[PASTE LINK, TITLE, OR RELEVANT INFORMATION]
+
+DOCUMENTED GAP
+[DESCRIBE WHAT THE CORE RESOURCE DOES NOT DO WELL ENOUGH]
+
+POSSIBLE SUPPLEMENT
+[PASTE THE RESOURCE, LINK, OR DESCRIPTION IF I HAVE ONE]
+
+Check:
+- Does the supplement directly solve the documented gap?
+- Does it duplicate material students already have?
+- How much additional reading or activity time does it add?
+- Does it add another platform, login, or navigation burden?
+- Are its access, accessibility, and licensing conditions clear?
+- Will it create significant faculty setup or maintenance work?
+- Is the improvement large enough to justify the added complexity?
+
+Create a compact table:
+Question | Core Alone | Core + Supplement | Why It Matters
+
+Then give me one of these conclusions:
+- Core alone is sufficient
+- Core + supplement is worth it
+- Keep searching for a better solution
+
+Do not invent features, licenses, accessibility claims, or content. If evidence is missing, say what I still need to verify.</pre>
+        </div>
+
+        <div class="copy-row">
+          <button class="copy-button" type="button" data-copy-target="prompt-core-supplement" data-status-target="status-core-supplement">Copy Core + Supplement Prompt</button>
+          <span class="copy-status" id="status-core-supplement" aria-live="polite"></span>
+        </div>
+      </aside>
     </section>
 
     <section class="prompt-section" id="decision" aria-labelledby="decision-heading">
@@ -1062,9 +1153,50 @@ Keep the brief concise enough that I could share it with a colleague or OER/ZTC 
       </div>
     </section>
 
+    <section class="final-check" id="stress-test" aria-labelledby="stress-test-heading">
+      <h2 id="stress-test-heading">Think You've Chosen? Stress-Test the Decision</h2>
+      <p>Use this after you have a likely winner. The goal is not to reopen the entire search; it is to catch an overlooked risk before you commit.</p>
+
+      <div class="prompt-box">
+        <pre class="prompt-text" id="prompt-stress-test">Act as a skeptical second reviewer of my tentative OER/ZTC choice.
+
+MY LIKELY CHOICE
+[PASTE THE RESOURCE OR COURSE-MATERIAL PLAN]
+
+WHY I AM LEANING THIS WAY
+[PASTE MY REASONS, COMPARISON TABLE, OR NOTES]
+
+COURSE CONTEXT
+[OPTIONAL: COURSE GOALS, STUDENT NEEDS, OR CONSTRAINTS]
+
+Do not restart the search or argue against the choice just to be contrarian. Instead, look for important things I may be underestimating or overlooking:
+- a major content or alignment gap
+- unnecessary supplementation
+- student reading or navigation burden
+- accessibility or access uncertainty
+- licensing or long-term availability concerns
+- hidden faculty adaptation or maintenance labor
+- weak or missing evidence behind my reasoning
+- an alternative I dismissed for a reason that is not actually supported
+
+Give me:
+1. The 3 most important risks or unanswered questions, if any
+2. What evidence would resolve each one
+3. Anything that is probably NOT worth worrying about
+4. A final judgment: Proceed / Proceed after verifying specific items / Reconsider
+
+If the choice is well supported, say so. Do not manufacture objections.</pre>
+      </div>
+
+      <div class="copy-row">
+        <button class="copy-button" type="button" data-copy-target="prompt-stress-test" data-status-target="status-stress-test">Copy Stress-Test Prompt</button>
+        <span class="copy-status" id="status-stress-test" aria-live="polite"></span>
+      </div>
+    </section>
+
     <section class="verify" aria-labelledby="verify-heading">
       <h2 id="verify-heading">Before You Choose</h2>
-      <p>A comparison is useful only if the evidence underneath it is sound. Treat the table as a way to focus your review, not as an automatic winner generator.</p>
+      <p>A comparison is useful only if the evidence underneath it is sound. Treat the table and stress-test as ways to focus your review, not as automatic decision makers.</p>
       <ul>
         <li><strong>Open the strongest candidates yourself.</strong> The top recommendation should earn a real faculty review.</li>
         <li><strong>Watch for missing evidence.</strong> “Not verified” is not the same as “does not have.”</li>
@@ -1086,7 +1218,7 @@ Keep the brief concise enough that I could share it with a colleague or OER/ZTC 
   <footer class="site-footer">
     <div class="footer-inner">
       <p>Original Promptbook content: <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>.</p>
-      <p>Volunteer-maintained by Karen Crozer.</p>
+      <p>Independent faculty project created and maintained by Karen Crozer.</p>
       <p><a href="privacy.html">Privacy</a></p>
     </div>
   </footer>

@@ -1,10 +1,10 @@
 # The OER Promptbook
 
-The OER Promptbook is a volunteer-maintained guide to using AI prompts for Open Educational Resources (OER) and Zero Textbook Cost (ZTC) course-material work, with a focus on community college educators.
+The OER Promptbook is an independent faculty project offering practical AI prompts for Open Educational Resources (OER) and Zero Textbook Cost (ZTC) course-material work, with a focus on community college educators.
 
 ## Maintenance
 
-I maintain The OER Promptbook independently as a volunteer project.
+I, Karen Crozer, created and maintain The OER Promptbook independently on a volunteer basis.
 
 ## License
 
