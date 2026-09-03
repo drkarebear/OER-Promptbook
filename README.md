@@ -1,2 +1,15 @@
-# OER-Promptbook
-A guide to AI prompting for OER and ZTC in the California Community College
+# The OER Promptbook
+
+The OER Promptbook is a volunteer-maintained guide to using AI prompts for Open Educational Resources (OER) and Zero Textbook Cost (ZTC) course-material work, with a focus on community college educators.
+
+## Maintenance
+
+I maintain The OER Promptbook independently as a volunteer project.
+
+## License
+
+Unless otherwise noted, the original educational content created by Karen Crozer for The OER Promptbook is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). You may share and adapt that content with attribution for noncommercial purposes.
+
+This license does not automatically apply to community-submitted prompts, embedded third-party materials, or material carrying a separate license or rights statement. Those materials remain subject to their own terms.
+
+See [Privacy](privacy.html) for information about GitHub Pages, the Community Prompt Lab, Google Forms/Apps Script, Padlet, and external services.
