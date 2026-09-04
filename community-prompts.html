@@ -290,7 +290,7 @@
     .field select {
       width: 100%;
       min-height: 44px;
-      border: 1px solid #bfcbd7;
+      border: 1px solid #687789;
       border-radius: 10px;
       background: #fff;
       color: var(--text);
@@ -464,7 +464,7 @@
       min-height: 44px;
       padding: .58rem .72rem;
       border-radius: 9px;
-      border: 1px solid #bfcbd7;
+      border: 1px solid #687789;
       background: #fff;
       color: var(--navy);
       font-weight: 780;
@@ -715,6 +715,97 @@
       html { scroll-behavior: auto; }
     }
   </style>
+
+  <style id="wcag-2-2-hardening">
+    /* WCAG 2.2 accessibility hardening. */
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.14em;
+    }
+
+    /* Navigation and button-like links already have strong non-color affordances. */
+    .brand,
+    nav a,
+    .goal-link,
+    .button,
+    .button-secondary,
+    .resource-link,
+    .contact-button,
+    .source-button,
+    .source-secondary,
+    .small-button {
+      text-decoration: none;
+    }
+
+    /* Interactive boundaries meet WCAG non-text contrast when the boundary is part of the affordance. */
+    .goal-link,
+    .resource-link,
+    .button-secondary,
+    .source-secondary {
+      border-color: #687789;
+    }
+
+    .goal-link:hover,
+    .goal-link:focus-visible,
+    .resource-link:hover,
+    .resource-link:focus-visible {
+      border-color: #0b7c83;
+    }
+
+    .small-button.report {
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.14em;
+    }
+
+    /* Two-tone focus remains visible on both light and dark surfaces. */
+    a[href]:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex="0"]:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 1px;
+      box-shadow: 0 0 0 6px #0b2948;
+    }
+
+    /* Keep anchored and keyboard-focused content comfortably in view. */
+    :target,
+    [tabindex="-1"] {
+      scroll-margin-block-start: 1rem;
+    }
+
+    /* Ensure placeholder text remains readable when it is present. */
+    ::placeholder {
+      color: #516070;
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (forced-colors: active) {
+      a[href]:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      [tabindex="0"]:focus-visible {
+        outline: 3px solid Highlight;
+        box-shadow: none;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -722,13 +813,13 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+      <div class="brand">
         <img class="brand-icon" src="favicon6.png" alt="">
         <span class="brand-text">
           <strong>The OER Promptbook</strong>
           <span>AI Prompts for Zero-Cost Course Materials</span>
         </span>
-      </a>
+      </div>
 
       <nav aria-label="Primary navigation">
         <ul role="list">
@@ -752,7 +843,7 @@
       <p class="hero-lede">Browse prompts shared by faculty, librarians, and OER/ZTC colleagues. Adapt what is useful, verify the results, and contribute something that saved you time.</p>
 
       <div class="hero-actions" id="share-prompt">
-        <a class="button" id="submitPromptButton" href="#" target="_blank" rel="noopener" aria-label="Share a Prompt (opens in a new tab)">Share a Prompt</a>
+        <a class="button" id="submitPromptButton" href="https://docs.google.com/forms/d/e/1FAIpQLSdzEzz9p-1cX9GgViHj3ANI2ErExp7tWvcGJ_L0sNe4ZlPU_A/viewform" target="_blank" rel="noopener" aria-label="Share a Prompt (opens in a new tab)">Share a Prompt</a>
         <a class="button-secondary" href="#showcase">See Community Examples</a>
       </div>
     </div>
@@ -854,19 +945,12 @@
         </ul>
       </div>
 
-      <div id="padletFrameWrap" class="padlet-frame-wrap">
-        <iframe
-          id="padletFrame"
-          class="padlet-frame"
-          title="The OER Promptbook community showcase"
-          loading="lazy"
-          allow="camera; microphone; geolocation"
-        ></iframe>
+      <div class="showcase-placeholder" id="showcaseLoader">
+        <p id="padletLoadDescription"><strong>The showcase is hosted by Padlet.</strong> To avoid loading a third-party service automatically, choose whether to load the embedded showcase or open it directly in a new tab.</p>
+        <button class="button-secondary" id="loadPadletButton" type="button" aria-describedby="padletLoadDescription">Load the Padlet showcase</button>
       </div>
 
-      <div id="showcasePlaceholder" class="showcase-placeholder">
-        The embedded showcase is not available in this view. You can still open it directly in Padlet.
-      </div>
+      <div id="padletFrameWrap" class="padlet-frame-wrap" hidden></div>
 
       <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener" aria-label="Open the OER Promptbook Showcase in Padlet (opens in a new tab)">Open the OER Promptbook Showcase in Padlet</a></p>
     </section>
@@ -1290,13 +1374,27 @@
       }
 
       const wrap = document.getElementById("padletFrameWrap");
-      const frame = document.getElementById("padletFrame");
-      const placeholder = document.getElementById("showcasePlaceholder");
+      const loadButton = document.getElementById("loadPadletButton");
+      const loader = document.getElementById("showcaseLoader");
 
-      if (isConfigured(CONFIG.PADLET_EMBED_URL)) {
-        frame.src = CONFIG.PADLET_EMBED_URL;
-        wrap.classList.add("active");
-        placeholder.style.display = "none";
+      if (isConfigured(CONFIG.PADLET_EMBED_URL) && loadButton && wrap) {
+        loadButton.addEventListener("click", () => {
+          const frame = document.createElement("iframe");
+          frame.id = "padletFrame";
+          frame.className = "padlet-frame";
+          frame.title = "The OER Promptbook community showcase hosted on Padlet";
+          frame.loading = "lazy";
+          frame.allow = "camera; microphone; geolocation";
+          frame.src = CONFIG.PADLET_EMBED_URL;
+          wrap.replaceChildren(frame);
+          wrap.hidden = false;
+          wrap.classList.add("active");
+          if (loader) loader.hidden = true;
+          frame.focus();
+        }, { once: true });
+      } else if (loadButton) {
+        loadButton.disabled = true;
+        loadButton.textContent = "Embedded showcase unavailable";
       }
     }
 

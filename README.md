@@ -8,7 +8,7 @@ I, Karen Crozer, created and maintain The OER Promptbook independently on a volu
 
 ## Accessibility
 
-The site aims to meet or exceed WCAG 2.2 Level AA for the experience controlled by this repository. See [Accessibility](ACCESSIBILITY.md) for the current accessibility features, audit scope, third-party limitations, and barrier-reporting information.
+The site aims to meet or exceed WCAG 2.2 Level AA for the experience controlled by this repository and is coded to avoid common WAVE errors and contrast errors. See [Accessibility](ACCESSIBILITY.md) for the current accessibility features, audit scope, deployment-testing steps, third-party limitations, and barrier-reporting information.
 
 ## License
 

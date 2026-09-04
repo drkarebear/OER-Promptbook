@@ -22,7 +22,7 @@ The site includes:
 - reduced-motion support when smooth scrolling is used;
 - text and control contrast designed to meet WCAG AA thresholds;
 - text that remains usable under 200% text resizing and WCAG text-spacing stress tests; and
-- a titled iframe plus a direct-link alternative for the embedded community showcase.
+- a third-party community showcase that loads only on user request, plus a direct-link alternative.
 
 ## September 2026 Audit
 
@@ -45,7 +45,20 @@ A repository-wide accessibility pass checked all HTML pages for:
 - internal link and anchor integrity; and
 - inline JavaScript syntax.
 
-No issues remained in those automated and browser-level checks after the September 2026 accessibility pass.
+No known first-party errors remained in those repository-level checks after the September 2026 accessibility pass. The site is also structured to avoid common WAVE errors and contrast errors. Because WAVE evaluates the rendered page and accessibility conformance always requires human judgment, the deployed site should still be rechecked with the WAVE browser extension after each significant update.
+
+## WAVE Check After Deployment
+
+After publishing a significant update, run the WAVE browser extension on the deployed pages and review the rendered result. The goal for first-party Promptbook code is **0 WAVE Errors and 0 Contrast Errors**. WAVE Alerts are prompts for human review rather than automatic failures; each alert should be checked in context. Also complete a keyboard-only pass because no automated scanner can establish WCAG conformance by itself.
+
+Recommended spot checks after deployment:
+
+- Tab through the header, page controls, copy buttons, and footer in a logical order.
+- Activate **Skip to main content** and confirm focus moves to the main content.
+- Confirm every focused control remains visible and unobscured.
+- Zoom browser content to 200% and test a narrow/mobile viewport for reflow.
+- On the Community page, test filters and copy-status announcements with a screen reader when practical.
+- Treat accessibility findings inside Google Forms, Padlet, or other third-party services as provider-controlled issues and keep a direct-link alternative where practical.
 
 ## Third-Party Services
 

@@ -577,6 +577,97 @@
       html { scroll-behavior: auto; }
     }
   </style>
+
+  <style id="wcag-2-2-hardening">
+    /* WCAG 2.2 accessibility hardening. */
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.14em;
+    }
+
+    /* Navigation and button-like links already have strong non-color affordances. */
+    .brand,
+    nav a,
+    .goal-link,
+    .button,
+    .button-secondary,
+    .resource-link,
+    .contact-button,
+    .source-button,
+    .source-secondary,
+    .small-button {
+      text-decoration: none;
+    }
+
+    /* Interactive boundaries meet WCAG non-text contrast when the boundary is part of the affordance. */
+    .goal-link,
+    .resource-link,
+    .button-secondary,
+    .source-secondary {
+      border-color: #687789;
+    }
+
+    .goal-link:hover,
+    .goal-link:focus-visible,
+    .resource-link:hover,
+    .resource-link:focus-visible {
+      border-color: #0b7c83;
+    }
+
+    .small-button.report {
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.14em;
+    }
+
+    /* Two-tone focus remains visible on both light and dark surfaces. */
+    a[href]:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex="0"]:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 1px;
+      box-shadow: 0 0 0 6px #0b2948;
+    }
+
+    /* Keep anchored and keyboard-focused content comfortably in view. */
+    :target,
+    [tabindex="-1"] {
+      scroll-margin-block-start: 1rem;
+    }
+
+    /* Ensure placeholder text remains readable when it is present. */
+    ::placeholder {
+      color: #516070;
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (forced-colors: active) {
+      a[href]:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      [tabindex="0"]:focus-visible {
+        outline: 3px solid Highlight;
+        box-shadow: none;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -584,13 +675,13 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="The OER Promptbook home page">
+      <div class="brand">
         <span class="brand-mark" aria-hidden="true">OP</span>
         <span class="brand-text">
           <strong>The OER Promptbook</strong>
           <span>AI Prompts for Zero-Cost Course Materials</span>
         </span>
-      </a>
+      </div>
 
       <nav aria-label="Primary navigation">
         <ul role="list">
