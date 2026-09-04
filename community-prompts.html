@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src https://padlet.com; form-action 'self' https://docs.google.com; upgrade-insecure-requests">
   <meta name="description" content="Browse community-submitted OER and ZTC prompts shared by faculty, librarians, and OER/ZTC colleagues. Try, adapt, verify, and share what works.">
   <link rel="icon" href="favicon6.png" type="image/png">
   <title>Community Prompt Lab | The OER Promptbook</title>
@@ -843,14 +845,14 @@
       <p class="hero-lede">Browse prompts shared by faculty, librarians, and OER/ZTC colleagues. Adapt what is useful, verify the results, and contribute something that saved you time.</p>
 
       <div class="hero-actions" id="share-prompt">
-        <a class="button" id="submitPromptButton" href="https://docs.google.com/forms/d/e/1FAIpQLSdzEzz9p-1cX9GgViHj3ANI2ErExp7tWvcGJ_L0sNe4ZlPU_A/viewform" target="_blank" rel="noopener" aria-label="Share a Prompt (opens in a new tab)">Share a Prompt</a>
+        <a class="button" id="submitPromptButton" href="https://docs.google.com/forms/d/e/1FAIpQLSdzEzz9p-1cX9GgViHj3ANI2ErExp7tWvcGJ_L0sNe4ZlPU_A/viewform" target="_blank" rel="noopener noreferrer" aria-label="Share a Prompt (opens in a new tab)">Share a Prompt</a>
         <a class="button-secondary" href="#showcase">See Community Examples</a>
       </div>
     </div>
   </section>
     <section class="community-note" aria-labelledby="community-note-heading">
-      <h2 id="community-note-heading">Community Submitted, Not Individually Reviewed</h2>
-      <p>The core prompts in The OER Promptbook are maintained separately. Prompts on this page are shared by community members and may not have been tested or reviewed by the Promptbook maintainer.</p>
+      <h2 id="community-note-heading">Community Submitted and Screened Before Publication</h2>
+      <p>The core prompts in The OER Promptbook are maintained separately. Community submissions are screened before publication for obvious private or sensitive information, but publication does not mean a prompt has been independently tested, fact-checked, or endorsed.</p>
       <p><strong>Experiment, adapt, and verify.</strong> Open sources yourself, protect private information, and use your professional judgment before relying on any AI-generated result.</p>
     </section>
 
@@ -918,8 +920,8 @@
 
         <article class="step">
           <span class="step-number" aria-hidden="true">2</span>
-          <h3>It Appears Here Automatically</h3>
-          <p>Community submissions are pulled from a public data feed. The maintainer does not have to copy prompts into the website one at a time.</p>
+          <h3>It Is Reviewed Before Publication</h3>
+          <p>New submissions stay out of the public feed until the maintainer explicitly marks them approved for public display. The public feed exposes only the fields intended to appear on this page.</p>
         </article>
 
         <article class="step">
@@ -952,13 +954,13 @@
 
       <div id="padletFrameWrap" class="padlet-frame-wrap" hidden></div>
 
-      <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener" aria-label="Open the OER Promptbook Showcase in Padlet (opens in a new tab)">Open the OER Promptbook Showcase in Padlet</a></p>
+      <p class="showcase-link"><a href="https://padlet.com/karenmowrer/oerpromptbook" target="_blank" rel="noopener noreferrer" aria-label="Open the OER Promptbook Showcase in Padlet (opens in a new tab)">Open the OER Promptbook Showcase in Padlet</a></p>
     </section>
 
     <section class="safety-note" aria-labelledby="sharing-heading">
       <h2 id="sharing-heading">Before You Share</h2>
       <p>Please remove student names, identifiable student work, grades, accommodations, confidential college information, private email addresses, and other sensitive information from prompts, screenshots, or examples.</p>
-      <p><strong>Community prompt submissions may be displayed publicly.</strong> If you provide optional attribution information such as your name or institution for display, that information may appear with your prompt. Do not submit anything you do not want made public. <a href="privacy.html">Read the Privacy page for details.</a></p>
+      <p><strong>Approved community prompt submissions are displayed publicly.</strong> Submissions are screened before publication, but you are still responsible for removing private or sensitive information. If you provide optional attribution information such as your name or institution for display, that information may appear with your prompt. Do not submit anything you do not want made public. <a href="privacy.html">Read the Privacy page for details.</a></p>
       <p>Only share material you created, have permission to share, or are otherwise permitted to reuse. The Promptbook's CC BY-NC 4.0 license covers the maintainer's original educational content; it does not automatically apply to community-submitted or third-party material.</p>
     </section>
   </main>
@@ -981,7 +983,9 @@
       Apps Script feed, and Padlet.
 
       DATA_FEED_URL
-      Public Google Apps Script Web App URL that returns JSON.
+      Public Google Apps Script Web App URL that returns privacy-filtered JSON.
+      Use the included google-apps-script/Code.gs template. It publishes only
+      rows explicitly approved by the maintainer and only allowlisted fields.
 
       SUBMIT_FORM_URL
       Google Form used to submit community prompts.
@@ -1016,23 +1020,27 @@
             "institution": "Optional institution",
             "workedCount": 12,
             "savedTimeCount": 9,
-            "submittedDate": "2026-09-03"
+            "submittedDate": "2026-09-03",
+            "approved": true
           }
         ]
       }
 
       The page renders all user-submitted content with textContent,
-      not raw HTML, to reduce injection risk.
+      not raw HTML, to reduce injection risk. It also fails closed: records
+      are displayed only when the feed contract version matches and each
+      record carries approved: true.
     */
 
     const CONFIG = {
-      DATA_FEED_URL: "https://script.google.com/macros/s/AKfycbxczHAvD_8JaSPjLjhmyoXynejbmmINCvZ2l5JovNguDSkbp41jd8NCQkSUOKvwl59k/exec",
+      DATA_FEED_URL: "https://script.google.com/macros/s/AKfycbzbYmucmtvCbf6V_T0KKRHqqh4i-czoCD33BuSKNsCR_G-QdLXpaWQUgj6OMKbFbiYs/exec",
       SUBMIT_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdzEzz9p-1cX9GgViHj3ANI2ErExp7tWvcGJ_L0sNe4ZlPU_A/viewform",
       FEEDBACK_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSfWWJuNiogzEgzGdobJ_cnJXPxOR9k3i3pTxR0NcHCi9lkyfQ/viewform?usp=pp_url",
       REPORT_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSevJs-aCIHQC06jRM_w8xKl0gytipWOsTrET9Jb5NMjKavjQg/viewform?usp=pp_url",
       FEEDBACK_PROMPT_ID_PARAMETER: "entry.1735160719",
       REPORT_PROMPT_ID_PARAMETER: "entry.161399509",
-      PADLET_EMBED_URL: "https://padlet.com/embed/s0238sdnaebdfej2lfdi"
+      PADLET_EMBED_URL: "https://padlet.com/embed/s0238sdnaebdfej2lfdi",
+      REQUIRED_FEED_VERSION: 2
     };
 
     let allPrompts = [];
@@ -1052,12 +1060,28 @@
       return value && !value.startsWith("PASTE_") && !value.includes("REPLACE_WITH");
     }
 
-    function safe(value) {
-      return value === null || value === undefined ? "" : String(value).trim();
+    function safe(value, maxLength = 20000) {
+      if (value === null || value === undefined) return "";
+      return String(value).trim().slice(0, maxLength);
     }
 
     function normalize(value) {
-      return safe(value).toLowerCase();
+      return safe(value, 20000).toLowerCase();
+    }
+
+    function isApprovedRecord(item) {
+      return Boolean(item && item.approved === true);
+    }
+
+    function safeCount(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number) || number <= 0) return 0;
+      return Math.min(Math.floor(number), 1000000);
+    }
+
+    function safePromptId(value) {
+      const id = safe(value, 64);
+      return /^[A-Za-z0-9_-]{1,64}$/.test(id) ? id : "";
     }
 
     function uniqueValues(key) {
@@ -1070,8 +1094,7 @@
 
     function populateSelect(select, values) {
       const first = select.options[0];
-      select.innerHTML = "";
-      select.appendChild(first);
+      select.replaceChildren(first);
 
       values.forEach(value => {
         const option = document.createElement("option");
@@ -1131,7 +1154,7 @@
       top.appendChild(communityLabel);
 
       const title = document.createElement("h3");
-      title.textContent = safe(item.title) || "Untitled Prompt";
+      title.textContent = safe(item.title, 180) || "Untitled Prompt";
       top.appendChild(title);
 
       const meta = document.createElement("div");
@@ -1142,7 +1165,7 @@
         item.task,
         item.discipline,
         item.testedWith ? `Tested with ${item.testedWith}` : ""
-      ].filter(Boolean).forEach(value => meta.appendChild(createTag(safe(value))));
+      ].filter(Boolean).forEach(value => meta.appendChild(createTag(safe(value, 120))));
 
       top.appendChild(meta);
       card.appendChild(top);
@@ -1153,7 +1176,7 @@
       if (safe(item.purpose)) {
         const purpose = document.createElement("p");
         purpose.className = "purpose";
-        purpose.textContent = safe(item.purpose);
+        purpose.textContent = safe(item.purpose, 1200);
         body.appendChild(purpose);
       }
 
@@ -1165,7 +1188,7 @@
       promptText.tabIndex = 0;
       promptText.setAttribute("role", "region");
       promptText.setAttribute("aria-label", `Prompt text: ${title.textContent}`);
-      promptText.textContent = safe(item.prompt);
+      promptText.textContent = safe(item.prompt, 20000);
       promptBox.appendChild(promptText);
       body.appendChild(promptBox);
 
@@ -1176,7 +1199,7 @@
         const strong = document.createElement("strong");
         strong.textContent = "Contributor note: ";
         experience.appendChild(strong);
-        experience.appendChild(document.createTextNode(safe(item.experience)));
+        experience.appendChild(document.createTextNode(safe(item.experience, 2000)));
 
         body.appendChild(experience);
       }
@@ -1184,8 +1207,8 @@
       const stats = document.createElement("div");
       stats.className = "card-stats";
 
-      const worked = Number(item.workedCount || 0);
-      const saved = Number(item.savedTimeCount || 0);
+      const worked = safeCount(item.workedCount);
+      const saved = safeCount(item.savedTimeCount);
 
       if (worked > 0) {
         const workedStat = document.createElement("span");
@@ -1211,7 +1234,7 @@
       copy.className = "small-button primary";
       copy.textContent = "Copy Prompt";
       copy.setAttribute("aria-label", `Copy prompt: ${title.textContent}`);
-      copy.addEventListener("click", () => copyPrompt(safe(item.prompt), copy));
+      copy.addEventListener("click", () => copyPrompt(safe(item.prompt, 20000), copy));
       actions.appendChild(copy);
 
       const feedback = document.createElement("a");
@@ -1219,11 +1242,11 @@
       feedback.textContent = "This Worked for Me";
       feedback.setAttribute("aria-label", `This Worked for Me: ${title.textContent} (opens in a new tab)`);
       feedback.target = "_blank";
-      feedback.rel = "noopener";
+      feedback.rel = "noopener noreferrer";
       const feedbackUrl = makePrefilledUrl(
         CONFIG.FEEDBACK_FORM_URL,
         CONFIG.FEEDBACK_PROMPT_ID_PARAMETER,
-        safe(item.id)
+        safePromptId(item.id)
       );
       feedback.href = feedbackUrl;
       if (feedbackUrl === "#") {
@@ -1239,11 +1262,11 @@
       report.textContent = "Report a Problem";
       report.setAttribute("aria-label", `Report a Problem: ${title.textContent} (opens in a new tab)`);
       report.target = "_blank";
-      report.rel = "noopener";
+      report.rel = "noopener noreferrer";
       const reportUrl = makePrefilledUrl(
         CONFIG.REPORT_FORM_URL,
         CONFIG.REPORT_PROMPT_ID_PARAMETER,
-        safe(item.id)
+        safePromptId(item.id)
       );
       report.href = reportUrl;
       if (reportUrl === "#") {
@@ -1257,9 +1280,9 @@
       body.appendChild(actions);
 
       const bylineParts = [];
-      if (safe(item.displayName)) bylineParts.push(safe(item.displayName));
-      if (safe(item.institution)) bylineParts.push(safe(item.institution));
-      if (safe(item.id)) bylineParts.push(safe(item.id));
+      if (safe(item.displayName, 120)) bylineParts.push(safe(item.displayName, 120));
+      if (safe(item.institution, 180)) bylineParts.push(safe(item.institution, 180));
+      if (safePromptId(item.id)) bylineParts.push(safePromptId(item.id));
 
       if (bylineParts.length) {
         const byline = document.createElement("div");
@@ -1307,7 +1330,7 @@
 
     function renderPrompts(prompts) {
       promptGrid.setAttribute("aria-busy", "false");
-      promptGrid.innerHTML = "";
+      promptGrid.replaceChildren();
       resultCount.textContent = `${prompts.length} ${prompts.length === 1 ? "prompt" : "prompts"}`;
 
       if (!prompts.length) {
@@ -1325,7 +1348,7 @@
 
     async function loadPrompts() {
       if (!isConfigured(CONFIG.DATA_FEED_URL)) {
-        libraryStatus.textContent = "The Community Prompt Lab is ready to connect. Add the Apps Script data-feed URL in the configuration section of this page to begin displaying submissions automatically.";
+        libraryStatus.textContent = "The Community Prompt Lab is ready to connect to the privacy-safe approved-submissions feed.";
         promptGrid.setAttribute("aria-busy", "false");
         resultCount.textContent = "0 prompts";
         return;
@@ -1339,12 +1362,16 @@
         }
 
         const data = await response.json();
-        allPrompts = Array.isArray(data) ? data : (Array.isArray(data.prompts) ? data.prompts : []);
 
-        allPrompts = allPrompts.filter(item =>
-          item &&
-          safe(item.prompt) &&
-          safe(item.title)
+        if (!data || data.feedVersion !== CONFIG.REQUIRED_FEED_VERSION || !Array.isArray(data.prompts)) {
+          throw new Error("Community feed did not meet the required privacy-safe feed contract.");
+        }
+
+        allPrompts = data.prompts.filter(item =>
+          isApprovedRecord(item) &&
+          safe(item.prompt, 20000) &&
+          safe(item.title, 180) &&
+          safePromptId(item.id)
         );
 
         populateSelect(audienceFilter, uniqueValues("audience"));
@@ -1358,7 +1385,7 @@
       } catch (error) {
         libraryStatus.classList.add("error");
         promptGrid.setAttribute("aria-busy", "false");
-        libraryStatus.textContent = "The community library could not be loaded right now. Please try again later.";
+        libraryStatus.textContent = "The community library is temporarily unavailable because the approved-submissions feed could not be verified. No unverified submissions will be displayed.";
         console.error(error);
       }
     }
@@ -1384,7 +1411,7 @@
           frame.className = "padlet-frame";
           frame.title = "The OER Promptbook community showcase hosted on Padlet";
           frame.loading = "lazy";
-          frame.allow = "camera; microphone; geolocation";
+          frame.referrerPolicy = "no-referrer";
           frame.src = CONFIG.PADLET_EMBED_URL;
           wrap.replaceChildren(frame);
           wrap.hidden = false;

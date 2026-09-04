@@ -23,3 +23,7 @@ The Promptbook can be used with OER lists from librarians, colleges, disciplines
 
 The OER Promptbook is an independent faculty project and is not affiliated with or endorsed by ASCCC, ASCCC OERI, the California Community Colleges Chancellor's Office, or any individual California Community College.
 
+
+## Security and Privacy Maintenance
+
+See [Security and Privacy Maintenance](SECURITY-PRIVACY.md) for the public-by-default repository rule, the approved-submissions data flow, browser hardening, and release checks. The reference privacy-safe community feed is in [google-apps-script/Code.gs](google-apps-script/Code.gs), with setup instructions in [google-apps-script/README.md](google-apps-script/README.md).
